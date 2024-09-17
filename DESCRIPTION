@@ -21,5 +21,6 @@ Imports:
     tibble,
     MASS,
     Rsolnp,
-    grid
+    grid,
+    EnvStats
 RoxygenNote: 7.3.1
