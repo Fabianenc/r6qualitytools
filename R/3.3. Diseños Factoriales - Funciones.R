@@ -1165,7 +1165,7 @@ wirePlot <- function(x, y, z, data = NULL,
   #' z <- outer(x, y, function(a, b) sin(sqrt(a^2 + b^2)))
   #' wirePlot(x, y, z, main = "3D Wireframe Plot", xlab = "X-Axis", ylab = "Y-Axis", zlab = "Z-Axis")
   #'
-  #' #' fdo = rsmDesign(k = 3, blocks = 2)
+  #' fdo = rsmDesign(k = 3, blocks = 2)
   #' fdo$.response(data.frame(y = rnorm(fdo$nrow())))
   #'
   #' #I - display linear fit
@@ -1175,7 +1175,7 @@ wirePlot <- function(x, y, z, data = NULL,
   #' wirePlot(A,B,y, data = fdo, form = "full")
   #'
   #' #III - display a fit specified before
-  #' fdo$set.fits(lm(y ~ B + I(A^2)))
+  #' fdo$set.fits(fdo$lm(y ~ B + I(A^2)))
   #' wirePlot(A,B,y, data = fdo, form = "fit")
   #'
   #' #IV - display a fit given directly
@@ -1184,9 +1184,6 @@ wirePlot <- function(x, y, z, data = NULL,
   #' #V - display a fit using a different colorRamp
   #' wirePlot(A,B,y, data = fdo, form = "full", col = 2)
   #'
-  #' y <- seq(-10, 10, length = 30)
-  #' z <- outer(x, y, function(a, b) sin(sqrt(a^2 + b^2)))
-  #' wirePlot(x, y, z, main = "3D Wireframe Plot", xlab = "X-Axis", ylab = "Y-Axis", zlab = "Z-Axis")
 
 
   form = form
