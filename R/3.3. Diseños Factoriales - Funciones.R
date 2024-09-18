@@ -1145,7 +1145,15 @@ wirePlot <- function(x, y, z, data = NULL,
   #' @param zlab Character string: label for the z-axis.
   #' @param sub Character string: subtitle for the plot. Default is \code{NULL}.
   #' @param sub.a Logical value indicating whether to display the subtitle. Default is \code{TRUE}.
-  #' @param form Character string specifying the form of the surface to be plotted. Options include \code{"fit"} for a fitted surface, \code{"raw"} for raw data, and \code{"residuals"} for residuals. Default is \code{"fit"}.
+  #' @param form Character string specifying the form of the surface to be plotted. Options include
+  #' \itemize{
+  #'     \item \code{"quadratic"}
+  #'     \item \code{"full"}
+  #'     \item \code{"interaction"}
+  #'     \item \code{"linear"}
+  #'     \item \code{"fit"}
+  #'     }
+  #' Default is \code{"fit"}.
   #' @param col Character string specifying the color palette to use for the plot (e.g., \code{"Rainbow"}, \code{"Jet"}, \code{"Earth"}, \code{"Electric"}). Default is \code{"Rainbow"}.
   #' @param steps Numeric value specifying the number of steps for the grid in the plot. Higher values result in a smoother surface.
   #' @param factors Optional character vector specifying the names of the factors to be used in the plot.
@@ -1358,11 +1366,15 @@ wirePlot <- function(x, y, z, data = NULL,
 
     if (missing(zlim))
       zlim = range(mat)
+    if(sub.a){sub = sub}
+    else{sub = ""}
 
     p <- plot_ly(x = -yVec, y = xVec, z = mat, colorscale=col, scene = n.scene) %>%
       add_surface(showscale = show.scale) %>%
       layout(
-        title = main,
+        title = list(text=paste0(main,
+                                 "<br>",
+                                 sub)),
         scene = list(
           xaxis = list(range = ylim, title = ylab, zeroline = FALSE),
           yaxis = list(range = xlim, title = xlab, zeroline = FALSE),
@@ -1370,19 +1382,12 @@ wirePlot <- function(x, y, z, data = NULL,
           camera = list(eye = list(x=2, y=2, z=0.1))
         ),
         margin = list(l = 10, r = 15, t = 30, b = 20)
+
       )
     if(sub.a){
       p <- p %>%
         layout(
-          annotations = list(
-            list(
-              text = sub,# Subtitulo
-              x = 0.5,   # Posición x en la mitad de la gráfica
-              y = -0.1,  # Posición y debajo de la gráfica
-              showarrow = FALSE,
-              font = list(size = 12)
-            )
-          )
+
         )
     }
 
