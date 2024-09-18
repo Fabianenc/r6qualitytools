@@ -1825,6 +1825,7 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
   #'     \item \code{"lognormal3"}
   #'     \item \code{"beta"}
   #'     \item \code{"f"}
+  #'     \item \code{"t"}
   #'     \item \code{"geometric"}
   #'     \item \code{"poisson"}
   #'     \item \code{"negative-binomial"}
@@ -1938,8 +1939,7 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
   if (boxcox) {
     distribution = "normal"
     if (length(lambda) >= 2) {
-      temp = boxcox(x[, 1] ~ 1, lambda = seq(min(lambda),
-                                             max(lambda), 1/10), plotit = FALSE)
+      temp = boxcox(x[, 1] ~ 1, lambda = seq(min(lambda),max(lambda), 1/10), plotit = FALSE)
       i = order(temp$y, decreasing = TRUE)[1]
       lambda = temp$x[i]
     }
@@ -1957,8 +1957,7 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
   }
   if (missing(main))
     if (boxcox)
-      main = paste("Process Capability using box cox transformation for",
-                   varName)
+      main = paste("Process Capability using box cox transformation for",varName)
   else main = paste("Process Capability using", as.character(distribution),
                     "distribution for", varName)
   if (is.null(std.dev)) {
@@ -2070,18 +2069,24 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
       xlim <- xlim + diff(xlim) * c(-0.2, 0.2)
     }
 
+    if (boxcox){
+      binwidth.b = NULL
+    }
+    else{
+      binwidth.b = 1
+    }
+
     # 1. Histograma --------------------------------------------------------------------------
 
     # Histograma
     p1 <- ggplot(data.frame(x = x[, 1]), aes(x = x)) +
       geom_histogram(aes(y = after_stat(density)),
-                     binwidth = 1,  # Ajusta el ancho del bin
+                     binwidth = binwidth.b,  # Ajusta el ancho del bin
                      colour = col.border, fill = col.fill) +
       geom_density(colour = col.curve, lwd = 0.5 ) +
       labs(y = "", x = "", title = "") + xlim(xlim) +
       theme_minimal() + theme(plot.title = element_text(hjust = 0.5,face = "bold"))+
       guides(color = guide_legend(title.position = "top", title.hjust = 0.5))
-
 
     #  etiquetas de los límites
     if (!is.null(lsl) & !is.null(usl)){
@@ -2163,7 +2168,7 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
         p = adTestStats$p.value$p
       }
 
-      # Caja de Info
+      # Caja de Info ----
       p3 <- ggplot(data = data.frame(x = 0, y = 0), aes(x, y)) +
         theme_bw() +
         theme(
