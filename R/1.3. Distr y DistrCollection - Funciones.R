@@ -1825,7 +1825,6 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
   #'     \item \code{"lognormal3"}
   #'     \item \code{"beta"}
   #'     \item \code{"f"}
-  #'     \item \code{"t"}
   #'     \item \code{"geometric"}
   #'     \item \code{"poisson"}
   #'     \item \code{"negative-binomial"}
