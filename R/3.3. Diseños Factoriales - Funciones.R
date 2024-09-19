@@ -497,10 +497,10 @@ simProc <- function(x1, x2, x3, noise = TRUE) {
 
 
 # InteractionPlot ----
-interactionPlot <- function(fdo, response = NULL, fun = mean, main, col = 1:2) {
+interactionPlot <- function(dfac, response = NULL, fun = mean, main, col = 1:2) {
   #' @title interactionPlot
   #' @description Creates an interaction plot for the factors in a factorial design to visualize the interaction effects between them.
-  #' @param fdo An object of class \code{\link{facDesign.c}}, representing a factorial design.
+  #' @param dfac An object of class \code{\link{facDesign.c}}, representing a factorial design.
   #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the response data frame.
   #' \code{response} Needs to be an object of class character with length of ‘1’. It needs to be the same character as the name of the response in the response data frame that should be plotted.
   #' @param fun Function to use for the calculation of the interactions (e.g., \code{mean}, \code{median}). Default is \code{mean}.
@@ -533,12 +533,17 @@ interactionPlot <- function(fdo, response = NULL, fun = mean, main, col = 1:2) {
   #'
   #' interactionPlot(vp)
 
-
-  if (missing(main)) mainmiss = TRUE else mainmiss = FALSE
+  fdo = dfac$clone()
+  if (missing(main)){
+    mainmiss = TRUE
+  }
+  else {
+    mainmiss = FALSE
+  }
   if (missing(fdo) || class(fdo)[1] != "facDesign")
     stop("fdo needs to be an object of class facDesign")
 
-  fdoName = deparse(substitute(fdo))
+  fdoName = deparse(substitute(dfac))
   if (!is.null(response)) {
     temp = fdo$.response()[response]
     fdo$.response(temp)
@@ -605,7 +610,7 @@ interactionPlot <- function(fdo, response = NULL, fun = mean, main, col = 1:2) {
     plot_matrix <- matrix(plot_matrix, ncol = numFac, byrow = TRUE)
     final_plot <- wrap_plots(plot_matrix, ncol = numFac)
     final_plot <- final_plot + plot_annotation(
-      title = main[r],
+      title = main,
       theme = theme(plot.title = element_text(hjust = 0.5, margin = margin(b = 20)))
     )
     print(final_plot)
@@ -615,11 +620,11 @@ interactionPlot <- function(fdo, response = NULL, fun = mean, main, col = 1:2) {
 }
 
 # paretoPlot ----
-paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
+paretoPlot <- function(dfac, abs = TRUE, decreasing = TRUE, alpha = 0.05,
                        response = NULL, ylim, xlab, ylab, main, p.col, legend_left = TRUE) {
   #' @title paretoPlot
   #' @description Display standardized effects and interactions of a \code{\link{facDesign.c}} object in a pareto plot.
-  #' @param fdo An object of class facDesign.
+  #' @param dfac An object of class facDesign.
   #' @param abs Logical. If \code{TRUE}, absolute effects and interactions are displayed. Default is \code{TRUE}.
   #' @param decreasing Logical. If \code{TRUE}, effects and interactions are sorted decreasing. Default is \code{TRUE}.
   #' @param alpha The significance level used to calculate the critical value
@@ -634,8 +639,8 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
   #'   \item{\code{"Set1"}}
   #'   \item{\code{"Set2"}}
   #'   \item{\code{"Set3"}}
-  #'   \item{\code{"Pastel2"}}
   #'   \item{\code{"Pastel1"}}
+  #'   \item{\code{"Pastel2"}}
   #'   \item{\code{"Paired"}}
   #'   \item{\code{"Dark2"}}
   #'   \item{\code{"Accent"}}
@@ -661,7 +666,14 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
   #' paretoPlot(dfac)
   #' paretoPlot(dfac, decreasing = TRUE, abs = FALSE, p.col = "Pastel1")
 
-  if(is.null(response)==FALSE)
+
+
+  fdo=dfac$clone()
+  if(length(fdo$.response())>1 & !is.character(response)){
+    stop("If your design have more than one response you should select the response writting the name of the response")
+  }
+
+  if(!is.null(response))
   {
     temp=fdo$.response()[response]
     fdo$.response(temp)
@@ -716,7 +728,7 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
         n = length(effect)
 
         if(missing(p.col)){
-          p.col = rep("lightblue", length(effect))
+          p.col = brewer.pal(length(effect), "Pastel1")
         }
         else{p.col = brewer.pal(length(effect), p.col)} #paste0("Set", p.col))
 
@@ -725,6 +737,8 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
             ylim = (range(c(0, abs(effect), 1.3 * ME))) * 1.1
         else ylim = (range(c(effect, -1.3 * ME, 1.3 * ME))) * 1.1
         if (abs) {
+          effect = effect[order(abs(effect), na.last = TRUE, decreasing = decreasing)]
+          effect = round(effect, 3)
           if (missing(ylabel))
             ylabel = ""
 
@@ -761,6 +775,8 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
 
         }
         else {
+          effect = effect[order((effect), na.last = TRUE, decreasing = decreasing)]
+          effect = round(effect, 3)
           if (missing(ylabel))
             ylabel = ""
           p <- ggplot(data.frame(names = names(effect), effect_ = abs(as.vector(effect))),
@@ -771,7 +787,8 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
             geom_text(aes(label = round(effect,2)), vjust = -1, colour = "black") + # etiquetas sobre las barras
             labs(title = main, x = xlab, y = ylabel) + ylim(c(ylim)) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1),
-                  plot.title = element_text(hjust = 0.5))
+                  plot.title = element_text(hjust = 0.5),
+                  legend.position = "none")
 
           if(ME >= ylim[1] & ME <= ylim[2] & SME >= ylim[1] & SME <= ylim[2]){
             p <- p +
@@ -826,7 +843,7 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
         }
 
         if(missing(p.col)){
-          p.col = rep("lightblue", length(effect))
+          p.col = brewer.pal(length(effect), "Pastel1")
         }
         else{p.col = brewer.pal(length(effect), p.col)} #paste0("Set", p.col))
         # Plot ---------
@@ -848,7 +865,8 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
             theme_minimal()+
             labs(title = main, x = xlab, y = ylabel) + ylim(c(ylim)) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1),
-                  plot.title = element_text(hjust = 0.5)) +
+                  plot.title = element_text(hjust = 0.5),
+                  legend.position = "none") +
             geom_text(aes(label = round(effect,2)), vjust = -1, colour = "black") + # etiquetas sobre las barras
             geom_hline(yintercept = sig.pos, linetype = "dashed", color = "red") +
             annotate("text", x = max(as.numeric(df$Names)), y = sig.pos, label = paste(round(sig.pos, 2)), vjust = -0.5, color = "red")
@@ -870,7 +888,7 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
             scale_fill_manual(values=c(p.col)) +
             theme_minimal()+
             labs(title = main, x = xlab, y = ylabel) + ylim(c(ylim)) +
-            theme(axis.text.x = element_text(angle = 90, hjust = 1), plot.title = element_text(hjust = 0)) +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1), plot.title = element_text(hjust = 0),legend.position = "none") +
             geom_text(aes(label = effect), vjust = ifelse(df$effect_ > 0, -0.5, 1.5) , colour = "black") + # etiquetas sobre las barras
             geom_hline(yintercept = sig.pos, linetype = "dashed", color = "red") +
             geom_hline(yintercept = sig.neg, linetype = "dashed", color = "red") +
@@ -912,16 +930,13 @@ paretoPlot <- function(fdo, abs = TRUE, decreasing = TRUE, alpha = 0.05,
   invisible(list(effects = effect.list, plot = p))
 }
 # normalPlot ----
-normalPlot <- function(fdo, response = NULL, sig.col = c("red1", "red2", "red3"),
-                       sig.pch = c(1,2,3), main, ylim, xlim, xlab, ylab, pch,
+normalPlot <- function(dfac, response = NULL, main, ylim, xlim, xlab, ylab, pch,
                        col, border = "red"){
   #' @title normalPlot: Normal plot
   #' @description Creates a normal probability plot for the effects in a \code{\link{facDesign.c}} object.
-  #' @param fdo An object of class \code{\link{facDesign.c}}.
+  #' @param dfac An object of class \code{\link{facDesign.c}}.
   #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the \code{response} data frame. response needs to be an object of class character with length of ‘1’. It needs to be the same character as the name of the response in the response data frame that should be plotted.
   #' By default \code{respons}` is set to \code{NULL}.
-  #' @param sig.col Vector - colors for marking significant interactions. By default \code{sig.col} is set to \code{c("red1", "red2", "red3")}.
-  #' @param sig.pch Vector - point characters for marking significant interactions. By default \code{sig.pch} is set to \code{c(1, 2, 3)}.
   #' @param main Character string specifying the main title of the plot.
   #' @param ylim Graphical parameter. The y limits of the plot.
   #' @param xlim Graphical parameter. The x limits (x1, x2) of the plot. Note that x1 > x2 is allowed and leads to a ‘reversed axis’.
@@ -956,17 +971,18 @@ normalPlot <- function(fdo, response = NULL, sig.col = c("red1", "red2", "red3")
   #' normalPlot(dfac)
   #'
   #' # Example 2: Create a normal probability plot with custom colors and symbols
-  #' normalPlot(dfac, sig.col = c("blue", "green", "purple"), sig.pch = c(4, 5, 6))
+  #' normalPlot(dfac, col = "blue", pch = 4)
 
-  fdoName = deparse(substitute(fdo))
+  fdo = dfac$clone()
+  fdoName = deparse(substitute(dfac))
+
   if(is.null(response)==FALSE)
   {
     temp=fdo$.response()[response]
     fdo$.response(temp)
   }
   parList = list()
-  if (length(sig.col) < 3)
-    sig.col = as.vector(matrix(sig.col, nrow = 1, ncol = 3))
+
   XLIM=FALSE;YLIM=FALSE
   if (!(class(fdo)[1] == "facDesign"))
     stop(paste(deparse(substitute(fdo)), "is not an object of class facDesign"))
@@ -994,7 +1010,9 @@ normalPlot <- function(fdo, response = NULL, sig.col = c("red1", "red2", "red3")
     p.col = vector()
     p.pch = vector()
     leg.txt = vector()
-    main = paste("Normal plot for", names(fdo$.response())[j], "in", fdoName)
+    if (missing(main)){
+      main = paste("Normal plot for", names(fdo$.response())[j], "in", fdoName)
+    }
     if (j > 1)
       dev.new()
     form = paste("fdo$.response()[,", j, "]~")
@@ -1026,28 +1044,22 @@ normalPlot <- function(fdo, response = NULL, sig.col = c("red1", "red2", "red3")
         setted = FALSE
         if (abs(sig)[k] < 0.01) {
           if (!setted) {
-            p.col[k] = sig.col[1]
-            p.pch[k] = sig.pch[1]
             leg.txt = c(leg.txt, "p < 0.01")
-            leg.col = c(leg.col, p.col)
+            leg.col = c(leg.col)
             setted = TRUE
           }
         }
         if (abs(sig)[k] < 0.05) {
           if (!setted) {
-            p.col[k] = sig.col[2]
-            p.pch[k] = sig.pch[2]
             leg.txt = c(leg.txt, "p < 0.05")
-            leg.col = c(leg.col, p.col)
+            leg.col = c(leg.col)
             setted = TRUE
           }
         }
         if (abs(sig)[k] < 0.1) {
           if (!setted) {
-            p.col[k] = sig.col[3]
-            p.pch[k] = sig.pch[3]
             leg.txt = c(leg.txt, "p < 0.1")
-            leg.col = c(leg.col, p.col)
+            leg.col = c(leg.col)
             setted = TRUE
           }
         }
@@ -1113,7 +1125,7 @@ normalPlot <- function(fdo, response = NULL, sig.col = c("red1", "red2", "red3")
 
       caja <- caja +
         annotate('text', x = 0.275, y = 0.28,
-                 label = leg.txt, size = 3, hjust = 0.5, colour = leg.col)
+                 label = leg.txt, size = 3, hjust = 0.5, colour = "black")
 
       p <- p + inset_element(caja, left = 0.01, right = 0.2, top = 1, bottom = 0.85)
     }
@@ -1131,7 +1143,7 @@ wirePlot <- function(x, y, z, data = NULL,
                      plot = TRUE, show.scale = TRUE,
                      n.scene = "scene") {
   #' @title wirePlot: 3D Plot
-  #' @description Creates a wireframe diagram for an object of class \code{facDesign}.
+  #' @description Creates a wireframe diagram for an object of class \code{\link{facDesign.c}}.
   #' @param x Name providing the Factor A for the plot.
   #' @param y Name providing the Factor B for the plot.
   #' @param z Name giving the Response variable.
@@ -1447,7 +1459,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
   #' #II - display full fit (i.e. effect, interactions and quadratic effects
   #' contourPlot(A,B,y, data = fdo, form = "full")
   #' #III - display a fit specified before
-  #' fits(fdo) = lm(y ~ B + I(A^2) , data = fdo)
+  #' fdo$set.fits(fdo$lm(y ~ B + I(A^2)))
   #' contourPlot(A,B,y, data = fdo, form = "fit")
   #' #IV - display a fit given directly
   #' contourPlot(A,B,y, data = fdo, form = "y ~ A*B + I(A^2)")
@@ -1624,7 +1636,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
   if (identical(fun, "overall")) {
     main = "composed desirability"
     mat = matrix(1, nrow = nrow(mat), ncol = ncol(mat))
-    for (i in names(response(fdo))) {
+    for (i in names(fdo$.response())) {
       obj = fdo$desires()[[i]]
       fun = .desireFun(obj$low, obj$high, obj$target, obj$scale, obj$importance)
       temp = outer(xVec, yVec, help.predict, x.c, y.c, fdo$fits[[i]])
@@ -1856,7 +1868,7 @@ steepAscent <- function(factors, response, size = 0.2, steps = 5, data) {
   #' fdo$lows(c(170, 150))
   #' fdo$highs(c(230, 250))
   #' fdo$names(c("temperature", "time"))
-  #' fdo$units(c("C", "minutes"))
+  #' fdo$unit(c("C", "minutes"))
   #' yield = c(32.79, 24.07, 48.94, 52.49, 38.89, 48.29, 29.68, 46.5, 44.15)
   #' fdo$.response(yield)
   #' fdo$summary()
@@ -1864,13 +1876,15 @@ steepAscent <- function(factors, response, size = 0.2, steps = 5, data) {
   #' sao = steepAscent(factors = c("B", "A"), response = "yield", size = 1,
   #'                   data = fdo)
 
+  if(missing(response))
+    stop("Choose a response")
   if (missing(data))
-    return("missing an object of class 'facDesign'")
+    stop("missing an object of class 'facDesign'")
   else fdo = data
   if (missing(factors) | length(factors) < 1)
-    return("missing factors")
+    stop("missing factors")
   if (!is.character(factors))
-    return("factors needs to be a character")
+    stop("factors needs to be a character")
   #names(names(fdo))
   model = data$fits[[response]]
   if (is.null(model)) {
@@ -1910,7 +1924,7 @@ steepAscent <- function(factors, response, size = 0.2, steps = 5, data) {
     aux[[.NAMES[i]]] <-fdo$names()[i]
   }
   for (i in seq(along = factors)) {
-    frameOut[, i + initial] = code2real(fdo$lows()[[aux[i][[1]]]], fdo$highs()[[aux[i][[1]]]], x[i] * 0:steps)
+    frameOut[, i + initial] = code2real(fdo$lows()[[aux[[factors[i]]]]], fdo$highs()[[aux[[factors[i]]]]], x[i] * 0:steps)
     names(frameOut)[i + initial] = paste(factors[i], ".real", collapse = "", sep = "")
   }
   soa = steepAscent.c$new()
@@ -1948,7 +1962,7 @@ starDesign <- function(k, p = 0, alpha = c("both", "rotatable", "orthogonal"), c
   #' # Factorial design with one center point in the cube portion
   #' fdo = facDesign(k = 3, centerCube = 1)
   #' # Set the response via generic response method
-  #' fdo$.response() = 1:9
+  #' fdo$.response(1:9)
   #' # Sequential assembly of a response surface design (rsd)
   #' rsd = starDesign(data = fdo)
   #'
@@ -2091,6 +2105,10 @@ rsmDesign <- function(k = 3, p = 0, alpha = "rotatable", blocks = 1, cc = 1, cs 
       return("no design available")
     }
   }
+  if(faceCentered==TRUE){
+    alpha = 1
+  }
+
   fdo = facDesign(k = k, p = p, replicates = fp)                              ###
   if (cc > 0) {
     temp = as.data.frame(matrix(0, nrow = cc, ncol = ncol(fdo$cube)))
