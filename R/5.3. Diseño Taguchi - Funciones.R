@@ -44,13 +44,12 @@ taguchiDesign <- function(design, randomize = TRUE, replicates = 1) {
   #' \item{\code{\link{gageRRDesig}}: for gage designs.}
   #' }
   #' @examples
-  #' set.seed(1234)
   #' tdo <- taguchiDesign("L9_3")
-  #' tdo$values(list(A = c(20, 40, 60), B = c("material 1", "material 2", "material 3"), C = c(1, 2, 3)))
+  #' tdo$values(list(A = c("material 1", "material 2", "material 3"), B = c(29, 30, 35)))
   #' tdo$names(c("Factor 1", "Factor 2", "Factor 3", "Factor 4"))
-  #' tdo$summary()
   #' tdo$.response(rnorm(9))
-  #'  tdo$effectPlot(col = 2)
+  #' tdo$summary()
+
 
   odo = NA
   type = "single"
@@ -381,7 +380,7 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
       }
     }
     }
-    tdo=object
+    tdo=object$clone()
     tdo$.response(SN[k])
     if(k>1)
       dev.new()

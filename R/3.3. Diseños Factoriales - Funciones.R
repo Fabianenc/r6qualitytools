@@ -2512,3 +2512,66 @@ optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
 
 
 
+
+# summaryFits ----
+summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE) {
+  #' @title summaryFits: Fit Summary
+  #' @description
+  #' Function to provide an overview of fitted linear models for objects of class \code{\link{facDesign.c}}.
+  #' @usage
+  #' summaryFits(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE)
+  #' @param fdo An object of class \code{\link{facDesign.c}}.
+  #' @param lmFit A logical value deciding whether the fits from the object \code{fdo} should be included or not. By default, \code{lmFit} is set to \code{TRUE}.
+  #' @param curvTest A logical value deciding whether curvature tests should be performed or not. By default, \code{curvTest} is set to \code{TRUE}.
+  #' @param origFit A logical value. If \code{TRUE} (default), the original values of the fits will be displayed.
+  #' @return A summary output of the fitted linear models, which may include the linear fits, curvature tests, and original fit values, depending on the input parameters.
+  #'
+  #' @examples
+  #' dfac <- facDesign(k = 3)
+  #' dfac$.response(data.frame(y = rnorm(8), y2 = rnorm(8)))
+  #' dfac$set.fits(lm(y ~ A + B , data = dfac$as.data.frame()))
+  #' dfac$set.fits(lm(y2 ~ A + C, data = dfac$as.data.frame()))
+  #' summaryFits(dfac)
+
+  summaryList = vector(mode = "list", length = 0)
+  origFrame = fdo$as.data.frame()
+  for (i in fdo$names()) origFrame[, i] = code2real(fdo$lows()[[i]], fdo$highs()[[i]], origFrame[, i])
+  for (f in names(fdo$.response())) {
+    if (!is.null(fdo$fits[[f]])) {
+      cat(paste("----------- Summary for response '", f, "' -----------", sep = ""))
+      cat("\n")
+      print(summary(fdo$fits[[f]]))
+      cat("-----------")
+      cat("\n")
+      cat("\n")
+      cat("Regression in non coded form:")
+      cat("\n")
+      lm.f = (lm(formula(fdo$fits[[f]]), data = origFrame))
+      coefs = coefficients(lm.f)
+      coefsI = coefs[pmatch("(Intercept)", names(coefs))]
+      coefsW = coefs[-pmatch("(Intercept)", names(coefs))]
+      coefsW = coefsW[!is.na(coefsW)]
+      temp = character(length(coefsW))
+      temp[coefsW >= 0] = "+"
+      temp[coefsW < 0] = "-"
+      firstString = ""
+      firstString = paste(firstString, format(coefsI, digits = 4))
+      restString = paste(format(abs(coefsW), digits = 4), names(coefsW), sep = "*")
+      restString = paste(temp, restString)
+      restString = paste(restString, collapse = " ")
+      fullString = paste(firstString, restString)
+      fullString = paste(paste(f, " ="), fullString)
+      cat("\n")
+      cat(paste("  ", fullString))
+      cat("\n")
+      cat("\n")
+      cat("-----------")
+      cat("\n")
+      .curvTest(fdo, f)
+      cat("\n")
+      cat("\n")
+    }
+  }
+  invisible()
+}
+

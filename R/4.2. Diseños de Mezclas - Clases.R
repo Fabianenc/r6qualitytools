@@ -146,7 +146,7 @@ mixDesign.c <- R6Class("mixDesign", public = list(name = NULL,
                                                     cat("\n-----------\n")
                                                     cat("\n")
                                                     cat("Information about the constraints:\n\n")
-                                                    lower = object$lower
+                                                    lower = self$lower
                                                     temp = character(0)
                                                     for (i in seq(along = lower)) temp = c(temp, paste(LETTERS[i], ">=", lower[i]))
                                                     cat(temp)
@@ -205,7 +205,13 @@ mixDesign.c <- R6Class("mixDesign", public = list(name = NULL,
                                                     }
                                                     else {
                                                       for (i in seq(along = self$factors)) {
-                                                        self$factors[[i]]$.low(value[i])
+                                                        if (length(value) > 1){
+                                                          self$factors[[i]]$.low(value[i])
+                                                        }
+                                                        else{
+                                                          self$factors[[i]]$.low(value)
+                                                        }
+
                                                       }
                                                       invisible(self)
                                                     }
@@ -223,7 +229,13 @@ mixDesign.c <- R6Class("mixDesign", public = list(name = NULL,
                                                     }
                                                     else {
                                                       for (i in seq(along = self$factors)) {
-                                                        self$factors[[i]]$.high(value[i])
+                                                        if (length(value) > 1){
+                                                          self$factors[[i]]$.high(value[i])
+                                                        }
+                                                        else{
+                                                          self$factors[[i]]$.high(value)
+                                                        }
+
                                                       }
                                                       invisible(self)
                                                     }

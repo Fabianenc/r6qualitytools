@@ -233,7 +233,7 @@ pbDesign.c <- R6Class("pbDesign", public = list(name = NULL,
                                                   cat(paste("Plackett-Burman", toupper(self$designType), "Design"))
                                                   cat("\n")
                                                   cat("Information about the factors:\n\n")
-                                                  self$.nfp
+                                                  self$.nfp()
                                                   cat("\n")
                                                   cat("-----------\n")
                                                   cat("\n")

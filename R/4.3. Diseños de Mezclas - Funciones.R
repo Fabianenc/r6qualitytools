@@ -3,10 +3,11 @@
 ##########################################################################
 
 ###Funcion mixDesign####
+
 mixDesign <- function(p, n = 3, type = "lattice",
                       center = TRUE, axial = FALSE, delta,
                       replicates = 1, lower, total = 1,
-                      randomize, seed) {
+                      randomize, seed=1234) {
   #' @title mixDesign: Mixture Designs
   #' @description Function to generate simplex lattice and simplex centroid mixture designs with optional center points and axial points.
   #' @param p Numerical value giving the amount of factors.
@@ -39,12 +40,12 @@ mixDesign <- function(p, n = 3, type = "lattice",
   #' # Example usage of mixDesign
   #' mdo <- mixDesign(3, 2, center = FALSE, axial = FALSE, randomize = FALSE, replicates = c(1, 1, 2, 3))
   #'
-  #'  mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
-  #'  elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
-  #'  mdo$.response(elongation)
+  #' mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
+  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
+  #' mdo$.response(elongation)
   #'
-  #'  mdo$units()
-  #'  mdo$summary()
+  #' mdo$units()
+  #' mdo$summary()
 
 
   frameOut = NA
@@ -60,13 +61,12 @@ mixDesign <- function(p, n = 3, type = "lattice",
     delta = (p - 1)/(2 * p)
   if (missing(randomize))
     randomize = TRUE
-  if (!missing(seed))
-    set.seed(seed)
+  set.seed(seed)
   if (!is.numeric(total))
     stop("total needs to be a numeric vector with <= 2 arguments")
   else {
     if (total[1] > 1 || total[1] <= 0)
-      stop("totall[1] needs to be within (0,1]")
+      stop("total[1] needs to be within (0,1]")
     if (is.na(total[2]))
       total[2] = 1
     if (total[2] <= 0)
@@ -232,7 +232,7 @@ mixDesign <- function(p, n = 3, type = "lattice",
   else if (any(out$lower != 0)) {
     out$lows(out$lower)
     out$highs(1 * out$total[1])
-    outs$units("%")
+    out$units("%")
   }
   else {
     out$lows(0)
@@ -288,7 +288,7 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   #' }
   #' @seealso \code{\link{mixDesign.c}}, \code{\link{mixDesign}}, \code{\link{wirePlot3}}.
   #' @examples
-  #' #' mdo = mixDesign(3,2, center = FALSE, axial = FALSE, randomize = FALSE,
+  #' mdo = mixDesign(3,2, center = FALSE, axial = FALSE, randomize = FALSE,
   #'                 replicates  = c(1,1,2,3))
   #' mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
   #' mdo$units("percent")
@@ -462,8 +462,6 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   #' \itemize{
   #' \item{“linear”}
   #' \item{“quadratic”}
-  #' \item{“fullCubic”}
-  #' \item{“specialCubic”}
   #' }
   #' How the form influences the output is described in the reference listed below.
   #' By default, \code{form} is set to “linear”.
@@ -498,8 +496,6 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   y.c = deparse(substitute(B))
   z.c = deparse(substitute(C))
   r.c = deparse(substitute(response))
-  if (missing(col))
-    col = 1
   if (missing(main))
     main = paste("Response Surface for", r.c)
   if (missing(ylab))
