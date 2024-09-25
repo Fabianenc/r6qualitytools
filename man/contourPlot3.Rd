@@ -88,7 +88,7 @@ The function \code{contourPlot3} returns an invisible list containing:
 This function creates a ternary plot (contour plot) for mixture designs (i.e. object of class \code{mixDesign}).
 }
 \examples{
-#' mdo = mixDesign(3,2, center = FALSE, axial = FALSE, randomize = FALSE,
+mdo = mixDesign(3,2, center = FALSE, axial = FALSE, randomize = FALSE,
                 replicates  = c(1,1,2,3))
 mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
 mdo$units("percent")

@@ -2514,7 +2514,7 @@ optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
 
 
 # summaryFits ----
-summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE) {
+summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE) {
   #' @title summaryFits: Fit Summary
   #' @description
   #' Function to provide an overview of fitted linear models for objects of class \code{\link{facDesign.c}}.
@@ -2523,7 +2523,6 @@ summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE) {
   #' @param fdo An object of class \code{\link{facDesign.c}}.
   #' @param lmFit A logical value deciding whether the fits from the object \code{fdo} should be included or not. By default, \code{lmFit} is set to \code{TRUE}.
   #' @param curvTest A logical value deciding whether curvature tests should be performed or not. By default, \code{curvTest} is set to \code{TRUE}.
-  #' @param origFit A logical value. If \code{TRUE} (default), the original values of the fits will be displayed.
   #' @return A summary output of the fitted linear models, which may include the linear fits, curvature tests, and original fit values, depending on the input parameters.
   #'
   #' @examples
@@ -2540,7 +2539,9 @@ summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE) {
     if (!is.null(fdo$fits[[f]])) {
       cat(paste("----------- Summary for response '", f, "' -----------", sep = ""))
       cat("\n")
-      print(summary(fdo$fits[[f]]))
+      if(lmFit){
+        print(summary(fdo$fits[[f]]))
+      }
       cat("-----------")
       cat("\n")
       cat("\n")
@@ -2567,7 +2568,9 @@ summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE) {
       cat("\n")
       cat("-----------")
       cat("\n")
-      .curvTest(fdo, f)
+      if(curvTest){
+        .curvTest(fdo, f)
+      }
       cat("\n")
       cat("\n")
     }

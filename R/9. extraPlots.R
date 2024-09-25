@@ -150,7 +150,7 @@ dotPlot <- function(x, group, xlim, ylim, col, xlab, ylab, pch, cex, breaks, sta
       plot<-ggplot(data=data.frame(X,Y,Col,Pch), aes(x = X, y = Y, colour = factor(Col) , shape = factor(Pch))) + geom_point(size=cex) +
         scale_color_manual(values = setNames(unique(Col), unique(Col)))+
         scale_shape_manual(values = setNames(unique(Pch), unique(Pch)))+
-        scale_x_continuous(limits = xlim+c(-0.05,0.05))+
+        scale_x_continuous(limits = xlim+c(-0.08,0.08))+
         scale_y_continuous(limits = ylim)+
         labs(x=xlab, y=ylab, title=main)+
         theme_classic() +
@@ -159,7 +159,7 @@ dotPlot <- function(x, group, xlim, ylim, col, xlab, ylab, pch, cex, breaks, sta
     }
     else{
     plot<-ggplot(data=data.frame(X,Y), aes(x = X, y = Y)) + geom_point(colour=unique(col),size=cex,shape=unique(pch)) +
-      scale_x_continuous(limits = xlim+c(-0.05,0.05))+
+      scale_x_continuous(limits = xlim+c(-0.08,0.08))+
       scale_y_continuous(limits = ylim)+
       labs(x=xlab, y=ylab, title=main)+
       theme_classic() +

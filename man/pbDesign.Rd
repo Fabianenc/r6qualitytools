@@ -23,7 +23,7 @@ A \code{pbDesign} returns an object of class \code{pbDesign}.
 Function to create a Plackett-Burman  design.
 }
 \note{
-This function creates Placket-Burman Designs up to n=48. Bigger Designs are not implemented because of lack in practicability. For the creation either the number of factors or the number of trials can be denoted. Wrong combinations will lead to an error message. Originally Placket-Burman-Design are applicable for number of trials divisible by 4. If n is not divisble by 4 this function will take the next larger Placket-Burman Design and truncate the last rows and columns.
+This function creates Placket-Burman Designs down to n=26. Bigger Designs are not implemented because of lack in practicability. For the creation either the number of factors or the number of trials can be denoted. Wrong combinations will lead to an error message. Originally Placket-Burman-Design are applicable for number of trials divisible by 4. If n is not divisble by 4 this function will take the next larger Placket-Burman Design and truncate the last rows and columns.
 }
 \examples{
 pbdo<- pbDesign(n=5)

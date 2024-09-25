@@ -15,7 +15,7 @@ mixDesign(
   lower,
   total = 1,
   randomize,
-  seed
+  seed = 1234
 )
 }
 \arguments{
@@ -64,12 +64,12 @@ The creation of constrained component proportions is partially supported but don
 # Example usage of mixDesign
 mdo <- mixDesign(3, 2, center = FALSE, axial = FALSE, randomize = FALSE, replicates = c(1, 1, 2, 3))
 
- mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
- elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
- mdo$.response(elongation)
+mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
+elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
+mdo$.response(elongation)
 
- mdo$units()
- mdo$summary()
+mdo$units()
+mdo$summary()
 }
 \seealso{
 \code{\link{mixDesign.c}}, \code{\link{facDesign.c}}, \code{\link{facDesign}}, \code{\link{fracDesign}}, \code{\link{rsmDesign}}, \code{\link{wirePlot3}}, \code{\link{contourPlot3}}.

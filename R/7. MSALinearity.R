@@ -136,9 +136,9 @@ gageLinDesign <- function(ref, n = 5) {
   #' # create Design
   #' test=gageLinDesign(ref=c(2,4,6,8,10),n=12)
   #' # create data.frame for results
-  #' Messungen=data.frame(rbind(A,B,C,D,E))
+  #' results=data.frame(rbind(A,B,C,D,E))
   #' # enter results in Design
-  #' test$response(Messungen)
+  #' test$response(results)
 
   numColY = n
   numRowY = length(ref)
@@ -178,9 +178,9 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   #' # create Design
   #' test=gageLinDesign(ref=c(2,4,6,8,10),n=12)
   #' # create data.frame for results
-  #' Messungen=data.frame(rbind(A,B,C,D,E))
+  #' results=data.frame(rbind(A,B,C,D,E))
   #' # enter results in Design
-  #' test$response(Messungen)
+  #' test$response(results)
   #' test$summary()
   #'
   #' # no plot and no return
@@ -191,7 +191,7 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   #' MSALin$plot()
   #'
   #' # summary
-  #' test$summary()
+  #' MSALin$summary()
 
   if (class(object)[1]!="MSALinearity")
     stop("object needs to be from class 'MSALinearity'")

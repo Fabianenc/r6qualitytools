@@ -45,8 +45,6 @@ If form is a character string, it has to be one of the following:
 \itemize{
 \item{“linear”}
 \item{“quadratic”}
-\item{“fullCubic”}
-\item{“specialCubic”}
 }
 How the form influences the output is described in the reference listed below.
 By default, \code{form} is set to “linear”.}
