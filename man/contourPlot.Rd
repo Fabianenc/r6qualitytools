@@ -89,7 +89,7 @@ contourPlot(A,B,y, data = fdo, form = "linear")
 #II - display full fit (i.e. effect, interactions and quadratic effects
 contourPlot(A,B,y, data = fdo, form = "full")
 #III - display a fit specified before
-fits(fdo) = lm(y ~ B + I(A^2) , data = fdo)
+fdo$set.fits(fdo$lm(y ~ B + I(A^2)))
 contourPlot(A,B,y, data = fdo, form = "fit")
 #IV - display a fit given directly
 contourPlot(A,B,y, data = fdo, form = "y ~ A*B + I(A^2)")

@@ -24,9 +24,9 @@ This function calculates the desirability for each response as well as the overa
 \examples{
 #Example 1: Arbitrary example with random data
 rsdo = rsmDesign(k = 2, blocks = 2, alpha = "both")
-rsdo$.response(data.frame(y = rnorm(nrow(rsdo)), y2 = rnorm(nrow(rsdo))))
-rsdo$fits(lm(y ~ A*B + I(A^2) + I(B^2), data = rsdo))
-rsdo$fits(lm(y2 ~ A*B + I(A^2) + I(B^2), data = rsdo))
+rsdo$.response(data.frame(y = rnorm(rsdo$nrow()), y2 = rnorm(rsdo$nrow())))
+rsdo$set.fits(rsdo$lm(y ~ A*B + I(A^2) + I(B^2)))
+rsdo$set.fits(rsdo$lm(y2 ~ A*B + I(A^2) + I(B^2)))
 rsdo$desires(desirability(y, -1, 2, scale = c(1, 1), target = "max"))
 rsdo$desires(desirability(y2, -1, 0, scale = c(1, 1), target = "min"))
 dVals = overall(rsdo, steps = 10, constraints = list(A = c(-0.5,1), B = c(0, 1)))

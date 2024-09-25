@@ -39,7 +39,7 @@ One can either specify k and p and alpha and cs and cc OR simply simply pass an 
 # Factorial design with one center point in the cube portion
 fdo = facDesign(k = 3, centerCube = 1)
 # Set the response via generic response method
-fdo$.response() = 1:9
+fdo$.response(1:9)
 # Sequential assembly of a response surface design (rsd)
 rsd = starDesign(data = fdo)
 

@@ -47,6 +47,11 @@ fdo$desires(desirability(y1, 120, 170, scale = c(1,1), target = "max"))
 fdo$desires(desirability(y2, 1000, 1300, target = "max"))
 fdo$desires(desirability(y3, 400, 600, target = 500))
 fdo$desires(desirability(y4, 60, 75, target = 67.5))
+#Setting the fits
+fdo$set.fits(fdo$lm(y1 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+fdo$set.fits(fdo$lm(y2 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+fdo$set.fits(fdo$lm(y3 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+fdo$set.fits(fdo$lm(y4 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
 #Calculate the best factor settings using type = "optim"
 optimum(fdo, type = "optim")
 #Calculate the best factor settings using type = "grid"

@@ -1256,7 +1256,7 @@ desOpt <- R6Class("desOpt", public = list(facCoded = list(),
 
                                           #' @description Convert the object to a data frame.
                                           as.data.frame = function() {
-                                            return(x$all)
+                                            return(self$all)
                                           },
 
                                           #' @description Print a summary of the object.

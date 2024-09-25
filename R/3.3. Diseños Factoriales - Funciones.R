@@ -2171,7 +2171,7 @@ rsmChoose <- function() {
                            (temp$k + temp$p) * 2), adj = c(0, 1), cex = 1.25)
     text(0.1, 0.75, paste("k =", temp$k), adj = c(0, 1), cex = 1.25)
     text(0.1, 0.6, paste("p =", temp$p), adj = c(0, 1), cex = 1.25)
-    text(0.1, 0.45, ".centerPoints", adj = c(0, 1), cex = 1.25)
+    text(0.1, 0.45, "CenterPoints:", adj = c(0, 1), cex = 1.25)
     text(0.1, 0.3, paste("Cube:", temp$cc), adj = c(0, 1), cex = 1.25)
     text(0.1, 0.15, paste("Axial:", temp$cs), adj = c(0, 1), cex = 1.25)
     box()
@@ -2189,7 +2189,7 @@ rsmChoose <- function() {
   x = numeric(0)
   y = numeric(0)
   xyList = locator(1)                                                         ###
-  print(xyList)
+  #print(xyList)
   x = ceiling(xyList$x + 8)
   y = ceiling(5 - xyList$y)
 
@@ -2209,7 +2209,7 @@ rsmChoose <- function() {
   for (i in seq(along = rsmList)) {
     if (rsmList[[i]]$k == k)
       if (rsmList[[i]]$blocks == blocks)
-        if (rsmList[[i]]$p == p)                                        ###
+        if (rsmList[[i]]$p == p)
           return(rsmDesign(k = k, p = rsmList[[i]]$p, blocks = blocks, ###
                            alpha = "both", cc = rsmList[[i]]$cc,                 ###
                            cs = rsmList[[i]]$cs))                                ###
@@ -2290,9 +2290,9 @@ overall <- function(fdo, steps = 20, constraints, ...) {
   #' @examples
   #' #Example 1: Arbitrary example with random data
   #' rsdo = rsmDesign(k = 2, blocks = 2, alpha = "both")
-  #' rsdo$.response(data.frame(y = rnorm(nrow(rsdo)), y2 = rnorm(nrow(rsdo))))
-  #' rsdo$fits(lm(y ~ A*B + I(A^2) + I(B^2), data = rsdo))
-  #' rsdo$fits(lm(y2 ~ A*B + I(A^2) + I(B^2), data = rsdo))
+  #' rsdo$.response(data.frame(y = rnorm(rsdo$nrow()), y2 = rnorm(rsdo$nrow())))
+  #' rsdo$set.fits(rsdo$lm(y ~ A*B + I(A^2) + I(B^2)))
+  #' rsdo$set.fits(rsdo$lm(y2 ~ A*B + I(A^2) + I(B^2)))
   #' rsdo$desires(desirability(y, -1, 2, scale = c(1, 1), target = "max"))
   #' rsdo$desires(desirability(y2, -1, 0, scale = c(1, 1), target = "min"))
   #' dVals = overall(rsdo, steps = 10, constraints = list(A = c(-0.5,1), B = c(0, 1)))
@@ -2393,6 +2393,11 @@ optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
   #' fdo$desires(desirability(y2, 1000, 1300, target = "max"))
   #' fdo$desires(desirability(y3, 400, 600, target = 500))
   #' fdo$desires(desirability(y4, 60, 75, target = 67.5))
+  #' #Setting the fits
+  #' fdo$set.fits(fdo$lm(y1 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+  #' fdo$set.fits(fdo$lm(y2 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+  #' fdo$set.fits(fdo$lm(y3 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
+  #' fdo$set.fits(fdo$lm(y4 ~ A + B + C + A:B + A:C + B:C + I(A^2) + I(B^2) + I(C^2)))
   #' #Calculate the best factor settings using type = "optim"
   #' optimum(fdo, type = "optim")
   #' #Calculate the best factor settings using type = "grid"
@@ -2472,7 +2477,6 @@ optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
       aux[[fdo$names()[i]]] <-.NAMES[i]
     }
     aux<-unlist(aux)
-    names(factors)<-unlist(aux)
     desOpt$facCoded = as.list(dVals[index, aux])
     names(desOpt$facCoded)<-fdo$names()
     desirabilities = as.list(dVals[index, names(fdo$.response())])
