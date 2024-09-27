@@ -93,14 +93,12 @@ Print the details of the object.
 \subsection{Method \code{plot()}}{
 Plot the results of the steepest ascent procedure for an object of class `steepAscent.c`.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{steepAscent.c$plot(y, main, xlab, ylab, l.col, p.col, line.type, point.shape)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{steepAscent.c$plot(main, xlab, ylab, l.col, p.col, line.type, point.shape)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{y}}{The response variable to be plotted.}
-
 \item{\code{main}}{The main title of the plot.}
 
 \item{\code{xlab}}{The label for the x-axis.}

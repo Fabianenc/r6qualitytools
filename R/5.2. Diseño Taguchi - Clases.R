@@ -245,9 +245,7 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                           #' @param factors Factors to be plotted.
                                                           #' @param fun Function applied to the response variables (e.g., mean).
                                                           #' @param response Optional; specifies which response variables to plot.
-                                                          #' @param single Logical; if TRUE, plots effects for single factor; otherwise, for combinations of factors.
                                                           #' @param points Logical; if TRUE, plots data points.
-                                                          #' @param classic Logical; if TRUE, uses classic plotting style.
                                                           #' @param lty Line type for plotting.
                                                           #' @param pch The symbol for plotting points.
                                                           #' @param xlab Label for the x-axis.
@@ -261,12 +259,19 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                           #' tdo = taguchiDesign("L9_3")
                                                           #' tdo$.response(rnorm(9))
                                                           #' tdo$effectPlot(points = TRUE, col = 2, pch = 16, lty = 3)
-                                                          effectPlot = function(factors, fun = mean, response = NULL, single = FALSE, points = FALSE, classic = FALSE,
+                                                          effectPlot = function(factors, fun = mean, response = NULL, points = FALSE,
                                                                                 l.col, p.col, ld.col,lty, xlab, ylab, main, ylim, pch){
 
-
-                                                            if(missing(factors))
+                                                            response.original=self$.response()
+                                                            if(missing(factors)){
                                                               factors = self$factors
+                                                            }
+                                                            else{
+                                                              names(factors)=factors
+                                                            }
+
+
+
                                                             if(is.null(response)==FALSE)
                                                             {
                                                               temp=self$.response()[response]
@@ -293,7 +298,7 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                             }
                                                             numCol = 1
                                                             numRow = 1
-                                                            if (!single && missing(factors)) {
+                                                            if (missing(factors)) {
                                                               if (ncol(X) == 2) {
                                                                 numCol = 2
                                                                 numRow = 1
@@ -303,7 +308,7 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                                 numRow = 2
                                                               }
                                                             }
-                                                            if (!single && !missing(factors)) {
+                                                            if (!missing(factors)) {
                                                               if (length(factors) == 2) {
                                                                 numCol = 2
                                                                 numRow = 1
@@ -329,12 +334,8 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                                 numCol = ceiling(sqrt(length(factors)))
                                                               }
                                                             }
-                                                            if (classic) {
-                                                              numCol = ncol(X)
-                                                              numRow = 1
-                                                            }
 
-                                                            plots <- list()
+                                                            list_plot <- list()
 
                                                             for (j in 1:ncol(Y)) {
                                                               for (i in 1:length(factors)) {
@@ -342,21 +343,50 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                                 if (points) {
                                                                   cells = range(Y)
                                                                 }
+                                                                if(missing(xlab)){
+                                                                  xlab = names(factors[i])
+                                                                }
+                                                                if(missing(ylab)){
+                                                                  ylab = paste(deparse(substitute(fun)), "of", names(Y)[j])
 
-                                                                grap <- .m.interaction.plot.taguchi(X[, names(factors[i])],rep(0, nrow(X)),Y[, j], fun, xlab = names(factors[i]),
-                                                                                                    ylab = paste(deparse(substitute(fun)), "of", names(Y)[j]), ylim = c(min(Y[, j]), max(Y[, j])), lty = lty, col = 1,
-                                                                                                    paste("Effect Plot for", names(Y)[j]), xPoints = X[, names(factors[i])], yPoints = Y[, j], l.col, p.col, ld.col,pch)
+                                                                }
+                                                                if(missing(main)){
+                                                                  main = paste("Effect Plot for", names(Y)[j])
+                                                                }
+                                                                if(missing(ylim)){
+                                                                  ylim = c(min(Y[, j]), max(Y[, j]))
+                                                                }
+                                                                grap <- .m.interaction.plot.taguchi(X[, names(factors[i])],rep(0, nrow(X)),Y[, j], fun, xlab = xlab,
+                                                                                                    ylab = ylab, ylim = ylim, lty = lty, col = 1,
+                                                                                                    main = main, xPoints = X[, names(factors[i])], yPoints = Y[, j], l.col, p.col, ld.col,pch,points=points)
 
                                                                 p <- grap$plot
 
-                                                                plots[[length(plots) + 1]] <- p
+                                                                list_plot[[paste0("p",j,i)]] <- p
                                                               }
                                                             }
 
-                                                            final_plot <- wrap_plots(plots, nrow = numRow, ncol = numCol)
+                                                            grap <- c()
+                                                            for(j in 1:ncol(Y)){
+                                                              for(i in 1:length(factors)){
+                                                                x <- paste0("p",j,i)
+                                                                if(!x %in% grap){
+                                                                  grap <- c(grap, x)
+                                                                }
+                                                              }
+                                                            }
 
-                                                            print(final_plot)
+                                                            p <- list_plot$p11
+                                                            for(i in 2:length(grap)){
+                                                              aux <- grap[i]
+                                                              p <- p + list_plot[[aux]]
+                                                            }
+
+                                                            print(p)
+                                                            self$.response(response.original)
                                                           },
+
+
 
                                                           #' @description Calculates the alias table for a fractional factorial design and prints an easy to read summary of the defining relations such as 'I = ABCD' for a standard 2^(4-1) factorial design.
                                                           identity = function(){

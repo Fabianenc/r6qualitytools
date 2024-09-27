@@ -17,7 +17,6 @@ wirePlot3(
   form = "linear",
   col = "Rainbow",
   steps,
-  factors,
   plot = TRUE
 )
 }
@@ -53,8 +52,6 @@ By default, \code{form} is set to “linear”.}
 
 \item{steps}{A numeric value specifying the resolution of the plot, i.e., the number of rows for the square matrix, which also represents the number of grid points per factor.
 By default, \code{steps} is set to 25.}
-
-\item{factors}{A list of factors for categorizing with specific settings, applicable if there are more than 3 factors (not yet implemented).}
 
 \item{plot}{Logical value indicating whether to display the plot. Default is \code{TRUE}.}
 }

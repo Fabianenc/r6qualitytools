@@ -4,7 +4,7 @@
 
 # .m.interaction.plot.taguchi ----
 .m.interaction.plot.taguchi <- function(x.factor, trace.factor, response, fun = mean, xlab = deparse(substitute(x.factor)), ylab, ylim = range(cells, na.rm = TRUE), lty = 1, col = 1,
-                                        main, xPoints, yPoints, l.col, p.col, ld.col, pch=16){
+                                        main, xPoints, yPoints, l.col, p.col, ld.col, pch=16, points=FALSE){
   x.factor <- factor(x.factor, levels = sort(unique(x.factor)))
   cells <- tapply(response, list(x.factor, trace.factor), fun)
   nr <- nrow(cells)
@@ -54,8 +54,11 @@
   if (deparse(substitute(mean)) == "mean"){
     p <- p + geom_hline(yintercept = median(df$y, na.rm = TRUE), linetype = "dashed", col = ld.col)
   }
-  p <- p +
-    geom_point(data = data.frame(x = xPoints, y = yPoints), aes(x = x, y = y), color = p.col, shape = pch)
+  if(points){
+    p <- p +
+      geom_point(data = data.frame(x = xPoints, y = yPoints), aes(x = x, y = y), color = p.col, shape = pch)
+
+  }
 
   invisible(list(xVals = df$x, yVals = df$y, plot = p))
 }

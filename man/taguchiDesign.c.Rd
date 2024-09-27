@@ -199,9 +199,7 @@ Plots the effects of factors on the response variables.
   factors,
   fun = mean,
   response = NULL,
-  single = FALSE,
   points = FALSE,
-  classic = FALSE,
   l.col,
   p.col,
   ld.col,
@@ -223,11 +221,7 @@ Plots the effects of factors on the response variables.
 
 \item{\code{response}}{Optional; specifies which response variables to plot.}
 
-\item{\code{single}}{Logical; if TRUE, plots effects for single factor; otherwise, for combinations of factors.}
-
 \item{\code{points}}{Logical; if TRUE, plots data points.}
-
-\item{\code{classic}}{Logical; if TRUE, uses classic plotting style.}
 
 \item{\code{l.col}}{A color for the lines.}
 

@@ -14,11 +14,9 @@ contourPlot(
   main,
   xlab,
   ylab,
-  zlab,
   form = "fit",
   col = 1,
   steps,
-  factors,
   fun,
   plot = TRUE,
   show.scale = TRUE
@@ -43,8 +41,6 @@ contourPlot(
 
 \item{ylab}{Character string: label for the y-axis.}
 
-\item{zlab}{Character string: label for the z-axis.}
-
 \item{form}{A character string or a formula with the syntax “y~ x+y + x*y”. If form is a character it has to be one out of the following:
 \itemize{
    \item \code{"quadratic"}
@@ -59,8 +55,6 @@ By default \code{form} is set as \code{“fit”}.}
 \item{col}{A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. \code{“red”}).}
 
 \item{steps}{Number of grid points per factor. By default \code{steps} = 25.}
-
-\item{factors}{List of 4th 5th factor with value i.e. factors = list(D = 1.2, E = -1), if nothing is specified values will be the mean of the low and the high value of the factors.}
 
 \item{fun}{Function to be applied to z \code{desirability}.}
 

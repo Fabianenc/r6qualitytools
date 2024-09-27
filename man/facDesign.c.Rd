@@ -252,16 +252,11 @@ Plots the effects of factors on the response variables.
   factors,
   fun = mean,
   response = NULL,
-  single = FALSE,
-  points = FALSE,
-  classic = FALSE,
-  axes = TRUE,
   lty,
   xlab,
   ylab,
   main,
-  ylim,
-  ...
+  ylim
 )}\if{html}{\out{</div>}}
 }
 
@@ -274,14 +269,6 @@ Plots the effects of factors on the response variables.
 
 \item{\code{response}}{Optional; specifies which response variables to plot.}
 
-\item{\code{single}}{Logical; if TRUE, plots effects for single factor; otherwise, for combinations of factors.}
-
-\item{\code{points}}{Logical; if TRUE, plots data points.}
-
-\item{\code{classic}}{Logical; if TRUE, uses classic plotting style.}
-
-\item{\code{axes}}{Logical; if TRUE, includes axes in the plot.}
-
 \item{\code{lty}}{Line type for plotting.}
 
 \item{\code{xlab}}{Label for the x-axis.}
@@ -291,8 +278,6 @@ Plots the effects of factors on the response variables.
 \item{\code{main}}{Main title for the plot.}
 
 \item{\code{ylim}}{Limits for the y-axis.}
-
-\item{\code{...}}{Additional plotting parameters.}
 }
 \if{html}{\out{</div>}}
 }

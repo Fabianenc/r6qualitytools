@@ -85,23 +85,12 @@ Prints the details of a \code{desirability.c} object.
 \subsection{Method \code{plot()}}{
 Plots the desirability functions based on the specified parameters.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{desirability.c$plot(
-  y,
-  scale,
-  main,
-  xlab,
-  ylab,
-  line.width,
-  col,
-  numPoints = 500
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{desirability.c$plot(scale, main, xlab, ylab, line.width, col, numPoints = 500)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{y}}{A numeric vector or data frame representing the responses to plot.}
-
 \item{\code{scale}}{A numeric vector specifying the scaling factors used in the plot.}
 
 \item{\code{main}}{A character string specifying the main title of the plot.}

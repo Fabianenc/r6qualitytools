@@ -245,7 +245,7 @@ mixDesign <- function(p, n = 3, type = "lattice",
 
 # contourPlot3 ----
 contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, form = "linear", col = 1,
-                         col.text, axes = TRUE, steps, factors, plot = TRUE, show.scale = TRUE) {
+                         col.text, axes = TRUE, steps, plot = TRUE, show.scale = TRUE) {
   #' @title contourPlot3: Ternary plot
   #' @description This function creates a ternary plot (contour plot) for mixture designs (i.e. object of class \code{mixDesign}).
   #' @param x Factor 1 of the \code{mixDesign} object.
@@ -264,13 +264,11 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   #' \itemize{
   #' \item{“linear”}
   #' \item{“quadratic”}
-  #' \item{“fullCubic”}
-  #' \item{“specialCubic”}
   #' }
   #' How the form influences the output is described in the reference listed below.
   #' By default, \code{form} is set to “linear”.
   #' @param col A predefined value (1, 2, 3, or 4) or a self-defined \code{colorRampPalette} specifying the colors to be used in the plot.
-  #' @param col.text A numeric value or a character string specifying the color of the axis labels.
+  #' @param col.text A character string specifying the color of the axis labels.
   #' The default value \code{col.text} is '1'.
   #' @param cex.axis A numeric value specifying the size of the axis labels.
   #' The default value \code{cex.axis} is '1'.
@@ -278,7 +276,6 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   #' By default, \code{axes} is set to \code{TRUE}.
   #' @param steps A numeric value specifying the resolution of the plot, i.e., the number of rows for the square matrix, which also represents the number of grid points per factor.
   #' By default, \code{steps} is set to 25.
-  #' @param factors A list of factors for categorizing with specific settings, applicable if there are more than 3 factors (not yet implemented).
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
   #' @param show.scale Logical value indicating whether to display the color scale on the plot. Default is \code{TRUE}.
   #' @return The function \code{contourPlot3} returns an invisible list containing:
@@ -318,8 +315,6 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
     xlab = x.c
   if (missing(zlab))
     zlab = z.c
-  if (missing(factors))
-    factors = NULL
   if (missing(steps))
     steps = 100
   col.axis = par("col.axis")
@@ -379,9 +374,7 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   dcList = vector(mode = "list", length = length(mdo$names()))
   names(dcList) = names(mdo$names())
   dcList[1:length(mdo$names())] = 0
-  if (!is.null(factors)) {
-    for (i in names(factors)) dcList[[i]] = factors[[i]][1]
-  }
+
 
   help.predict = function(a, b, x.c, y.c, lm.1) {
     dcList[[x.c]] = 2 * b/sqrt(3)
@@ -445,7 +438,7 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
 }
 
 # wirePlot3 ----
-wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, form = "linear", col = "Rainbow", steps, factors, plot = TRUE) {
+wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, form = "linear", col = "Rainbow", steps, plot = TRUE) {
   #' @title wirePlot3: function to create a ternary plot (3D wire plot)
   #' @description This function creates a ternary plot for mixture designs (i.e. object of class \code{mixDesign}).
   #' @param x Factor 1 of the \code{mixDesign} object.
@@ -468,7 +461,6 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   #' @param col Character string specifying the color palette to use for the plot (e.g., \code{"Rainbow"}, \code{"Jet"}, \code{"Earth"}, \code{"Electric"}). Default is \code{"Rainbow"}.
   #' @param steps A numeric value specifying the resolution of the plot, i.e., the number of rows for the square matrix, which also represents the number of grid points per factor.
   #' By default, \code{steps} is set to 25.
-  #' @param factors A list of factors for categorizing with specific settings, applicable if there are more than 3 factors (not yet implemented).
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
   #' @return The function \code{wirePlot3} returns an invisible matrix containing the response values as NA's and numerics.
   #' @seealso \code{\link{mixDesign.c}}, \code{\link{mixDesign}}, \code{\link{contourPlot3}}.
@@ -504,8 +496,6 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
     xlab = x.c
   if (missing(zlab))
     zlab = z.c
-  if (missing(factors))
-    factors = NULL
   if (missing(steps))
     steps = 100
   nameVec = names(mdo$names())
@@ -537,9 +527,7 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   dcList = vector(mode = "list", length = length(mdo$names()))
   names(dcList) = names(mdo$names())
   dcList[1:length(mdo$names())] = 0
-  if (!is.null(factors)) {
-    for (i in names(factors)) dcList[[i]] = factors[[i]][1]
-  }
+
 
   help.predict = function(a, b, x.c, y.c, lm.1) {
     dcList[[x.c]] = 2 * b/sqrt(3)
@@ -596,5 +584,3 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   }
   invisible(mat)
 }
-
-

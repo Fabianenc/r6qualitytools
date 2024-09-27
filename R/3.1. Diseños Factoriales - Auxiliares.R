@@ -125,7 +125,7 @@
 
   # PLOT
   p <- ggplot(df, aes(x = x, y = y)) +
-    geom_line(na.rm = TRUE) +
+    geom_line(na.rm = TRUE,linetype = lty) +
     ylim(ylim) + labs(x = xlab, y = ylab, title = main) + theme_bw() +
 
     theme(axis.ticks = element_blank(),

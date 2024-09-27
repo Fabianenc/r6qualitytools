@@ -1139,7 +1139,7 @@ normalPlot <- function(dfac, response = NULL, main, ylim, xlim, xlab, ylab, pch,
 wirePlot <- function(x, y, z, data = NULL,
                      xlim, ylim, zlim, main, xlab, ylab,
                      sub, sub.a = TRUE, zlab, form = "fit",
-                     col = "Rainbow", steps, factors, fun,
+                     col = "Rainbow", steps, fun,
                      plot = TRUE, show.scale = TRUE,
                      n.scene = "scene") {
   #' @title wirePlot: 3D Plot
@@ -1168,7 +1168,6 @@ wirePlot <- function(x, y, z, data = NULL,
   #' Default is \code{"fit"}.
   #' @param col Character string specifying the color palette to use for the plot (e.g., \code{"Rainbow"}, \code{"Jet"}, \code{"Earth"}, \code{"Electric"}). Default is \code{"Rainbow"}.
   #' @param steps Numeric value specifying the number of steps for the grid in the plot. Higher values result in a smoother surface.
-  #' @param factors Optional character vector specifying the names of the factors to be used in the plot.
   #' @param fun Optional function to be applied to the data before plotting.
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
   #' @param show.scale Logical value indicating whether to display the color scale on the plot. Default is \code{TRUE}.
@@ -1412,8 +1411,8 @@ wirePlot <- function(x, y, z, data = NULL,
 
 
 # contourPlot ----
-contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab, form = "fit", col = 1, steps,
-                        factors, fun, plot = TRUE, show.scale = TRUE) {
+contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, form = "fit", col = 1, steps,
+                        fun, plot = TRUE, show.scale = TRUE) {
   #' @title contourPlot: Contour Plot
   #' @description Creates a contour diagram for an object of class \code{\link{facDesign.c}}.
   #' @param x Name providing the Factor A for the plot.
@@ -1425,7 +1424,6 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
   #' @param main Character string: title of the plot.
   #' @param xlab Character string: label for the x-axis.
   #' @param ylab Character string: label for the y-axis.
-  #' @param zlab Character string: label for the z-axis.
   #' @param form A character string or a formula with the syntax “y~ x+y + x*y”. If form is a character it has to be one out of the following:
   #' \itemize{
   #'    \item \code{"quadratic"}
@@ -1438,7 +1436,6 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
   #' By default \code{form} is set as \code{“fit”}.
   #' @param col A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. \code{“red”}).
   #' @param steps Number of grid points per factor. By default \code{steps} = 25.
-  #' @param factors List of 4th 5th factor with value i.e. factors = list(D = 1.2, E = -1), if nothing is specified values will be the mean of the low and the high value of the factors.
   #' @param fun Function to be applied to z \code{desirability}.
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
   #' @param show.scale Logical value indicating whether to display the color scale on the plot. Default is \code{TRUE}.
@@ -1551,8 +1548,6 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
     ylab = paste(y.c, ": ", aux[[y.c]])
   if (missing(xlab))
     xlab = paste(x.c, ": ", aux[[x.c]])
-  if (missing(factors))
-    factors = NULL
   if (missing(xlim))
     xlim = c(min(fdo$get(, x.c)), max(fdo$get(, x.c)))
   if (missing(ylim))
@@ -1604,9 +1599,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, zlab
   names(dcList) = names(aux)
   dcList[1:length(fdo$names())] = 0
 
-  if (!is.null(factors)) {
-    for (i in fdo$names()) dcList[[i]] = factors[[i]][1]
-  }
+
 
   help.predict = function(x, y, x.c, y.c, lm.1) {
     dcList[[x.c]] = x

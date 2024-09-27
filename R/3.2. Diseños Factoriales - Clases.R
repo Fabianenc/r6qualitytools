@@ -290,19 +290,14 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                   #' @param factors Factors to be plotted.
                                                   #' @param fun Function applied to the response variables (e.g., mean).
                                                   #' @param response Optional; specifies which response variables to plot.
-                                                  #' @param single Logical; if TRUE, plots effects for single factor; otherwise, for combinations of factors.
-                                                  #' @param points Logical; if TRUE, plots data points.
-                                                  #' @param classic Logical; if TRUE, uses classic plotting style.
-                                                  #' @param axes Logical; if TRUE, includes axes in the plot.
                                                   #' @param lty Line type for plotting.
                                                   #' @param xlab Label for the x-axis.
                                                   #' @param ylab Label for the y-axis.
                                                   #' @param main Main title for the plot.
                                                   #' @param ylim Limits for the y-axis.
-                                                  #' @param ... Additional plotting parameters.
-                                                  effectPlot = function(factors, fun = mean, response = NULL, single = FALSE, points = FALSE, classic = FALSE, axes = TRUE, ###
-                                                                        lty, xlab, ylab, main, ylim, ...) {
-
+                                                  effectPlot = function(factors, fun = mean, response = NULL,
+                                                                        lty, xlab, ylab, main, ylim) {
+                                                    response.original = self$.response()
                                                     if(is.null(response)==FALSE)
                                                     {                                                                           ###
                                                       temp=self$.response()[response]                                            ###
@@ -328,7 +323,7 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                     }
                                                     numCol = 1
                                                     numRow = 1
-                                                    if (!single && missing(factors)) {                                          ###
+                                                    if (missing(factors)) {                                          ###
                                                       if (ncol(X) == 2) {
                                                         numCol = 2
                                                         numRow = 1
@@ -338,7 +333,7 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                         numRow = 2
                                                       }
                                                     }
-                                                    if (!single && !missing(factors)) {                                         ###
+                                                    if (!missing(factors)) {                                         ###
                                                       if (length(factors) == 2) {                                             ###
                                                         numCol = 2                                                          ###
                                                         numRow = 1                                                          ###
@@ -364,12 +359,6 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                         numCol = ceiling(sqrt(length(factors)))                             ###
                                                       }                                                                       ###
                                                     }                                                                           ###
-                                                    if (classic) {
-                                                      numCol = ncol(X)
-                                                      numRow = 1
-                                                    }
-                                                    if (!single)
-                                                      par(mfrow = c(numRow, numCol))
                                                     nextResponse = FALSE
                                                     if (missing(main)) {
                                                       main = paste("Effect Plot for", names(Y)[1])
@@ -382,21 +371,12 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                       cells = numeric(0)
                                                       for (i in 1:length(factors)){
                                                         cells = c(cells, as.vector(tapply(Y[, j], list(X[, factors[i]], rep(0, nrow(X))), fun)))
-                                                        if (points)
-                                                          cells = range(Y)
-                                                      }
-                                                      if (nextResponse & !single) {
-                                                        dev.new()
-                                                        par(mfrow = c(numRow, numCol))
                                                       }
 
                                                       # hacemos la primera afuera para ajustar los ejes
                                                       # 1. ------------------------------------
                                                       i <- 1
-                                                      if ((counter != 0 & counter%%(numCol * numRow) == 0) & !single) {
-                                                        dev.new()
-                                                        par(mfrow = c(numRow, numCol))
-                                                      }
+
                                                       if (missing(main)) {
                                                         main = paste("Effect Plot for", names(Y)[j])
                                                         mainmiss = TRUE
@@ -418,24 +398,13 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                         ylab = paste(deparse(substitute(fun)), "of ", names(Y)[j])
                                                       if (ylimmiss)
                                                         ylim = range(cells, na.rm = TRUE)
-                                                      if (classic) {
-                                                        p <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
-                                                                                 ylab = ylab, main = " ", ...)
-                                                        list_plot[[paste0("p",j,i)]] <- p$plot
-                                                      }
-                                                      else {
-                                                        p <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
-                                                                                 ylab = ylab, main = main, ...)
-                                                        list_plot[[paste0("p",j,i)]] <- p$plot
-                                                      }
+                                                      p <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
+                                                                               ylab = ylab, main = main)
+                                                      list_plot[[paste0("p",j,i)]] <- p$plot
                                                       counter = counter + 1
                                                       # 2. ------------------------------------
                                                       if(length(factors) >= 2){
                                                         for (i in 2:length(factors)) {
-                                                          if ((counter != 0 & counter%%(numCol * numRow) == 0) & !single) {
-                                                            dev.new()
-                                                            par(mfrow = c(numRow, numCol))
-                                                          }
                                                           if (missing(main)) {
                                                             main = paste("Effect Plot for", names(Y)[j])
                                                             mainmiss = TRUE
@@ -457,16 +426,12 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                             ylab = paste(deparse(substitute(fun)), "of ", names(Y)[j])
                                                           if (ylimmiss)
                                                             ylim = range(cells, na.rm = TRUE)
-                                                          if (classic) {
-                                                            aux <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
-                                                                                       ylab = ylab, axes.y = FALSE, ytitle = FALSE , main = " ", ...)
-                                                            list_plot[[paste0("p",j,i)]] <- aux$plot
-                                                          }
-                                                          else {
-                                                            aux <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
-                                                                                       ylab = ylab, main = main, ytitle = TRUE, ...)
-                                                            list_plot[[paste0("p",j,i)]] <- aux$plot
-                                                          }
+
+                                                          aux <- .m.interaction.plot(x.factor = X[, factors[i]], trace.factor = rep(0, nrow(X)), response = Y[, j], lty = lty, ylim = ylim, xlab = xlab, fun = fun,
+                                                                                     ylab = ylab, main = main, ytitle = TRUE)
+
+                                                          list_plot[[paste0("p",j,i)]] <- aux$plot
+
                                                           counter = counter + 1
                                                         }
                                                       }
@@ -489,15 +454,12 @@ facDesign.c <- R6Class("facDesign", public = list(name = NULL,
                                                       p <- p + list_plot[[aux]]
                                                     }
 
-                                                    if(classic){
-                                                      p <- p + plot_layout(ncol = numCol, nrow = numRow) +
-                                                        plot_annotation(title = main,
-                                                                        theme = theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")))
-                                                      print(p)
-                                                    }
-                                                    else{print(p)}
-                                                    par(mfcol=c(1,1))
+
+                                                    print(p)
+
+                                                    self$.response(response.original)
                                                   },
+
 
                                                   #' @description Fits a linear model to the response data in the factorial design object.
                                                   #' @param formula Formula specifying the model to be fitted.
@@ -1063,7 +1025,6 @@ desirability.c <- R6Class("desirability", public = list(response = NULL,
                                                         },
 
                                                         #' @description Plots the desirability functions based on the specified parameters.
-                                                        #' @param y A numeric vector or data frame representing the responses to plot.
                                                         #' @param scale A numeric vector specifying the scaling factors used in the plot.
                                                         #' @param main A character string specifying the main title of the plot.
                                                         #' @param xlab A character string specifying the label for the x-axis.
@@ -1071,11 +1032,10 @@ desirability.c <- R6Class("desirability", public = list(response = NULL,
                                                         #' @param line.width A numeric value specifying the width of the plot lines.
                                                         #' @param col A vector of colors for the plot lines.
                                                         #' @param numPoints An integer specifying the number of points to plot (default is 500).
-                                                        plot = function(y, scale, main, xlab, ylab, line.width, col, numPoints = 500){
+                                                        plot = function(scale, main, xlab, ylab, line.width, col, numPoints = 500){
                                                           xm1 = NULL
                                                           xm2 = NULL
                                                           ym = NULL
-                                                          y = NULL
                                                           if (missing(main))
                                                             main = paste("Desirability function for", self$response)
                                                           if (missing(xlab))
@@ -1193,7 +1153,6 @@ steepAscent.c <- R6Class("facDesign", public = list(name = NULL,
                                                     },
 
                                                     #' @description Plot the results of the steepest ascent procedure for an object of class `steepAscent.c`.
-                                                    #' @param y The response variable to be plotted.
                                                     #' @param main The main title of the plot.
                                                     #' @param xlab The label for the x-axis.
                                                     #' @param ylab The label for the y-axis.
@@ -1201,13 +1160,13 @@ steepAscent.c <- R6Class("facDesign", public = list(name = NULL,
                                                     #' @param p.col Color for the points in the plot.
                                                     #' @param line.type Type of the line used in the plot.
                                                     #' @param point.shape Shape of the points used in the plot.
-                                                    plot = function(y, main, xlab, ylab, l.col, p.col,
+                                                    plot = function(main, xlab, ylab, l.col, p.col,
                                                                     line.type, point.shape){
                                                       Delta = (self$X)$Delta
                                                       frame = cbind(Delta, self$.response())
-                                                      names(frame) = c("Delta", names(self$.response()))
+                                                      names(frame) = c("Delta", "predicted")
                                                       if (missing(main))
-                                                        main = ""
+                                                        main = "Steepest Ascent"
                                                       if (missing(xlab))
                                                         xlab = "Delta"
                                                       if (missing(ylab))
@@ -1222,13 +1181,13 @@ steepAscent.c <- R6Class("facDesign", public = list(name = NULL,
                                                         line.type = "dashed"
                                                       if (missing(point.shape))
                                                         point.shape = 16
-
                                                       p <- ggplot(frame, aes(x = Delta, y = predicted)) +
                                                         geom_line(color = l.col, linetype = line.type) +
                                                         geom_point(color = p.col, shape = point.shape) +
                                                         labs(title = main, x = xlab, y = ylab) +
-                                                        theme_minimal()
-                                                      print(p)
+                                                        theme_minimal() +
+                                                        theme(plot.title = element_text(hjust = 0.5,face = "bold"))
+                                                      suppressWarnings(print(p))
                                                     }
 
 
