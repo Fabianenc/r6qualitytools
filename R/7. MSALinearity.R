@@ -66,8 +66,7 @@ MSALinearity <-R6Class("MSALinearity", public = list(X = data.frame(),
                                                      #' @param col A vector specifying the colors to be used for different plot elements.
                                                      #' @param pch A numeric vector specifying the plotting characters (symbols) for individual data points and mean bias points.
                                                      #' @param lty A numeric vector specifying the line types for the regression line and its confidence intervals. The default is \code{c(1, 2)}.
-                                                     #' @param ... Additional graphical parameters passed to the \code{plot} function, allowing further customization of the plot's appearance.
-                                                     plot = function(ylim, col, pch, lty = c(1, 2), ...){
+                                                     plot = function(ylim, col, pch, lty = c(1, 2)){
                                                        conf.level = self$conf.level
                                                        g = nrow(self$X[2])
                                                        m = ncol(self$Y)
@@ -81,9 +80,25 @@ MSALinearity <-R6Class("MSALinearity", public = list(X = data.frame(),
                                                        for (i in 1:g) mbias[i] = mean(as.numeric(bias[i, ]))
                                                        if (missing(ylim))
                                                          ylim = c(min(bias, na.rm = TRUE), max(bias, na.rm = TRUE))
-                                                       plot(x = self$X$Ref, y = mbias, ylim = ylim, col = col[2], pch = pch[2], ylab = "Bias", xlab = "Reference Values", ...)
-                                                       for (i in 1:g) points(x = rep(self$X$Ref[i], length = m), y = bias[i, ], col = col[1], pch = pch[1])
-                                                       abline(h = 0, lty = 3, col = "gray")
+
+                                                       original <- data.frame(x = self$X$Ref, y = mbias, grupo = "Single Bias")
+                                                       points_aux <- data.frame(
+                                                         x = rep(self$X$Ref[1], length = m),
+                                                         y = as.numeric(bias[1,]),
+                                                         grupo = "Mean Bias"
+                                                       )
+
+                                                       for (i in 2:g) {
+                                                         temp_data <- data.frame(
+                                                           x = rep(self$X$Ref[i], length = m),
+                                                           y = as.numeric(bias[i,]),
+                                                           grupo = "Mean Bias"
+                                                         )
+                                                         points_aux <- rbind(points_aux, temp_data)
+                                                       }
+
+                                                       aux <- rbind(original, points_aux)
+
                                                        BIAS = numeric()
                                                        ref = numeric()
                                                        for (i in 1:g) {
@@ -98,10 +113,31 @@ MSALinearity <-R6Class("MSALinearity", public = list(X = data.frame(),
                                                        y.vec = numeric()
                                                        for (i in 1:g) y.vec = c(y.vec, self$Y[i, ])
                                                        pre = predict.lm(lm.1, interval = "confidence", level = conf.level)
-                                                       lines(ref, pre[, 1], col = col[3], lty = lty[1])
-                                                       lines(ref, pre[, 2], col = col[4], lty = lty[2])
-                                                       lines(ref, pre[, 3], col = col[4], lty = lty[2])
-                                                       legend("topright", legend = c("Single Bias", "Mean Bias", "Regression", paste(conf.level * 100, "% conf.level")), pch = c(pch, -1, -1), col = col, lty = c(-1,-1, lty), inset = 0.04)
+
+                                                       regresion_line <- data.frame(x = ref, y = pre[, 1], grupo = "Regression")
+                                                       lower_line <- data.frame(x = ref, y = pre[, 2], grupo = "95% conf.level lower")
+                                                       upper_line <- data.frame(x = ref, y = pre[, 3], grupo = "95% conf.level upper")
+
+                                                       lines <- rbind(regresion_line, lower_line)
+                                                       lines <- rbind(lines, upper_line)
+
+                                                       p <- ggplot() +
+                                                         geom_point(data = aux, aes(x = x, y = y, color = grupo, shape = grupo)) +
+                                                         geom_line(data = lines, aes(x = x, y = y, linetype = grupo, color = grupo)) +
+                                                         scale_color_manual(values = c("Single Bias" = col[2], "Mean Bias" = col[1],
+                                                                                       "Regression" = col[3],"95% conf.level lower" = col[4],
+                                                                                       "95% conf.level upper" = col[4])) +
+                                                         scale_shape_manual(values = c("Single Bias" = pch[2], "Mean Bias" = pch[1])) +
+                                                         scale_linetype_manual(values = c("Regression" = lty[1], "95% conf.level lower" = lty[2],"95% conf.level upper" = lty[2])) +
+                                                         geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +  # Línea horizontal en y = 0
+                                                         ylim(ylim) +
+                                                         labs(y = "Bias", x = "Reference Values") +
+                                                         theme_minimal()+
+                                                         guides(shape = 'none', linetype = 'none') +
+                                                         theme(legend.title = element_blank(),
+                                                               legend.background = element_rect(fill = "white"))
+
+                                                       print(p)
                                                      },
 
                                                      #' @description Methods for function \code{print} in Package \code{base}.
