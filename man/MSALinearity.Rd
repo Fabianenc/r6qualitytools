@@ -77,7 +77,7 @@ Methods for function \code{summary} in Package \code{base}.
 \subsection{Method \code{plot()}}{
 Plots the measurement system, including individual biases, mean bias, and a regression line with confidence intervals.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MSALinearity$plot(ylim, col, pch, lty = c(1, 2), ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{MSALinearity$plot(ylim, col, pch, lty = c(1, 2))}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -90,8 +90,6 @@ Plots the measurement system, including individual biases, mean bias, and a regr
 \item{\code{pch}}{A numeric vector specifying the plotting characters (symbols) for individual data points and mean bias points.}
 
 \item{\code{lty}}{A numeric vector specifying the line types for the regression line and its confidence intervals. The default is \code{c(1, 2)}.}
-
-\item{\code{...}}{Additional graphical parameters passed to the \code{plot} function, allowing further customization of the plot's appearance.}
 }
 \if{html}{\out{</div>}}
 }

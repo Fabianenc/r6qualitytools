@@ -1,27 +1,40 @@
-Package: r6qualitytools
 Type: Package
+Package: r6qualitytools
 Title: R6-Based Statistical Methods for Quality Science
-Version: 1.0.0
-Authors@R: c(person("Andrea", "Barahona", role = c("aut")), person("Fabian", "Encarnacion", role = c("aut","cre"), email = "fab.encarnacion@outlook.com"), person("Miguel", "Flores", role = c("aut")), person("Javier", "Tarrio-Saavedra", role = c("ctb")), person("Salvador", "Naya", role = c("ctb")))
-Description: The package provides a comprehensive suite of statistical tools for Quality Management, designed specifically around the Define, Measure, Analyze, Improve, and Control (DMAIC) cycle used in Six Sigma methodology. This package is based on the work of Thomas Roth, enhancing it by refactoring classes to 'R6' object-oriented programming for greater flexibility and performance. Additionally, it replaces traditional graphics with modern, interactive visualizations using 'ggplot2' and 'plotly'. Built on tidyverse principles, the package simplifies data manipulation and visualization.
-License: GPL-2
-Encoding: UTF-8
-LazyData: true
-Imports: 
-    R6,
-    ggplot2,
-    patchwork,
-    scales,
-    plotly,
-    gridExtra,
-    RColorBrewer,
-    dplyr,
-    tidyr,
-    tibble,
-    MASS,
-    Rsolnp,
-    grid,
-    EnvStats
-RoxygenNote: 7.3.1
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Andrea", "Barahona", role = "aut"),
+    person("Fabian", "Encarnacion", , "fab.encarnacion@outlook.com", role = c("aut", "cre")),
+    person("Miguel", "Flores", role = "aut"),
+    person("Javier", "Tarrio-Saavedra", role = "ctb"),
+    person("Salvador", "Naya", role = "ctb")
+  )
+Description: A comprehensive suite of statistical tools for Quality
+    Management, designed around the Define, Measure, Analyze, Improve, and
+    Control (DMAIC) cycle used in Six Sigma methodology. Based on the work
+    of Thomas Roth, the package enhances his original design by
+    refactoring classes to R6 object-oriented programming for increased
+    flexibility and performance. It replaces traditional graphics with
+    modern, interactive visualizations using ggplot2 and plotly. Built on
+    tidyverse principles, it simplifies data manipulation and
+    visualization, offering an intuitive approach to quality science.
+License: GPL (>= 3)
 URL: https://github.com/Fabianenc/r6qualitytools
 BugReports: https://github.com/Fabianenc/r6qualitytools/issues
+Imports: 
+    dplyr,
+    EnvStats,
+    ggplot2,
+    grid,
+    gridExtra,
+    MASS,
+    patchwork,
+    plotly,
+    R6,
+    RColorBrewer,
+    Rsolnp,
+    scales,
+    tibble,
+    tidyr
+Encoding: UTF-8
+RoxygenNote: 7.3.1

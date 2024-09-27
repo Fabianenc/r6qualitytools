@@ -244,12 +244,6 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   for (i in 1:g) mbias[i] = mean(as.numeric(bias[i, ]))
   if (missing(ylim))
     ylim = c(min(bias, na.rm = TRUE), max(bias, na.rm = TRUE))
-  if (plot == TRUE)
-    plot(x = object$X$Ref, y = mbias, ylim = ylim, col = col[2], pch = pch[2], ylab = "Bias", xlab = "Reference Values")
-  if (plot == TRUE) {
-    for (i in 1:g) points(x = rep(object$X$Ref[i], length = m), y = bias[i, ], col = col[1], pch = pch[1])
-    abline(h = 0, lty = 3, col = "gray")
-  }
   BIAS = numeric()
   ref = numeric()
   for (i in 1:g) {
@@ -264,12 +258,6 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   names(b) = "intercept"
   y.vec = numeric()
   for (i in 1:g) y.vec = c(y.vec, object$Y[i, ])
-  if (plot == TRUE) {
-    pre = predict.lm(lm.1, interval = "confidence", level = conf.level)
-    lines(ref, pre[, 1], col = col[3], lty = lty[1])
-    lines(ref, pre[, 2], col = col[4], lty = lty[2])
-    lines(ref, pre[, 3], col = col[4], lty = lty[2])
-  }
   test = numeric(g + 1)
   for (i in 1:g) test[i] = t.test(bias[, i], mu = 0, conf.level = conf.level)["p.value"]
   test[g + 1] = t.test(BIAS, mu = 0, conf.level = conf.level)["p.value"]
@@ -277,7 +265,7 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   object$Linearity = Linearity
   names(Linearity) = "LINEARITY:"
   if (plot == TRUE) {
-    legend("topright", legend = c("Single Bias", "Mean Bias", "Regression", paste(conf.level * 100, "% conf.level")), pch = c(pch, -1, -1), col = col, lty = c(-1,-1, lty), inset = 0.04)
+    object$plot(ylim = ylim, col = col, pch = pch, lty = lty)
   }
   if (stats == TRUE) {
     cat("----------------------", fill = TRUE)
