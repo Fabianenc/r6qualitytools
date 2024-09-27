@@ -2,7 +2,7 @@ Package: r6qualitytools
 Type: Package
 Title: R6-Based Statistical Methods for Quality Science
 Version: 1.0.0
-Author@R: c(person("Andrea", "Barahona", role = c("aut")), person("Fabian", "Encarnacion", role = c("aut","cre"), email = "fab.encarnacion@outlook.com"), person("Miguel", "Flores", role = c("aut")), person("Javier", "Tarrio-Saavedra", role = c("ctb")), person("Salvador", "Naya", role = c("ctb")))
+Authors@R: c(person("Andrea", "Barahona", role = c("aut")), person("Fabian", "Encarnacion", role = c("aut","cre"), email = "fab.encarnacion@outlook.com"), person("Miguel", "Flores", role = c("aut")), person("Javier", "Tarrio-Saavedra", role = c("ctb")), person("Salvador", "Naya", role = c("ctb")))
 Description: The package provides a comprehensive suite of statistical tools for Quality Management, designed specifically around the Define, Measure, Analyze, Improve, and Control (DMAIC) cycle used in Six Sigma methodology. This package is based on the work of Thomas Roth, enhancing it by refactoring classes to 'R6' object-oriented programming for greater flexibility and performance. Additionally, it replaces traditional graphics with modern, interactive visualizations using 'ggplot2' and 'plotly'. Built on tidyverse principles, the package simplifies data manipulation and visualization.
 License: GPL-2
 Encoding: UTF-8
