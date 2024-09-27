@@ -413,10 +413,10 @@ fracDesign <- function (k = 3, p = 0, gen = NULL, replicates = 1, blocks = 1,
   names(runOrder) = "RunOrder"
   DesignOut$runOrder <- runOrder
 
-  temp = try(blocking(DesignOut, blocks = blocks)) #################Poner random.seed para variar con semilla
+  temp = try(blocking(DesignOut, blocks = blocks, random.seed = random.seed))
   if (inherits(temp, "try-error"))
     stop("Blocking not possible!")
-  return(blocking(DesignOut, blocks = blocks))  #################Poner random.seed para variar con semilla
+  return(blocking(DesignOut, blocks = blocks, random.seed = random.seed))
 }
 
 # Función facDesign ----
