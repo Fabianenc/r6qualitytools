@@ -25,16 +25,20 @@ Imports:
     dplyr,
     EnvStats,
     ggplot2,
+    graphics,
     grid,
     gridExtra,
     MASS,
+    methods,
     patchwork,
     plotly,
     R6,
     RColorBrewer,
     Rsolnp,
     scales,
+    stats,
     tibble,
-    tidyr
+    tidyr,
+    utils
 Encoding: UTF-8
 RoxygenNote: 7.3.1

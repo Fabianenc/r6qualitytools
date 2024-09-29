@@ -9,26 +9,26 @@ taguchiDesign <- function(design, randomize = TRUE, replicates = 1) {
   #' @description Function to create a taguchi design.
   #' @param design A character string specifying the orthogonal array of the Taguchi design. The available options are:
   #' \itemize{
-  #'   \item {"L4_2" for three two-level factors.}
-  #'   \item {"L8_2" for seven two-level factors.}
-  #'   \item {"L9_3" for four three-level factors.}
-  #'   \item {"L12_2" for 11 two-level factors.}
-  #'   \item {"L16_2" for 16 two-level factors}
-  #'   \item {"L16_4" for 16 four-level factors.}
-  #'   \item {"L18_2_3" for one two-level and seven three-level factors.}
-  #'   \item {"L25_5" for six five-level factors.}
-  #'   \item {"L27_3" for 13 three-level factors.}
-  #'   \item {"L32_2" for 32 two-level factors.}
-  #'   \item {"L32_2_4" for one two-level factor and nine four-level factors.}
-  #'   \item {"L36_2_3_a" for 11 two-level factors and 12 three-level factors.}
-  #'   \item {"L36_2_3_b" for three two-level factors and 13 three-level factors.}
-  #'   \item {"L50_2_5" for one two-level factor and eleven five-level factors.}
-  #'   \item {"L8_4_2" for one four-level factor and four two-level factors.}
-  #'   \item {"L16_4_2_a" for one four-level factor and 12 two-level factors.}
-  #'   \item {"L16_4_2_b" for two four-level factors and nine two-level factors.}
-  #'   \item {"L16_4_2_c" for three four-level factors and six two-level factors.}
-  #'   \item {"L16_4_2_d" for five four-level factors and two two-level factors.}
-  #'   \item {"L18_6_3" for one six-level factor and six three-level factors.}
+  #'   \item {`L4_2" for three two-level factors.}
+  #'   \item {`L8_2" for seven two-level factors.}
+  #'   \item {`L9_3" for four three-level factors.}
+  #'   \item {`L12_2" for 11 two-level factors.}
+  #'   \item {`L16_2" for 16 two-level factors}
+  #'   \item {`L16_4" for 16 four-level factors.}
+  #'   \item {`L18_2_3" for one two-level and seven three-level factors.}
+  #'   \item {`L25_5" for six five-level factors.}
+  #'   \item {`L27_3" for 13 three-level factors.}
+  #'   \item {`L32_2" for 32 two-level factors.}
+  #'   \item {`L32_2_4" for one two-level factor and nine four-level factors.}
+  #'   \item {`L36_2_3_a" for 11 two-level factors and 12 three-level factors.}
+  #'   \item {`L36_2_3_b" for three two-level factors and 13 three-level factors.}
+  #'   \item {`L50_2_5" for one two-level factor and eleven five-level factors.}
+  #'   \item {`L8_4_2" for one four-level factor and four two-level factors.}
+  #'   \item {`L16_4_2_a" for one four-level factor and 12 two-level factors.}
+  #'   \item {`L16_4_2_b" for two four-level factors and nine two-level factors.}
+  #'   \item {`L16_4_2_c" for three four-level factors and six two-level factors.}
+  #'   \item {`L16_4_2_d" for five four-level factors and two two-level factors.}
+  #'   \item {`L18_6_3" for one six-level factor and six three-level factors.}
   #' }
   #' @param randomize A logical value (\code{TRUE}/\code{FALSE}) that specifies whether to randomize the RunOrder of the design.
   #' By default, \code{randomize} is set to \code{TRUE}.
@@ -37,11 +37,11 @@ taguchiDesign <- function(design, randomize = TRUE, replicates = 1) {
   #' @details An overview of possible taguchi designs is possible with \code{taguchiChoose}.
   #' @seealso
   #' \itemize{
-  #' \item{\code{\link{facDesig}}: for 2^k factorial designs.}
+  #' \item{\code{\link{facDesign}}: for 2^k factorial designs.}
   #' \item{\code{\link{rsmDesign}}: for response surface designs.}
-  #' \item{\code{\link{fracDesig}}: for fractional factorial design.}
-  #' \item{\code{\link{pbDesig}}: for response surface designs.}
-  #' \item{\code{\link{gageRRDesig}}: for gage designs.}
+  #' \item{\code{\link{fracDesign}}: for fractional factorial design.}
+  #' \item{\code{\link{pbDesign}}: for response surface designs.}
+  #' \item{\code{\link{gageRRDesign}}: for gage designs.}
   #' }
   #' @examples
   #' tdo <- taguchiDesign("L9_3")
@@ -112,14 +112,14 @@ oaChoose <- function(factors1, factors2, level1, level2, ia) {
   #' @param level2 Number of levels on level2.
   #' @param ia Number of interactions.
   #' @details \code{oaChoose} returns possible taguchi designs. Specifying the number of factor1 factors with level1 levels (factors1 = 2, level1 = 3 means 2 factors with 3 factor levels) and factor2 factors with level2 levels and desired interactions one or more taguchi designs are suggested.
-  #' If all parameters are set to ‘0’, a matrix of possible taguchi designs is shown.
+  #' If all parameters are set to `0`, a matrix of possible taguchi designs is shown.
   #' @return \code{oaChoose} returns an object of class \code{taguchiDesign}.
   #' @seealso
   #' \itemize{
-  #' \item{\code{\link{facDesig}}: for 2^k factorial designs.}
+  #' \item{\code{\link{facDesign}}: for 2^k factorial designs.}
   #' \item{\code{\link{rsmDesign}}: for response surface designs.}
-  #' \item{\code{\link{fracDesig}}: for fractional factorial design.}
-  #' \item{\code{\link{gageRRDesig}}: for gage designs.}
+  #' \item{\code{\link{fracDesign}}: for fractional factorial design.}
+  #' \item{\code{\link{gageRRDesign}}: for gage designs.}
   #' }
 
   params = list(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia = 0)
@@ -136,11 +136,11 @@ oaChoose <- function(factors1, factors2, level1, level2, ia) {
 taguchiChoose <- function(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia = 0, col = 2, randomize = TRUE, replicates = 1) {
   #' @title taguchiChoose: Taguchi Designs
   #' @description Shows a matrix of possible taguchi designs
-  #' @param factors1 Integer number of factors on level1. By default set to ‘0’.
-  #' @param factors2 Integer number of factors on level2. By default set to ‘0’.
-  #' @param level1 Integer number of levels on level1. By default set to ‘0’.
-  #' @param level2 Integer number of levels on level2. By default set to ‘0’.
-  #' @param ia Integer number of interactions. By default set to ‘0’.
+  #' @param factors1 Integer number of factors on level1. By default set to `0`.
+  #' @param factors2 Integer number of factors on level2. By default set to `0`.
+  #' @param level1 Integer number of levels on level1. By default set to `0`.
+  #' @param level2 Integer number of levels on level2. By default set to `0`.
+  #' @param ia Integer number of interactions. By default set to `0`.
   #' @param col Select the color scheme for the selection matrix: use \code{1} for blue, \code{2} for pink (default), and \code{3} for a variety of colors.
   #' @param randomize A logical value (\code{TRUE}/\code{FALSE}) that specifies whether to randomize the RunOrder of the design.
   #' By default, \code{randomize} is set to \code{TRUE}.
@@ -154,10 +154,10 @@ taguchiChoose <- function(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia
   #' tdo1 <- taguchiChoose(factors1 = 3, level1 = 2)
   #' @seealso
   #' \itemize{
-  #' \item{\code{\link{facDesig}}: for 2^k factorial designs.}
+  #' \item{\code{\link{facDesign}}: for 2^k factorial designs.}
   #' \item{\code{\link{rsmDesign}}: for response surface designs.}
-  #' \item{\code{\link{fracDesig}}: for fractional factorial design.}
-  #' \item{\code{\link{gageRRDesig}}: for gage designs.}
+  #' \item{\code{\link{fracDesign}}: for fractional factorial design.}
+  #' \item{\code{\link{gageRRDesign}}: for gage designs.}
   #' }
   if(col == 1){
     col<-c("#0091EA", "#00A3E0", "#00B0FF", "#26C6DA", "#4DD0E1", "#80DEEA", "#B2EBF2", "#E0F7FA", "#F2F2F2")
@@ -293,11 +293,11 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
   #' @param object An object of class \code{\link{taguchiDesign.c}}.
   #' @param type A character string specifying the type of the Signal-to-Noise Ratio plot. Possible values are:
   #' \itemize{
-  #'   \item \code{"nominal"}: Nominal-the-best plot to equalize observed values to a nominal value.
-  #'   \item \code{"smaller"}: Smaller-the-better plot to minimize observed values.
-  #'   \item \code{"larger"}: Larger-the-better plot to maximize observed values.
+  #'   \item \code{`nominal`}: Nominal-the-best plot to equalize observed values to a nominal value.
+  #'   \item \code{`smaller`}: Smaller-the-better plot to minimize observed values.
+  #'   \item \code{`larger`}: Larger-the-better plot to maximize observed values.
   #' }
-  #' Default is \code{"nominal"}.
+  #' Default is \code{`nominal`}.
   #' @param factors The factors for which the effect plot is to be created.
   #' @param fun A function for constructing the effect plot such as \code{mean}, \code{median}, etc. Default is \code{mean}.
   #' @param response A character string specifying the response variable. If \code{object} contains multiple responses, this parameter selects one column to plot. Default is \code{NULL}.
@@ -313,12 +313,11 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
   #' @param p.col A color for the points.
   #' @param ld.col A color for the dashed line.
   #' @param pch The symbol for plotting points.
-  #' @param ... Additional graphical parameters to be passed to methods (see \code{par}).
   #' @details The Signal-to-Noise Ratio (SNR) is calculated based on the type specified:
   #' \itemize{
-  #'   \item \code{"nominal"}: \deqn{SN = 10 \cdot log(mean(y) / var(y))}
-  #'   \item \code{"smaller"}: \deqn{SN = -10 \cdot log((1 / n) \cdot  sum(y^2))}
-  #'   \item \code{"larger"}: \deqn{SN = -10 \cdot log((1 / n) \cdot sum(1 / y^2))}
+  #'   \item \code{`nominal`}: \deqn{SN = 10 \cdot log(mean(y) / var(y))}
+  #'   \item \code{`smaller`}: \deqn{SN = -10 \cdot log((1 / n) \cdot  sum(y^2))}
+  #'   \item \code{`larger`}: \deqn{SN = -10 \cdot log((1 / n) \cdot sum(1 / y^2))}
   #' }
   #' Signal-to-Noise Ratio plots are used to estimate the effects of individual factors and to judge the variance and validity of results from an effect plot.
   #' @return An invisible \code{data.frame} containing all the single Signal-to-Noise Ratios.
@@ -328,7 +327,7 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
   #' snPlot(tdo, points = TRUE, l.col = 2, p.col = 2, ld.col = 2, pch = 16, lty = 3)
 
   Debugging=FALSE
-  if(class(object)[1]!="taguchiDesign")
+  if(class(object)[1]!="taguchiDesign.c")
     stop("object needs to be of class taguchiDesign")
   Length=dim(object$as.data.frame())[1]
   resLength=dim(object$.response())[2]
@@ -385,8 +384,8 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
     if(k>1)
       dev.new()
     tdo$effectPlot(factors=factors, fun = mean, response = response,
-               single = single, points = points, classic = classic,
-               lty = lty, xlab = xlab, ylab =ylab[k], main = main[k], ylim = ylim, l.col=l.col, p.col=p.col, ld.col=ld.col, pch = pch)
+               points = points, lty = lty, xlab = xlab, ylab =ylab[k],
+               main = main[k], ylim = ylim, l.col=l.col, p.col=p.col, ld.col=ld.col, pch = pch)
   }
   names(SN)=paste("S/N",names(object$.response()))
   invisible(SN)

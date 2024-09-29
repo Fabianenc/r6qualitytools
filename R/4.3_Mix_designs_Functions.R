@@ -11,23 +11,23 @@ mixDesign <- function(p, n = 3, type = "lattice",
   #' @title mixDesign: Mixture Designs
   #' @description Function to generate simplex lattice and simplex centroid mixture designs with optional center points and axial points.
   #' @param p Numerical value giving the amount of factors.
-  #' @param n Numerical value specifying the degree (ignored if type = “centroid”).
-  #' @param type Character string giving the type of design. \code{type} can be “lattice” or “centroid” (referencing to the first source under the section references].
-  #' By default \code{type} is set to “lattice”.
+  #' @param n Numerical value specifying the degree (ignored if type = `centroid`).
+  #' @param type Character string giving the type of design. \code{type} can be `lattice` or `centroid` (referencing to the first source under the section references].
+  #' By default \code{type} is set to `lattice`.
   #' @param center Logical value specifying whether (optional) center points will be added.
-  #' By default `center` is set to ‘TRUE’.
+  #' By default `center` is set to `TRUE`.
   #' @param axial Logical value specifying whether (optional) axial points will be added.
-  #' By default `axial` is set to ‘FALSE’.
+  #' By default `axial` is set to `FALSE`.
   #' @param delta Numerical value giving the delta (see references) for axial runs. No default setting.
   #' @param replicates Vector with the number of replicates for the different design points i.e. c(center = 1, axial = 1, pureBlend = 1, BinaryBlend = 1, p-3 blend, p-2 blend, p-1 blend).
-  #' By default `replicates` is set to ‘1’.
+  #' By default `replicates` is set to `1`.
   #' @param lower Numeric vector of lower-bound constraints on the component proportions (i.e. must be given in percent).
   #' @param total Numeric vector with
   #' \itemize{
-  #' \item {[1] the percentage of the mixture made up by the q - components (e.g. q = 3 and x1 + x2 + x3 = 0.8 –> total = 0.8 with 0.2 for the other factors being held constant)}
+  #' \item {[1] the percentage of the mixture made up by the q - components (e.g. q = 3 and x1 + x2 + x3 = 0.8, total = 0.8 with 0.2 for the other factors being held constant)}
   #' \item {[2] overall total in corresponding units (e.g. 200ml for the overall mixture)}
   #' }
-  #' @param randomize Logical value. If ‘TRUE’ the RunOrder of the mixture design will be randomized (default).
+  #' @param randomize Logical value. If `TRUE` the RunOrder of the mixture design will be randomized (default).
   #' @param seed Nmerical value giving the input for set.seed.
   #' @return The function \code{mixDesig()} returns an object of class \code{mixDesig()}.
   #' @note
@@ -41,7 +41,9 @@ mixDesign <- function(p, n = 3, type = "lattice",
   #' mdo <- mixDesign(3, 2, center = FALSE, axial = FALSE, randomize = FALSE, replicates = c(1, 1, 2, 3))
   #'
   #' mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
-  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
+  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7,
+  #'                 16.4, 16.6, 8.8, 10.0, 10.0, 9.7,
+  #'                 11.8, 16.8, 16.0)
   #' mdo$.response(elongation)
   #'
   #' mdo$units()
@@ -257,21 +259,17 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   #' @param xlab Character string specifying the label for the x-axis.
   #' @param ylab Character string specifying the label for the y-axis.
   #' @param zlab Character string specifying the label for the z-axis.
-  #' @param border Numeric or character (for example “red”) value specifying the color of the surroundimg the ternary plot.
-  #' By default `border` is set to “white”
-  #' @param form A character string or a formula with the syntax “y ~ A + B + C”.
+  #' @param form A character string or a formula with the syntax `y ~ A + B + C`.
   #' If form is a character string, it has to be one of the following:
   #' \itemize{
-  #' \item{“linear”}
-  #' \item{“quadratic”}
+  #' \item{`linear`}
+  #' \item{`quadratic`}
   #' }
   #' How the form influences the output is described in the reference listed below.
-  #' By default, \code{form} is set to “linear”.
+  #' By default, \code{form} is set to `linear`.
   #' @param col A predefined value (1, 2, 3, or 4) or a self-defined \code{colorRampPalette} specifying the colors to be used in the plot.
   #' @param col.text A character string specifying the color of the axis labels.
   #' The default value \code{col.text} is '1'.
-  #' @param cex.axis A numeric value specifying the size of the axis labels.
-  #' The default value \code{cex.axis} is '1'.
   #' @param axes A logical value specifying whether the axes should be plotted.
   #' By default, \code{axes} is set to \code{TRUE}.
   #' @param steps A numeric value specifying the resolution of the plot, i.e., the number of rows for the square matrix, which also represents the number of grid points per factor.
@@ -294,8 +292,13 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
   #' mdo$.response(elongation)
   #' contourPlot3(A, B, C, elongation, data = mdo, form = "linear")
   #' contourPlot3(A, B, C, elongation, data = mdo, form = "quadratic", col = 2)
-  #' contourPlot3(A, B, C, elongation, data = mdo, form = "elongation ~ I(A^2) - B:A + I(C^2)", col = 3, axes = FALSE)
-  #' contourPlot3(A, B, C, elongation, data = mdo, form = "quadratic", col = c("yellow", "white", "red"), axes = F)
+  #' contourPlot3(A, B, C, elongation, data = mdo,
+  #'              form = "elongation ~ I(A^2) - B:A + I(C^2)",
+  #'              col = 3, axes = FALSE)
+  #' contourPlot3(A, B, C, elongation, data = mdo,
+  #'              form = "quadratic",
+  #'              col = c("yellow", "white", "red"),
+  #'              axes = FALSE)
 
   out = list()
   mdo = data
@@ -450,15 +453,15 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   #' @param xlab Character string specifying the label for the x-axis.
   #' @param ylab Character string specifying the label for the y-axis.
   #' @param zlab Character string specifying the label for the z-axis.
-  #' @param form A character string or a formula with the syntax “y ~ A + B + C”.
+  #' @param form A character string or a formula with the syntax `y ~ A + B + C`.
   #' If form is a character string, it has to be one of the following:
   #' \itemize{
-  #' \item{“linear”}
-  #' \item{“quadratic”}
+  #' \item{`linear`}
+  #' \item{`quadratic`}
   #' }
   #' How the form influences the output is described in the reference listed below.
-  #' By default, \code{form} is set to “linear”.
-  #' @param col Character string specifying the color palette to use for the plot (e.g., \code{"Rainbow"}, \code{"Jet"}, \code{"Earth"}, \code{"Electric"}). Default is \code{"Rainbow"}.
+  #' By default, \code{form} is set to `linear`.
+  #' @param col Character string specifying the color palette to use for the plot (e.g., \code{`Rainbow`}, \code{`Jet`}, \code{`Earth`}, \code{`Electric`}). Default is \code{`Rainbow`}.
   #' @param steps A numeric value specifying the resolution of the plot, i.e., the number of rows for the square matrix, which also represents the number of grid points per factor.
   #' By default, \code{steps} is set to 25.
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
@@ -467,7 +470,9 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   #' @examples
   #' #Example 1
   #' mdo <- mixDesign(3, 2, center = FALSE, axial = FALSE, randomize = FALSE, replicates = c(1, 1, 2, 3))
-  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
+  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7,
+  #'                 16.4, 16.6, 8.8, 10.0, 10.0, 9.7,
+  #'                 11.8, 16.8, 16.0)
   #' mdo$.response(elongation)
   #' wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic")
   #'
@@ -475,12 +480,18 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   #' mdo <- mixDesign(3,2, center = FALSE, axial = FALSE, randomize = FALSE, replicates  = c(1,1,2,3))
   #' mdo$names(c("polyethylene", "polystyrene", "polypropylene"))
   #' mdo$units("percent")
-  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0, 9.7, 11.8, 16.8, 16.0)
+  #' elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7,
+  #'                 16.4, 16.6, 8.8, 10.0, 10.0, 9.7,
+  #'                 11.8, 16.8, 16.0)
   #' mdo$.response(elongation)
   #' wirePlot3(A, B, C, elongation, data = mdo, form = "linear")
-  #' wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic", col = "Jet")
-  #' wirePlot3(A, B, C, elongation, data = mdo, form = "elongation ~ I(A^2) - B:A + I(C^2)", col = "Electric")
-  #' wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic", col = "Earth")
+  #' wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic",
+  #'            col = "Jet")
+  #' wirePlot3(A, B, C, elongation, data = mdo,
+  #'            form = "elongation ~ I(A^2) - B:A + I(C^2)",
+  #'            col = "Electric")
+  #' wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic",
+  #'            col = "Earth")
 
   out = list()
   mdo = data

@@ -2,13 +2,13 @@
 ############################# DISEÑOS FACTORIALES - FUNCIONES ###################################
 #################################################################################################
 
-# as.data.frame.facDesign ----
-as.data.frame.facDesign <- function(dfac) {
-  #' @title as.data.frame.facDesign: Coerce to a data.frame
+# as.data.frame_facDesign ----
+as.data.frame_facDesign <- function(dfac) {
+  #' @title as.data.frame_facDesign: Coerce to a data.frame
   #' @description Converts an object of class \code{\link{facDesign.c}} into a data frame.
-  #' @usage as.data.frame.facDesign(dfac)
+  #' @usage as.data.frame_facDesign(dfac)
   #' @param dfac An object of class \code{\link{facDesign.c}} that you want to convert to a data frame.
-  #' @return The function \code{as.data.frame.facDesign} returns a data frame.
+  #' @return The function \code{as.data.frame_facDesign} returns a data frame.
 
   if (nrow(dfac$cube)>0) {
     frameOut = dfac$cube
@@ -70,7 +70,7 @@ aliasTable <- function (fdo, degree, print = TRUE)
   #' # Display the alias table for the fractional factorial design
   #' aliasTable(dfrac)
 
-  if (class(fdo)[1] == "facDesign") {
+  if (class(fdo)[1] == "facDesign.c") {
     X = unique(fdo$cube)
     N = nrow(X)
     k = log2(N)
@@ -80,7 +80,7 @@ aliasTable <- function (fdo, degree, print = TRUE)
     X1 = .helpAliasTable(fdo, k, degree = degree - 1)
     X2 = .helpAliasTable(fdo, k = kPlusP, degree)
   }
-  if (class(fdo)[1] == "taguchiDesign") {
+  if (class(fdo)[1] == "taguchiDesign.c") {
     if (length(table(as.numeric(as.matrix(fdo$design)))) !=
         2)
       stop("calculation of an alias table for mixed designs is not supported")
@@ -140,8 +140,8 @@ blocking <- function (fdo, blocks, random.seed, useTable = "rsm", gen){
   #' @param random.seed Numeric value to generate repeatable results for randomization within blocks.
   #' @param useTable Character indicating which table to use. The following options will be accepted:
   #' \itemize{
-  #'    \item \code{"rms"}: table from reference
-  #'    \item \code{"calc"}: table calculated by package
+  #'    \item \code{`rms`}: table from reference
+  #'    \item \code{`calc`}: table calculated by package
   #' }
   #' @param gen Giving the generator that will be used.
   #' @return The function \code{blocking} returns an object of class \code{\link{facDesign.c}} with blocking structure.
@@ -224,15 +224,15 @@ fracDesign <- function (k = 3, p = 0, gen = NULL, replicates = 1, blocks = 1,
 {
   #' @title fracDesign
   #' @description Generates a 2^k-p fractional factorial design.
-  #' @param k Numeric value giving the number of factors. By default \code{k} is set to ‘3’.
-  #' @param p Numeric integer between ‘0’ and ‘7’. p is giving the number of additional factors in the response surface design by aliasing effects.
+  #' @param k Numeric value giving the number of factors. By default \code{k} is set to `3`.
+  #' @param p Numeric integer between `0` and `7`. p is giving the number of additional factors in the response surface design by aliasing effects.
   #' A 2^k-p factorial design will be generated and the generators of the standard designs available in fracChoose() will be used.
-  #' By default p is set to ‘0’. Any other value will cause the function to omit the argument gen given by the user and replace it by the one out of the table of standard designs (see: \code{\link{fracChoose}}).
+  #' By default p is set to `0`. Any other value will cause the function to omit the argument gen given by the user and replace it by the one out of the table of standard designs (see: \code{\link{fracChoose}}).
   #' Replicates and blocks can be set anyway!
-  #' @param gen One or more defining relations for a fractional factorial design, for example:  \code{"C=AB"}. By default gen is set to \code{NULL}.
-  #' @param replicates Numeric value giving the number of replicates per factor combination. By default \code{replicates} is set to ‘1’.
-  #' @param blocks Numeric value giving the number of blocks. By default blocks is set to ‘1’.
-  #' @param centerCube Numeric value giving the number of center points within the 2^k design. By default \code{centerCube} is set to ‘0’.
+  #' @param gen One or more defining relations for a fractional factorial design, for example:  \code{`C=AB`}. By default gen is set to \code{NULL}.
+  #' @param replicates Numeric value giving the number of replicates per factor combination. By default \code{replicates} is set to `1`.
+  #' @param blocks Numeric value giving the number of blocks. By default blocks is set to `1`.
+  #' @param centerCube Numeric value giving the number of center points within the 2^k design. By default \code{centerCube} is set to `0`.
   #' @param random.seed Seed for randomization of the design
   #' @return The function \code{fracDesign} returns an object of class \code{\link{facDesign.c}}.
   #' @seealso \code{\link{facDesign}}, \code{\link{fracChoose}}, \code{\link{rsmDesign}}, \code{\link{pbDesign}}, \code{\link{taguchiDesign}}
@@ -424,13 +424,13 @@ facDesign <- function (k = 3, p = 0, replicates = 1, blocks = 1, centerCube = 0,
 {
   #' @title facDesign
   #' @description Generates a 2^k full factorial design.
-  #' @param k Numeric value giving the number of factors. By default k is set to ‘3’.
-  #' @param p Numeric integer between ‘0’ and ‘7’. p is giving the number of additional factors in the response surface design by aliasing effects.
+  #' @param k Numeric value giving the number of factors. By default k is set to `3`.
+  #' @param p Numeric integer between `0` and `7`. p is giving the number of additional factors in the response surface design by aliasing effects.
   #' For further information see fracDesign and fracChoose.
-  #' By default p is set to ‘0’.
-  #' @param replicates Numeric value giving the number of \code{replicates} per factor combination. By default replicates is set to ‘1’.
-  #' @param blocks Numeric value giving the number of blocks. By default blocks is set to ‘1’. Blocking is only performed for k greater 2.
-  #' @param centerCube Numeric value giving the number of centerpoints within the 2^k design. By default \code{centerCube} is set to ‘0’.
+  #' By default p is set to `0`.
+  #' @param replicates Numeric value giving the number of \code{replicates} per factor combination. By default replicates is set to `1`.
+  #' @param blocks Numeric value giving the number of blocks. By default blocks is set to `1`. Blocking is only performed for k greater 2.
+  #' @param centerCube Numeric value giving the number of centerpoints within the 2^k design. By default \code{centerCube} is set to `0`.
   #' @param random.seed Numeric value for setting the random seed for reproducibility.
   #' @return The function \code{facDesign} returns an object of class \code{\link{facDesign.c}}.
   #' @seealso \code{\link{fracDesign}}, \code{\link{fracChoose}}, \code{\link{rsmDesign}}, \code{\link{pbDesign}}, \code{\link{taguchiDesign}}
@@ -502,13 +502,13 @@ interactionPlot <- function(dfac, response = NULL, fun = mean, main, col = 1:2) 
   #' @description Creates an interaction plot for the factors in a factorial design to visualize the interaction effects between them.
   #' @param dfac An object of class \code{\link{facDesign.c}}, representing a factorial design.
   #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the response data frame.
-  #' \code{response} Needs to be an object of class character with length of ‘1’. It needs to be the same character as the name of the response in the response data frame that should be plotted.
+  #' \code{response} Needs to be an object of class character with length of `1`. It needs to be the same character as the name of the response in the response data frame that should be plotted.
   #' @param fun Function to use for the calculation of the interactions (e.g., \code{mean}, \code{median}). Default is \code{mean}.
   #' @param main Character string: title of the plot.
   #' @param col Vector of colors for the plot. Single colors can be given as character strings or numeric values. Default is \code{1:2}.
   #' @details \code{interactionPlot()} displays interactions for an object of class \code{facDesign} (i.e. 2^k full or 2^k-p fractional factorial design).
   #' Parts of the original interactionPlot were integrated.
-  #' @seealso \code{\link{factors}}, \code{\link{fracDesign}}, \code{\link{facDesign}}
+  #' @seealso \code{\link{fracDesign}}, \code{\link{facDesign}}
   #' @examples
   #' # Example 1
   #' # Create the facDesign object
@@ -540,7 +540,7 @@ interactionPlot <- function(dfac, response = NULL, fun = mean, main, col = 1:2) 
   else {
     mainmiss = FALSE
   }
-  if (missing(fdo) || class(fdo)[1] != "facDesign")
+  if (missing(fdo) || class(fdo)[1] != "facDesign.c")
     stop("fdo needs to be an object of class facDesign")
 
   fdoName = deparse(substitute(dfac))
@@ -628,7 +628,7 @@ paretoPlot <- function(dfac, abs = TRUE, decreasing = TRUE, alpha = 0.05,
   #' @param abs Logical. If \code{TRUE}, absolute effects and interactions are displayed. Default is \code{TRUE}.
   #' @param decreasing Logical. If \code{TRUE}, effects and interactions are sorted decreasing. Default is \code{TRUE}.
   #' @param alpha The significance level used to calculate the critical value
-  #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the response data frame. \code{response} needs to be an object of class character with length of ‘1’.
+  #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the response data frame. \code{response} needs to be an object of class character with length of `1`.
   #' It needs to be the same character as the name of the response in the response data frame that should be plotted. By default \code{response} is set to \code{NULL}.
   #' @param ylim Numeric vector of length 2: limits for the y-axis. If missing, the limits are set automatically.
   #' @param xlab Character string: label for the x-axis.
@@ -636,21 +636,21 @@ paretoPlot <- function(dfac, abs = TRUE, decreasing = TRUE, alpha = 0.05,
   #' @param main Character string: title of the plot.
   #' @param p.col Character string specifying the color palette to use for the plot. Must be one of the following values from the \code{RColorBrewer} package:
   #' \itemize{
-  #'   \item{\code{"Set1"}}
-  #'   \item{\code{"Set2"}}
-  #'   \item{\code{"Set3"}}
-  #'   \item{\code{"Pastel1"}}
-  #'   \item{\code{"Pastel2"}}
-  #'   \item{\code{"Paired"}}
-  #'   \item{\code{"Dark2"}}
-  #'   \item{\code{"Accent"}}
+  #'   \item{\code{`Set1`}}
+  #'   \item{\code{`Set2`}}
+  #'   \item{\code{`Set3`}}
+  #'   \item{\code{`Pastel1`}}
+  #'   \item{\code{`Pastel2`}}
+  #'   \item{\code{`Paired`}}
+  #'   \item{\code{`Dark2`}}
+  #'   \item{\code{`Accent`}}
   #' }
   #' @param legend_left Logical value indicating whether to place the legend on the left side of the plot. Default is \code{TRUE}.
   #' @details \code{paretoPlot} displays a pareto plot of effects and interactions for an object of class facDesign (i.e. 2^k full or 2^k-p fractional factorial design). For a given significance level alpha, a critical value is calculated and added to the plot. Standardization is achieved by dividing estimates with their standard error. For unreplicated fractional factorial designs a Lenth Plot is generated.
   #' @return The function \code{paretoPlot} returns an invisible list containing:
   #' \item{effects}{a list of effects for each response in the \code{facDesign.c} object}
   #' \item{plot}{The generated PP plot.}
-  #' @seealso \code{\link{factors}}, \code{\link{fracDesign}}, \code{\link{facDesign}}
+  #' @seealso \code{\link{fracDesign}}, \code{\link{facDesign}}
   #' @examples
   #' # Create the facDesign object
   #' dfac <- facDesign(k = 3, centerCube = 4)
@@ -935,11 +935,11 @@ normalPlot <- function(dfac, response = NULL, main, ylim, xlim, xlab, ylab, pch,
   #' @title normalPlot: Normal plot
   #' @description Creates a normal probability plot for the effects in a \code{\link{facDesign.c}} object.
   #' @param dfac An object of class \code{\link{facDesign.c}}.
-  #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the \code{response} data frame. response needs to be an object of class character with length of ‘1’. It needs to be the same character as the name of the response in the response data frame that should be plotted.
+  #' @param response Response variable. If the response data frame of fdo consists of more then one responses, this variable can be used to choose just one column of the \code{response} data frame. response needs to be an object of class character with length of `1`. It needs to be the same character as the name of the response in the response data frame that should be plotted.
   #' By default \code{respons}` is set to \code{NULL}.
   #' @param main Character string specifying the main title of the plot.
   #' @param ylim Graphical parameter. The y limits of the plot.
-  #' @param xlim Graphical parameter. The x limits (x1, x2) of the plot. Note that x1 > x2 is allowed and leads to a ‘reversed axis’.
+  #' @param xlim Graphical parameter. The x limits (x1, x2) of the plot. Note that x1 > x2 is allowed and leads to a `reversed axis`.
   #' @param xlab Character string specifying the label for the x-axis.
   #' @param ylab Character string specifying the label for the y-axis.
   #' @param pch Graphical parameter. Vector containing numerical values or single characters giving plotting points for the different factors.
@@ -984,7 +984,7 @@ normalPlot <- function(dfac, response = NULL, main, ylim, xlim, xlab, ylab, pch,
   parList = list()
 
   XLIM=FALSE;YLIM=FALSE
-  if (!(class(fdo)[1] == "facDesign"))
+  if (!(class(fdo)[1] == "facDesign.c"))
     stop(paste(deparse(substitute(fdo)), "is not an object of class facDesign"))
   mainmiss = FALSE
   if (missing(main))
@@ -1159,24 +1159,24 @@ wirePlot <- function(x, y, z, data = NULL,
   #' @param sub.a Logical value indicating whether to display the subtitle. Default is \code{TRUE}.
   #' @param form Character string specifying the form of the surface to be plotted. Options include
   #' \itemize{
-  #'     \item \code{"quadratic"}
-  #'     \item \code{"full"}
-  #'     \item \code{"interaction"}
-  #'     \item \code{"linear"}
-  #'     \item \code{"fit"}
+  #'     \item \code{`quadratic`}
+  #'     \item \code{`full`}
+  #'     \item \code{`interaction`}
+  #'     \item \code{`linear`}
+  #'     \item \code{`fit`}
   #'     }
-  #' Default is \code{"fit"}.
-  #' @param col Character string specifying the color palette to use for the plot (e.g., \code{"Rainbow"}, \code{"Jet"}, \code{"Earth"}, \code{"Electric"}). Default is \code{"Rainbow"}.
+  #' Default is \code{`fit`}.
+  #' @param col Character string specifying the color palette to use for the plot (e.g., \code{`Rainbow`}, \code{`Jet`}, \code{`Earth`}, \code{`Electric`}). Default is \code{`Rainbow`}.
   #' @param steps Numeric value specifying the number of steps for the grid in the plot. Higher values result in a smoother surface.
   #' @param fun Optional function to be applied to the data before plotting.
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
   #' @param show.scale Logical value indicating whether to display the color scale on the plot. Default is \code{TRUE}.
-  #' @param n.scene Character string specifying the scene name for the plot. Default is \code{"scene"}.
+  #' @param n.scene Character string specifying the scene name for the plot. Default is \code{`scene`}.
   #' @details The \code{wirePlot} function is used to create a 3D wireframe plot that visualizes the relationship between two factors and a response variable. The plot can be customized in various ways, including changing axis labels, adding subtitles, and choosing the color palette.
   #' @return The function \code{wirePlot} returns an invisible list containing:
   #' \item{plot}{The generated wireframe plot.}
   #' \item{grid}{The grid data used for plotting.}
-  #' @seealso \code{\link{contourPlot}}, \code{\link{ParetoChart}}.
+  #' @seealso \code{\link{contourPlot}}, \code{\link{paretoChart}}.
   #' @examples
   #' # Example 1: Basic wireframe plot
   #' x <- seq(-10, 10, length = 30)
@@ -1213,7 +1213,7 @@ wirePlot <- function(x, y, z, data = NULL,
   fit = NULL
   lm.1 = NULL
 
-  if (is.null(data) | class(data)[1] != "facDesign") {
+  if (is.null(data) | class(data)[1] != "facDesign.c") {
     if(length(x) == length(y)){
       if(dim(z)[1] == length(x) & dim(z)[2] == length(x)){
         x.c = deparse(substitute(x))
@@ -1424,17 +1424,17 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, form
   #' @param main Character string: title of the plot.
   #' @param xlab Character string: label for the x-axis.
   #' @param ylab Character string: label for the y-axis.
-  #' @param form A character string or a formula with the syntax “y~ x+y + x*y”. If form is a character it has to be one out of the following:
+  #' @param form A character string or a formula with the syntax `y~ x+y + x*y`. If form is a character it has to be one out of the following:
   #' \itemize{
-  #'    \item \code{"quadratic"}
-  #'    \item \code{"full"}
-  #'    \item \code{"interaction"}
-  #'    \item \code{"linear"}
-  #'    \item \code{"fit"}
+  #'    \item \code{`quadratic`}
+  #'    \item \code{`full`}
+  #'    \item \code{`interaction`}
+  #'    \item \code{`linear`}
+  #'    \item \code{`fit`}
   #' }
-  #' \code{“fit”} takes the formula from the fit in the \code{facDesign.c} object \code{fdo}. Quadratic or higher orders should be given as I(Variable^2).
-  #' By default \code{form} is set as \code{“fit”}.
-  #' @param col A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. \code{“red”}).
+  #' \code{`fit`} takes the formula from the fit in the \code{facDesign.c} object \code{fdo}. Quadratic or higher orders should be given as I(Variable^2).
+  #' By default \code{form} is set as \code{`fit`}.
+  #' @param col A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. \code{`red`}).
   #' @param steps Number of grid points per factor. By default \code{steps} = 25.
   #' @param fun Function to be applied to z \code{desirability}.
   #' @param plot Logical value indicating whether to display the plot. Default is \code{TRUE}.
@@ -1446,7 +1446,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, form
   #'  \item z - a matrix containing the values of z to be plotted.
   #'  \item plot - The generated plot.
   #' }
-  #' @seealso \code{\link{wirePlot}}, \code{\link{ParetoChart}}
+  #' @seealso \code{\link{wirePlot}}, \code{\link{paretoChart}}
   #' @examples
   #' fdo = rsmDesign(k = 3, blocks = 2)
   #' fdo$.response(data.frame(y = rnorm(fdo$nrow())))
@@ -1486,7 +1486,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, form
       col = colorRampPalette(c("blue4", "lightblue1", "lightgreen", "green4"))
   }
 
-  if (is.null(data) | class(data)[1] != "facDesign") {
+  if (is.null(data) | class(data)[1] != "facDesign.c") {
     if(length(x) == length(y)){
       if(dim(z)[1] == length(x) & dim(z)[2] == length(x)){
         if(missing(main))
@@ -1825,7 +1825,7 @@ fracChoose <- function() {
     replicates = N/(2^k)
     fdo = try(fracDesign(k = k, gen = NULL, replicates = replicates), silent = TRUE)
   }
-  if (class(fdo)[1] == "facDesign")
+  if (class(fdo)[1] == "facDesign.c")
     return(fdo)
   else return(genList[[mat[y, x]]])
 }
@@ -1851,7 +1851,7 @@ steepAscent <- function(factors, response, size = 0.2, steps = 5, data) {
   #' @param size Numeric integer value giving the step size in coded units for the first factor given in factors.
   #' By default size is set to \code{0.2}.
   #' @param steps Numeric integer value giving the number of steps.
-  #' By default step is set to ‘5’.
+  #' By default step is set to `5`.
   #' @param data An object of class \code{\link{facDesign.c}}.
   #' @return \code{steepAscent} returns an object of class \code{\link{steepAscent.c}}.
   #' @seealso \code{\link{optimum}}, \code{\link{desirability}}
@@ -1943,8 +1943,8 @@ starDesign <- function(k, p = 0, alpha = c("both", "rotatable", "orthogonal"), c
   #' One can either specify k and p and alpha and cs and cc OR simply simply pass an object of class \code{\link{facDesign.c}} to the data. In the latter an object of class \code{\link{facDesign.c}} otherwise a list containing the axial runs and centerpoints is returned.
   #' @param k Integer value giving number of factors.
   #' @param p Integer value giving the number of factors via aliasing.
-  #' By default set to ‘0’.
-  #' @param alpha If no numeric value is given defaults to \code{"both"} i.e. \code{"orthogonality"} and \code{"rotatibility"} which can be set as character strings too.
+  #' By default set to `0`.
+  #' @param alpha If no numeric value is given defaults to \code{`both`} i.e. \code{`orthogonality`} and \code{`rotatibility`} which can be set as character strings too.
   #' @param cs Integer value giving the number of centerpoints in the star portion of the design.
   #' @param cc Integer value giving the number of centerpoints in the cube portion of the design.
   #' @param data Optional. An object of class \code{\link{facDesign.c}}.
@@ -1980,7 +1980,7 @@ starDesign <- function(k, p = 0, alpha = c("both", "rotatable", "orthogonal"), c
   if (!missing(data)) {
     fdo = data$clone()
     k = ncol(fdo$cube)
-    if (class(fdo)[1] != "facDesign") {
+    if (class(fdo)[1] != "facDesign.c") {
       stop(paste(deparse(substitute(data)), "needs to be an object of class 'facDesign'"))
     }
     if (nrow(fdo$star) > 0)
@@ -2048,7 +2048,7 @@ rsmDesign <- function(k = 3, p = 0, alpha = "rotatable", blocks = 1, cc = 1, cs 
   #' @description Generates a response surface design containing a cube, centerCube, star, and centerStar portion.
   #' @param k Integer value giving the number of factors. By default, \code{k} is set to `3`.
   #' @param p Integer value giving the number of additional factors in the response surface design by aliasing effects. Default is `0`.
-  #' @param alpha Character string indicating the type of star points to generate. Should be \code{"rotatable"}(default), \code{"orthogonal"}, or \code{"both"}. If \code{"both"}, values for \code{cc} and \code{cs} will be discarded.
+  #' @param alpha Character string indicating the type of star points to generate. Should be \code{`rotatable`}(default), \code{`orthogonal`}, or \code{`both`}. If \code{`both`}, values for \code{cc} and \code{cs} will be discarded.
   #' @param blocks Integer value specifying the number of blocks in the response surface design. Default is `1`.
   #' @param cc Integer value giving the number of centerpoints (per block) in the cube portion (i.e., the factorial 2^k design) of the response surface design. Default is `1`.
   #' @param cs Integer value specifying the number of centerpoints in the star portion. Default is `1`.
@@ -2221,43 +2221,49 @@ desirability = function(response, low, high, target = "max", scale = c(1, 1), im
   #' @param response Name of the response.
   #' @param low Lowest acceptable value for the response.
   #' @param high Highest acceptable value for the response.
-  #' @param target Desired target value of the response. \code{target} can be \code{"max"}, \code{"min"}, or any specific numeric value.
+  #' @param target Desired target value of the response. \code{target} can be \code{`max`}, \code{`min`}, or any specific numeric value.
   #' @param scale Numeric value giving the scaling factors for one and two-sided transformations. Default is \code{c(1, 1)}.
   #' @param importance A value ranging from 0.1 to 10, used to calculate a weighted importance, i.e., with importances 1, 2, and 4, D = [(d1)^1, (d2)^2, (d3)^4]^(1/7). Default is `1`.
   #' @details For a product to be developed, different values of responses are desired, leading to multiple response optimization. Minimization, maximization, as well as a specific target value, are defined using desirability functions. A desirability function transforms the values of a response into [0,1], where 0 stands for a non-acceptable value of the response and 1 for values where higher/lower (depending on the direction of the optimization) values of the response have little merit. This function builds upon the desirability functions specified by Harrington (1965) and the modifications by Derringer and Suich (1980) and Derringer (1994). Castillo, Montgomery, and McCarville (1996) further extended these functions, but these extensions are not implemented in this version.
   #' @return This function returns a \code{\link{desirability.c}} object.
   #' @seealso \code{\link{overall}}, \code{\link{optimum}}
   #' @examples
-  #' #Example 1: Maximization of a response
-  #' #Define a desirability for response y where higher values of y are better as long as the response is smaller than high
+  #' # Example 1: Maximization of a response
+  #' # Define a desirability for response y where higher values of y are better
+  #' # as long as the response is smaller than high
   #' d = desirability(y, low = 6, high = 18, target = "max")
   #' # Show and plot the desirability function
   #' d
   #' plot(d)
   #'
-  #' #Example 2: Minimization of a response including a scaling factor
-  #' #Define a desirability for response y where lower values of y are better as long as the response is higher than low
+  #' # Example 2: Minimization of a response including a scaling factor
+  #' # Define a desirability for response y where lower values of y are better
+  #' # as long as the response is higher than low
   #' d = desirability(y, low = 6, high = 18, scale = c(2), target = "min")
-  #' #Show and plot the desirability function
+  #' # Show and plot the desirability function
   #' d
   #' plot(d)
   #'
-  #' #Example 3: Specific target of a response is best including a scaling factor
-  #' #Define a desirability for response y where desired value is at 8 and values lower than 6 as well as values higher than 18 are not acceptable
+  #' # Example 3: Specific target of a response is best including a scaling factor
+  #' # Define a desirability for response y where desired value is at 8 and
+  #' # values lower than 6 as well as values higher than 18 are not acceptable
   #' d = desirability(y, low = 6, high = 18, scale = c(0.5, 2), target = 12)
-  #' #Show and plot the desirability function
+  #' # Show and plot the desirability function
   #' d
   #' plot(d)
   #'
-  #' #Example 4:
-  #' y1 <- c(102, 120, 117, 198, 103, 132, 132, 139, 102, 154, 96, 163, 116, 153, 133, 133, 140, 142, 145, 142)
-  #' y2 <- c(470, 410, 570, 240, 640, 270, 410, 380, 590, 260, 520, 380, 520, 290, 380, 380, 430, 430, 390, 390)
+  #' # Example 4:
+  #' y1 <- c(102, 120, 117, 198, 103, 132, 132, 139, 102, 154, 96, 163, 116, 153,
+  #'         133, 133, 140, 142, 145, 142)
+  #' y2 <- c(470, 410, 570, 240, 640, 270, 410, 380, 590, 260, 520, 380, 520, 290,
+  #'         380, 380, 430, 430, 390, 390)
   #' d1 <- desirability(y1, 120, 170, scale = c(1, 1), target = "max")
   #' d3 <- desirability(y2, 400, 600, target = 500)
   #' d1
   #' plot(d1)
   #' d3
   #' plot(d3)
+
 
   if (low >= high)
     stop("the lower bound must be greater than the high bound!")
@@ -2356,14 +2362,14 @@ overall <- function(fdo, steps = 20, constraints, ...) {
 # optimum ----
 optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
   #' @title optimum: Optimal factor settings
-  #' @description This function calculates the optimal factor settings based on defined desirabilities and constraints. It supports two approaches: (I) evaluating all possible factor settings via a grid search and (II) using optimization methods such as \code{"optim"} or \code{"gosolnp"} from the Rsolnp package. Using \code{"optim"} initial values for the factors to be optimized over can be set via start.
-  #' The optimality of the solution depends critically on the starting parameters which is why it is recommended to use \code{type="gosolnp"} although calculation takes a while.
+  #' @description This function calculates the optimal factor settings based on defined desirabilities and constraints. It supports two approaches: (I) evaluating all possible factor settings via a grid search and (II) using optimization methods such as \code{`optim`} or \code{`gosolnp`} from the Rsolnp package. Using \code{`optim`} initial values for the factors to be optimized over can be set via start.
+  #' The optimality of the solution depends critically on the starting parameters which is why it is recommended to use \code{type=`gosolnp`} although calculation takes a while.
   #' @param fdo An object of class \code{\link{facDesign.c}} with \code{fits} and \code{desires} set.
   #' @param constraints A list specifying the constraints for the factors, e.g., \code{list(A = c(-2,1), B = c(0, 0.8))}.
-  #' @param steps Number of grid points per factor if \code{type = "grid"}. Default is `25`.
-  #' @param type The type of search to perform. Supported values are \code{"grid"}, \code{"optim"}, and \code{"gosolnp"}. See Details for more information.
-  #' @param start A numeric vector providing the initial values for the factors when using \code{type = "optim"}.
-  #' @details The function allows you to optimize the factor settings either by evaluating a grid of possible settings (\code{type = "grid"}) or by using optimization algorithms (\code{type = "optim"` or `"gosolnp"}). The choice of optimization method may significantly affect the result, especially for desirability functions that lack continuous first derivatives. When using \code{type = "optim"}, it is advisable to provide \code{start} values to avoid local optima. The \code{"gosolnp"} method is recommended for its robustness, although it may be computationally intensive.
+  #' @param steps Number of grid points per factor if \code{type = `grid`}. Default is `25`.
+  #' @param type The type of search to perform. Supported values are \code{`grid`}, \code{`optim`}, and \code{`gosolnp`}. See Details for more information.
+  #' @param start A numeric vector providing the initial values for the factors when using \code{type = `optim`}.
+  #' @details The function allows you to optimize the factor settings either by evaluating a grid of possible settings (\code{type = `grid`}) or by using optimization algorithms (\code{type = `optim` or `gosolnp`}). The choice of optimization method may significantly affect the result, especially for desirability functions that lack continuous first derivatives. When using \code{type = `optim`}, it is advisable to provide \code{start} values to avoid local optima. The \code{`gosolnp`} method is recommended for its robustness, although it may be computationally intensive.
   #' @return Return an object of class \code{\link{desOpt}}.
   #' @seealso \code{\link{overall}}, \code{\link{desirability}},
   #' @examples
@@ -2372,10 +2378,25 @@ optimum <- function(fdo, constraints, steps = 25, type = "grid", start) {
   #' fdo = rsmDesign(k = 3, alpha = 1.633, cc = 0, cs = 6)
   #' fdo = randomize(fdo, so = TRUE)
   #' #Attaching the 4 responses
-  #' y1 = c(102,120,117,198,103,132,132,139,102,154,96,163,116,153,133,133,140,142,145,142)
-  #' y2 = c(900,860,800,2294,490,1289,1270,1090,770,1690,700,1540,2184,1784,1300,1300,1145,1090,1260,1344)
-  #' y3 = c(470,410,570,240,640,270,410,380,590,260,520,380,520,290,380,380,430,430,390,390)
-  #' y4 = c(67.5,65,77.5,74.5,62.5,67,78,70,76,70,63,75,65,71,70,68.5,68,68,69,70)
+  #' y1 = c(102, 120, 117, 198, 103, 132,
+  #'         132, 139, 102, 154, 96, 163,
+  #'         116, 153, 133, 133, 140, 142,
+  #'         145, 142)
+  #'
+  #' y2 = c(900, 860, 800, 2294, 490, 1289,
+  #'         1270, 1090, 770, 1690, 700, 1540,
+  #'         2184, 1784, 1300, 1300, 1145, 1090,
+  #'         1260, 1344)
+  #'
+  #' y3 = c(470, 410, 570, 240, 640, 270,
+  #'         410, 380, 590, 260, 520, 380,
+  #'         520, 290, 380, 380, 430, 430,
+  #'         390, 390)
+  #'
+  #' y4 = c(67.5, 65, 77.5, 74.5, 62.5, 67,
+  #'         78, 70, 76, 70, 63, 75,
+  #'         65, 71, 70, 68.5, 68, 68,
+  #'         69, 70)
   #' fdo$.response(data.frame(y1, y2, y3, y4)[c(5,2,3,8,1,6,7,4,9:20),])
   #' #Setting names and real values of the factors
   #' fdo$names(c("silica", "silan", "sulfur"))
@@ -2512,7 +2533,7 @@ summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE) {
   #' @description
   #' Function to provide an overview of fitted linear models for objects of class \code{\link{facDesign.c}}.
   #' @usage
-  #' summaryFits(fdo, lmFit = TRUE, curvTest = TRUE, origFit = TRUE)
+  #' summaryFits(fdo, lmFit = TRUE, curvTest = TRUE)
   #' @param fdo An object of class \code{\link{facDesign.c}}.
   #' @param lmFit A logical value deciding whether the fits from the object \code{fdo} should be included or not. By default, \code{lmFit} is set to \code{TRUE}.
   #' @param curvTest A logical value deciding whether curvature tests should be performed or not. By default, \code{curvTest} is set to \code{TRUE}.

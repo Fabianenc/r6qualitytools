@@ -6,9 +6,9 @@
 #' @title taguchiFactor
 #' @description An R6 class representing a factor in a Taguchi design.
 #' @field values A vector containing the levels or values associated with the factor. Default is \code{NA}.
-#' @field name A character string specifying the name of the factor. Default is an empty string \code{""}.
-#' @field unit A character string specifying the unit of measurement for the factor. Default is an empty string \code{""}.
-#' @field type A character string specifying the type of the factor, which can be either \code{"numeric"} or \code{"categorical"}. Default is \code{"numeric"}.
+#' @field name A character string specifying the name of the factor. Default is an empty string \code{``}.
+#' @field unit A character string specifying the unit of measurement for the factor. Default is an empty string \code{``}.
+#' @field type A character string specifying the type of the factor, which can be either \code{`numeric`} or \code{`categorical`}. Default is \code{`numeric`}.
 taguchiFactor <- R6Class("taguchiFactor", public = list(values = NA,
                                                         name = "",
                                                         unit = "",
@@ -72,7 +72,7 @@ taguchiFactor <- R6Class("taguchiFactor", public = list(values = NA,
 #' @field desireVal A list storing desired values for responses in the experiment. Default is an empty list.
 #' @field desirability A list storing desirability functions used to evaluate the outcomes of the experiment. Default is an empty list.
 #' @field fits A `data.frame` containing model fits or other statistical summaries from the analysis of the experimental data. Default is an empty \code{data.frame}.
-taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
+taguchiDesign.c <- R6Class("taguchiDesign.c", public = list(name = NULL,
                                                           factors = list(),
                                                           design = data.frame(),
                                                           designType = NULL,
@@ -258,7 +258,7 @@ taguchiDesign.c <- R6Class("taguchiDesign", public = list(name = NULL,
                                                           #' @examples
                                                           #' tdo = taguchiDesign("L9_3")
                                                           #' tdo$.response(rnorm(9))
-                                                          #' tdo$effectPlot(points = TRUE, col = 2, pch = 16, lty = 3)
+                                                          #' tdo$effectPlot(points = TRUE, pch = 16, lty = 3)
                                                           effectPlot = function(factors, fun = mean, response = NULL, points = FALSE,
                                                                                 l.col, p.col, ld.col,lty, xlab, ylab, main, ylim, pch){
 

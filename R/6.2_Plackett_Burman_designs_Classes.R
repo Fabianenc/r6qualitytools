@@ -6,9 +6,9 @@
 #' @title pbFactor
 #' @description An R6 class representing a factor in a Plackett-Burman design.
 #' @field values A vector containing the levels or values associated with the factor. Default is \code{NA}.
-#' @field name A character string specifying the name of the factor. Default is an empty string \code{""}.
-#' @field unit A character string specifying the unit of measurement for the factor. Default is an empty string \code{""}.
-#' @field type A character string specifying the type of the factor, which can be either \code{"numeric"} or \code{"categorical"}. Default is \code{"numeric"}.
+#' @field name A character string specifying the name of the factor. Default is an empty string \code{``}.
+#' @field unit A character string specifying the unit of measurement for the factor. Default is an empty string \code{``}.
+#' @field type A character string specifying the type of the factor, which can be either \code{`numeric`} or \code{`categorical`}. Default is \code{`numeric`}.
 pbFactor <- R6Class("pbFactor", public = list(values = NA,
                                               name = "",
                                               unit = "",
@@ -78,7 +78,7 @@ pbFactor <- R6Class("pbFactor", public = list(values = NA,
 #' @field desireVal A list storing desired values for responses in the experiment. Default is an empty list.
 #' @field desirability A list storing desirability functions used to evaluate the outcomes of the experiment. Default is an empty list.
 #' @field fits A \code{data.frame} containing model fits or other statistical summaries from the analysis of the experimental data. Default is an empty \code{data.frame}.
-pbDesign.c <- R6Class("pbDesign", public = list(name = NULL,
+pbDesign.c <- R6Class("pbDesign.c", public = list(name = NULL,
                                                 factors = list(),
                                                 design = data.frame(),
                                                 designType = NULL,

@@ -3,7 +3,7 @@
 #################################################################
 
 # Clase MSALinearity ----
-#' @title MSALinearity-class: Class '"MSALinearity"'
+#' @title MSALinearity-class: Class `MSALinearity`
 #' @description R6 class for performing Measurement System Analysis (MSA) Linearity studies.
 #' @field X A data frame containing the independent variable(s) used in the linearity study.
 #' @field Y A data frame containing the dependent variable(s) or responses measured in the linearity study.
@@ -158,7 +158,7 @@ gageLinDesign <- function(ref, n = 5) {
   #' @title gageLinDesign: Function to create a object of class MSALinearity.
   #' @description Function generates an object that can be used with the function \code{gageLin}.
   #' @param ref A vector and contains the reference values for each group.
-  #' @param n A single value and gives the amount of runs.Default value: ‘5’..
+  #' @param n A single value and gives the amount of runs.Default value: `5`..
   #' @return The function returns an object of class \code{MSALinearity}.
   #' @seealso \code{\link{MSALinearity}}, \code{\link{gageLin}}.
   #' @examples
@@ -193,13 +193,13 @@ gageLin <- function(object, conf.level = 0.95, ylim, col, pch, lty = c(1, 2), st
   #' @description Function visualize the linearity of a gage by plotting the single and mean bias in one plot and intercalate them with a straight line.
   #' Furthermore the function deliver some characteristic values of linearity studies according to MSA (Measurement System Analysis).
   #' @param object An object of class \code{MSALinearity} containing the data and model for the linearity analysis. To create such an object see \code{gageLinDesign}.
-  #' @param conf.level A numeric value between ‘0’ and ‘1’, giving the confidence intervall for the analysis.
-  #' Default value: ‘0.95’.
+  #' @param conf.level A numeric value between `0` and `1`, giving the confidence intervall for the analysis.
+  #' Default value: `0.95`.
   #' @param ylim A numeric vector of length 2 specifying the y-axis limits for the plot. If not specified, the limits are set automatically based on the data.
-  #' @param col A vector with four numeric entries. The first gives the color of the single points, the second gives the color of the points for the mean bias, the third gives the color fo the straight interpolation line and the fourth gives the color for the lines representing the confidence interval. If one of the values is missing or negative the points or lines are not plotted. col is by default ‘c(1,2,1,4)’.
-  #' @param pch A vector with two numeric or single character entries giving the symbols for the single points (1st entry) and the mean bias (2nd entry). The default vector is “c(20,18)”
-  #' @param lty a vector with two entries giving the line-style for the interpolating line and the confidence interval lines. For detailed information to the entries please see par. The default value for lty is ‘c(1,2)’.
-  #' @param stats Logical value. If ‘TRUE’ (default) the function returns all calculated information.
+  #' @param col A vector with four numeric entries. The first gives the color of the single points, the second gives the color of the points for the mean bias, the third gives the color fo the straight interpolation line and the fourth gives the color for the lines representing the confidence interval. If one of the values is missing or negative the points or lines are not plotted. col is by default `c(1,2,1,4)`.
+  #' @param pch A vector with two numeric or single character entries giving the symbols for the single points (1st entry) and the mean bias (2nd entry). The default vector is `c(20,18)`
+  #' @param lty a vector with two entries giving the line-style for the interpolating line and the confidence interval lines. For detailed information to the entries please see par. The default value for lty is `c(1,2)`.
+  #' @param stats Logical value. If `TRUE` (default) the function returns all calculated information.
   #' @param plot Logical value indicating whether to generate a plot of the linearity analysis. Default is \code{TRUE}.
   #' @return The function returns an object of class \code{MSALinearity} which can be used with e.g. \code{plot} or \code{summary}.
   #' @seealso \code{\link{cg}}, \code{\link{gageRR}}, \code{\link{gageLinDesign}}, \code{\link{MSALinearity}}.

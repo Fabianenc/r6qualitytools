@@ -13,3 +13,20 @@ importFrom(MASS,boxcox)
 import(Rsolnp)
 importFrom(grid,convertWidth,textGrob,gpar,grobWidth)
 importFrom(EnvStats,ebeta)
+importFrom("grDevices", "colorRampPalette", "dev.new")
+importFrom("graphics", "abline", "axis", "box", "hist", "legend",
+            "lines", "locator", "matplot", "mtext", "par",
+            "plot.default", "plot.new", "rect", "text")
+importFrom("methods", "show")
+importFrom("stats", "IQR", "anova", "aov", "as.formula", "coef",
+           "coefficients", "complete.cases", "dbeta", "dcauchy",
+           "dchisq", "density", "dexp", "df", "df.residual", "dgamma",
+           "dgeom", "dlnorm", "dlogis", "dnbinom", "dnorm", "dpois",
+           "dt", "dweibull", "formula", "lm", "median", "na.omit",
+           "optim", "optimize", "pcauchy", "pexp", "pgamma", "plnorm",
+           "plogis", "pnorm", "ppoints", "predict", "qbeta", "qcauchy",
+           "qexp", "qgamma", "qlnorm", "qlogis", "qnorm", "qt",
+           "quantile", "qweibull", "rcauchy", "reorder", "rexp",
+           "rgamma", "rlogis", "rnorm", "runif", "sd", "setNames",
+           "t.test", "uniroot", "var")
+importFrom("utils", "as.roman", "combn", "flush.console")

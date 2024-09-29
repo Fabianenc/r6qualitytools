@@ -3,7 +3,7 @@
 ######################################################################
 
 # mixDesign.c ----
-#' @title mixDesign-class: Class "mixDesign"
+#' @title mixDesign-class: Class `mixDesign`
 #' @description mixDesign class for simplex lattice and simplex centroid mixture designs with optional center points and augmented points.
 #' @field name Character string representing the name of the design.
 #' @field factors List of factors involved in the mixture design, including their levels and settings.
@@ -21,7 +21,7 @@
 #' @field desirability List of desirability scores or metrics based on the desired values.
 #' @field fits Data frame containing the fitted model parameters and diagnostics.
 #' @seealso \code{\link{mixDesign}}, \code{\link{contourPlot3}}, \code{\link{wirePlot3}}
-mixDesign.c <- R6Class("mixDesign", public = list(name = NULL,
+mixDesign.c <- R6Class("mixDesign.c", public = list(name = NULL,
                                                   factors =list(),
                                                   total = NULL,
                                                   lower = NULL,

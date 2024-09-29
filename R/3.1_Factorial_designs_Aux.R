@@ -14,9 +14,9 @@
   if (degree > k) {
     degree = k
   }
-  if (class(fdo)[1] == "facDesign")
+  if (class(fdo)[1] == "facDesign.c")
     X = unique(fdo$cube)
-  if (class(fdo)[1] == "taguchiDesign") {
+  if (class(fdo)[1] == "taguchiDesign.c") {
     X = unique(fdo$design)
     X = .replace2s(X)
   }
@@ -27,9 +27,9 @@
   for (i in 1:degree) {
     temp = combn(columns, i)
     for (j in 1:ncol(temp)) {
-      if (class(fdo)[1] == "facDesign")
+      if (class(fdo)[1] == "facDesign.c")
         index = names(X) %in% temp[, j]
-      if (class(fdo)[1] == "taguchiDesign")
+      if (class(fdo)[1] == "taguchiDesign.c")
         index = names(X) %in% temp[, j]
       if (length((1:length(index))[index]) == 1) {
         X1 = cbind(X1, X[, index])
@@ -468,7 +468,7 @@
 
 # .nblock ----
 .nblock <- function(fdo) {
-  if (class(fdo)[1] != "facDesign")
+  if (class(fdo)[1] != "facDesign.c")
     stop(paste(deparse(substitute(fdo)), "needs to be an object of class 'facDesign'"))
   return(length(unique(fdo$block[[1]])))
 }

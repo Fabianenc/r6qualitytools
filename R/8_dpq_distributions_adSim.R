@@ -1,34 +1,30 @@
 #### WEIBULL3 ####
-#' @title dweibull3: The Weibull Distribution (3 Parameter)
-#' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
-#'
-#' @usage
-#' dweibull3(x, shape, scale, threshold)
-#' pweibull3(q, shape, scale, threshold)
-#' qweibull3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter of the Weibull distribution. Default is 1.
-#' @param scale The scale parameter of the Weibull distribution. Default is 1.
-#' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
-#' @param ... Additional arguments passed to \code{uniroot} for \code{qweibull3}.
-#'
-#' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
-#' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
-#'
-#' @examples
-#' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
-dweibull3 <- function(x,shape,scale,threshold)
-{
+dweibull3 <- function(x,shape,scale,threshold){
+  #' @title dweibull3: The Weibull Distribution (3 Parameter)
+  #' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
+  #'
+  #' @usage
+  #' dweibull3(x, shape, scale, threshold)
+  #'
+  #' @param x A numeric vector of quantiles.
+  #' @param shape The shape parameter of the Weibull distribution. Default is 1.
+  #' @param scale The scale parameter of the Weibull distribution. Default is 1.
+  #' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
+  #'
+  #' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
+  #' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
+  #'
+  #' @examples
+  #' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
+
   if(missing(x))
     stop("x must be a vector")
   if(missing(threshold))
@@ -47,36 +43,32 @@ dweibull3 <- function(x,shape,scale,threshold)
   return(unlist(lapply(x,temp)))
 }
 
-#' @title pweibull3: The Weibull Distribution (3 Parameter)
-#' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
-#'
-#' @usage
-#' dweibull3(x, shape, scale, threshold)
-#' pweibull3(q, shape, scale, threshold)
-#' qweibull3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter of the Weibull distribution. Default is 1.
-#' @param scale The scale parameter of the Weibull distribution. Default is 1.
-#' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
-#' @param ... Additional arguments passed to \code{uniroot} for \code{qweibull3}.
-#'
-#' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
-#' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
-#'
-#' @examples
-#' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
-pweibull3 <- function(q,shape,scale,threshold)
-{
+
+pweibull3 <- function(q,shape,scale,threshold){
+  #' @title pweibull3: The Weibull Distribution (3 Parameter)
+  #' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
+  #'
+  #' @usage
+  #' pweibull3(q, shape, scale, threshold)
+  #'
+  #' @param q A numeric vector of quantiles.
+  #' @param shape The shape parameter of the Weibull distribution. Default is 1.
+  #' @param scale The scale parameter of the Weibull distribution. Default is 1.
+  #' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
+  #'
+  #' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
+  #' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
+  #'
+  #' @examples
+  #' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
   if(missing(q))
     stop("q must be a vector")
   if(missing(threshold))
@@ -95,36 +87,33 @@ pweibull3 <- function(q,shape,scale,threshold)
   return(unlist(lapply(q,temp)))
 }
 
-#' @title qweibull3: The Weibull Distribution (3 Parameter)
-#' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
-#'
-#' @usage
-#' dweibull3(x, shape, scale, threshold)
-#' pweibull3(q, shape, scale, threshold)
-#' qweibull3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter of the Weibull distribution. Default is 1.
-#' @param scale The scale parameter of the Weibull distribution. Default is 1.
-#' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
-#' @param ... Additional arguments passed to \code{uniroot} for \code{qweibull3}.
-#'
-#' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
-#' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
-#'
-#' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
-#'
-#' @examples
-#' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
-qweibull3 <- function(p,shape,scale,threshold,...)
-{
+
+qweibull3 <- function(p,shape,scale,threshold,...){
+  #' @title qweibull3: The Weibull Distribution (3 Parameter)
+  #' @description Density function, distribution function, and quantile function for the Weibull distribution with a threshold parameter.
+  #'
+  #' @usage
+  #' qweibull3(p, shape, scale, threshold, ...)
+  #'
+  #' @param p A numeric vector of probabilities.
+  #' @param shape The shape parameter of the Weibull distribution. Default is 1.
+  #' @param scale The scale parameter of the Weibull distribution. Default is 1.
+  #' @param threshold The threshold (or location) parameter of the Weibull distribution. Default is 0.
+  #' @param ... Additional arguments passed to \code{uniroot} for \code{qweibull3}.
+  #'
+  #' @details The Weibull distribution with the \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density function given by:
+  #' \deqn{f(x) = \frac{c}{\alpha} \left(\frac{x - \zeta}{\alpha}\right)^{c-1} \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x - \zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return \code{dweibull3} returns the density, \code{pweibull3} returns the distribution function, and \code{qweibull3} returns the quantile function for the Weibull distribution with a threshold.
+  #'
+  #' @examples
+  #' dweibull3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pweibull3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qweibull3(p = temp, scale = 1, shape = 5, threshold = 0)
   if(missing(p))
     stop("p must be a vector")
   if(missing(threshold))
@@ -143,42 +132,37 @@ qweibull3 <- function(p,shape,scale,threshold,...)
 }
 
 #### LOG-NORM3 ####
-#' @title dlnorm3: The Lognormal Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Lognormal distribution.
-#'
-#' @usage
-#' dlnorm3(x, meanlog, sdlog, threshold)
-#' plnorm3(q, meanlog, sdlog, threshold)
-#' qlnorm3(p, meanlog, sdlog, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
-#'
-#' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
-#'
-#' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
-#'
-#' @return
-#' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
-#'
-#' @examples
-#' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp
-#' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
-dlnorm3 <- function(x,meanlog,sdlog,threshold)
-{
+dlnorm3 <- function(x,meanlog,sdlog,threshold){
+  #' @title dlnorm3: The Lognormal Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Lognormal distribution.
+  #'
+  #' @usage
+  #' dlnorm3(x, meanlog, sdlog, threshold)
+  #'
+  #' @param x A numeric vector of quantiles.
+  #' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #'
+  #' @details
+  #' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
+  #'
+  #' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
+  #'
+  #' @return
+  #' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
+  #'
+  #' @examples
+  #' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp
+  #' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
   if(missing(x))
     stop("x must be a vector")
   if(missing(threshold))
@@ -197,42 +181,37 @@ dlnorm3 <- function(x,meanlog,sdlog,threshold)
   return(unlist(lapply(x,temp)))
 }
 
-#' @title plnorm3: The Lognormal Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Lognormal distribution.
-#'
-#' @usage
-#' dlnorm3(x, meanlog, sdlog, threshold)
-#' plnorm3(q, meanlog, sdlog, threshold)
-#' qlnorm3(p, meanlog, sdlog, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
-#'
-#' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
-#'
-#' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
-#'
-#' @return
-#' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
-#'
-#' @examples
-#' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp
-#' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
-plnorm3 <- function(q,meanlog,sdlog,threshold)
-{
+plnorm3 <- function(q,meanlog,sdlog,threshold){
+  #' @title plnorm3: The Lognormal Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Lognormal distribution.
+  #'
+  #' @usage
+  #' plnorm3(q, meanlog, sdlog, threshold)
+  #'
+  #' @param q A numeric vector of quantiles.
+  #' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #'
+  #' @details
+  #' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
+  #'
+  #' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
+  #'
+  #' @return
+  #' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
+  #'
+  #' @examples
+  #' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp
+  #' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
   if(missing(q))
     stop("q must be a vector")
   if(missing(threshold))
@@ -251,42 +230,39 @@ plnorm3 <- function(q,meanlog,sdlog,threshold)
   return(unlist(lapply(q,temp)))
 }
 
-#' @title qlnorm3: The Lognormal Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Lognormal distribution.
-#'
-#' @usage
-#' dlnorm3(x, meanlog, sdlog, threshold)
-#' plnorm3(q, meanlog, sdlog, threshold)
-#' qlnorm3(p, meanlog, sdlog, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
-#'
-#' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
-#'
-#' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
-#'
-#' @return
-#' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
-#'
-#' @examples
-#' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
-#' temp
-#' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
-qlnorm3 <- function(p,meanlog,sdlog,threshold,...)
-{
+
+qlnorm3 <- function(p,meanlog,sdlog,threshold,...){
+  #' @title qlnorm3: The Lognormal Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Lognormal distribution.
+  #'
+  #' @usage
+  #' qlnorm3(p, meanlog, sdlog, threshold, ...)
+  #'
+  #' @param p A numeric vector of probabilities.
+  #' @param meanlog,sdlog The mean and standard deviation of the distribution on the log scale with default values of \code{0} and \code{1} respectively.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #' @param ... Additional arguments that can be passed to \code{uniroot}.
+  #'
+  #' @details
+  #' The Lognormal distribution with \code{meanlog} parameter zeta, \code{sdlog} parameter sigma, and \code{threshold} parameter theta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{1}{\sqrt{2\pi}\sigma(x-\theta)}\exp\left(-\frac{(\log(x-\theta)-\zeta)^2}{2\sigma^2}\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = \Phi\left(\frac{\log(x-\theta)-\zeta}{\sigma}\right)}
+  #'
+  #' where \eqn{\Phi} is the cumulative distribution function of the standard normal distribution.
+  #'
+  #' @return
+  #' \code{dlnorm3} gives the density, \code{plnorm3} gives the distribution function, and \code{qlnorm3} gives the quantile function.
+  #'
+  #' @examples
+  #' dlnorm3(x = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp <- plnorm3(q = 2, meanlog = 0, sdlog = 1/8, threshold = 1)
+  #' temp
+  #' qlnorm3(p = temp, meanlog = 0, sdlog = 1/8, threshold = 1)
   if(missing(p))
     stop("p must be a vector")
   if(missing(meanlog))
@@ -305,41 +281,36 @@ qlnorm3 <- function(p,meanlog,sdlog,threshold,...)
 }
 
 #### GAMMA3 ####
-#' @title dgamma3: The gamma Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Gamma distribution.
-#'
-#' @usage
-#' dgamma3(x, shape, scale, threshold)
-#' pgamma3(q, shape, scale, threshold)
-#' qgamma3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter, default is \code{1}.
-#' @param scale The scale parameter, default is \code{1}.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
-#'
-#' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' @return
-#' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
-#'
-#' @examples
-#' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
-dgamma3 <- function(x,shape,scale,threshold)
-{
+dgamma3 <- function(x,shape,scale,threshold){
+  #' @title dgamma3: The gamma Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Gamma distribution.
+  #'
+  #' @usage
+  #' dgamma3(x, shape, scale, threshold)
+  #'
+  #' @param x A numeric vector of quantiles.
+  #' @param shape The shape parameter, default is \code{1}.
+  #' @param scale The scale parameter, default is \code{1}.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #'
+  #' @details
+  #' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return
+  #' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
+  #'
+  #' @examples
+  #' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
   if(missing(x))
     stop("x must be a vector")
   if(missing(threshold))
@@ -357,41 +328,36 @@ dgamma3 <- function(x,shape,scale,threshold)
   return(unlist(lapply(x,temp)))
 }
 
-#' @title pgamma3: The gamma Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Gamma distribution.
-#'
-#' @usage
-#' dgamma3(x, shape, scale, threshold)
-#' pgamma3(q, shape, scale, threshold)
-#' qgamma3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter, default is \code{1}.
-#' @param scale The scale parameter, default is \code{1}.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
-#'
-#' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' @return
-#' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
-#'
-#' @examples
-#' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
-pgamma3 <- function(q,shape,scale,threshold)
-{
+
+pgamma3 <- function(q,shape,scale,threshold){
+  #' @title pgamma3: The gamma Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Gamma distribution.
+  #'
+  #' @usage
+  #' pgamma3(q, shape, scale, threshold)
+  #'
+  #' @param q A numeric vector of quantiles.
+  #' @param shape The shape parameter, default is \code{1}.
+  #' @param scale The scale parameter, default is \code{1}.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #' @details
+  #' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return
+  #' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
+  #'
+  #' @examples
+  #' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
   if(missing(q))
     stop("q must be a vector")
   if(missing(threshold))
@@ -410,41 +376,38 @@ pgamma3 <- function(q,shape,scale,threshold)
   return(unlist(lapply(q,temp)))
 }
 
-#' @title qgamma3: The gamma Distribution (3 Parameter)
-#' @description
-#' Density function, distribution function, and quantile function for the Gamma distribution.
-#'
-#' @usage
-#' dgamma3(x, shape, scale, threshold)
-#' pgamma3(q, shape, scale, threshold)
-#' qgamma3(p, shape, scale, threshold, ...)
-#'
-#' @param x,q A numeric vector of quantiles.
-#' @param p A numeric vector of probabilities.
-#' @param shape The shape parameter, default is \code{1}.
-#' @param scale The scale parameter, default is \code{1}.
-#' @param threshold The threshold parameter, default is \code{0}.
-#' @param ... Additional arguments that can be passed to \code{uniroot}.
-#'
-#' @details
-#' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
-#'
-#' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' The cumulative distribution function is given by:
-#'
-#' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
-#'
-#' @return
-#' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
-#'
-#' @examples
-#' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
-#' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
-#' temp
-#' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
-qgamma3 <- function(p,shape,scale,threshold,...)
-{
+
+qgamma3 <- function(p,shape,scale,threshold,...){
+  #' @title qgamma3: The gamma Distribution (3 Parameter)
+  #' @description
+  #' Density function, distribution function, and quantile function for the Gamma distribution.
+  #'
+  #' @usage
+  #' qgamma3(p, shape, scale, threshold, ...)
+  #'
+  #' @param p A numeric vector of probabilities.
+  #' @param shape The shape parameter, default is \code{1}.
+  #' @param scale The scale parameter, default is \code{1}.
+  #' @param threshold The threshold parameter, default is \code{0}.
+  #' @param ... Additional arguments that can be passed to \code{uniroot}.
+  #'
+  #' @details
+  #' The Gamma distribution with \code{scale} parameter alpha, \code{shape} parameter c, and \code{threshold} parameter zeta has a density given by:
+  #'
+  #' \deqn{f(x) = \frac{c}{\alpha}\left(\frac{x-\zeta}{\alpha}\right)^{c-1}\exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' The cumulative distribution function is given by:
+  #'
+  #' \deqn{F(x) = 1 - \exp\left(-\left(\frac{x-\zeta}{\alpha}\right)^c\right)}
+  #'
+  #' @return
+  #' \code{dgamma3} gives the density, \code{pgamma3} gives the distribution function, and \code{qgamma3} gives the quantile function.
+  #'
+  #' @examples
+  #' dgamma3(x = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp <- pgamma3(q = 1, scale = 1, shape = 5, threshold = 0)
+  #' temp
+  #' qgamma3(p = temp, scale = 1, shape = 5, threshold = 0)
   if(missing(p))
     stop("p must be a vector")
   if(missing(threshold))
@@ -474,7 +437,7 @@ adSim <- function(x, distribution = "normal", b = 10000){
   #' adSim(x, distribution = "normal", b = 10000)
   #'
   #' @param x A numeric vector.
-  #' @param distribution A character string specifying the distribution to test. Recognized distributions include \code{"cauchy"}, \code{"exponential"}, \code{"gumbel"}, \code{"gamma"}, \code{"log-normal"}, \code{"lognormal"}, \code{"logistic"}, \code{"normal"}, and \code{"weibull"}.
+  #' @param distribution A character string specifying the distribution to test. Recognized distributions include \code{`cauchy`}, \code{`exponential`}, \code{`gumbel`}, \code{`gamma`}, \code{`log-normal`}, \code{`lognormal`}, \code{`logistic`}, \code{`normal`}, and \code{`weibull`}.
   #' @param b A numeric value indicating the number of bootstraps to perform. Allowed values range from 1000 to 1,000,000. If \code{b} is set to \code{NA}, the Anderson-Darling test will be applied without simulation. Note that higher values of \code{b} can significantly increase computation time, potentially taking hours depending on the distribution, sample size, and computer system.
   #'
   #' @details The function first estimates the parameters for the tested distribution, typically using Maximum-Likelihood Estimation (MLE) via the \code{\link{FitDistr}} function. For normal and log-normal distributions, parameters are estimated by the mean and standard deviation. Cauchy distribution parameters are fitted by the sums of the weighted order statistic when using tabled critical values. The Anderson-Darling statistic is then calculated based on these estimated parameters.
@@ -498,11 +461,11 @@ adSim <- function(x, distribution = "normal", b = 10000){
   #' adSim(x, "cauchy", NA)
   #' adSim(x, "exponential", 2000)
   #' adSim(x, "gumbel", 2000)
-  #' x <- rgamma(n = 25, shape = 1)
-  #' adSim(x, "gamma", 2000)
-  #' adSim(x, "log-normal", 2000)
-  #' adSim(x, "lognormal", 2000)
-  #' adSim(x, "weibull", 2000)
+  #' #x <- rgamma(n = 25, shape = 1)
+  #' #adSim(x, "gamma", 2000)
+  #' #adSim(x, "log-normal", 2000)
+  #' #adSim(x, "lognormal", 2000)
+  #' #adSim(x, "weibull", 2000)
 
 
   if(mode(x) != "numeric")

@@ -2,6 +2,9 @@
 ######################### DISTRIBUTION - AUXILIARES #########################
 #############################################################################
 
+# Avoid note: no visible binding for global variable ----
+utils::globalVariables(c("Cum.Frequency", "Frequency", "Names", "effect_", "fits", "means", "mid", "value", "x", "x.numeric", "x_lab", "x_median", "y", "y_FUN"))
+
 # .cg ----
 .cg=function(x, target, tolerance=c(-1,1), ref.interval, facCg, facCgk)
 {

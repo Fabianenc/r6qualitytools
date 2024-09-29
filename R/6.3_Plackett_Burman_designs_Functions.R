@@ -15,10 +15,10 @@ pbDesign <- function(n, k , randomize = TRUE, replicates = 1) {
   #' @note This function creates Placket-Burman Designs down to n=26. Bigger Designs are not implemented because of lack in practicability. For the creation either the number of factors or the number of trials can be denoted. Wrong combinations will lead to an error message. Originally Placket-Burman-Design are applicable for number of trials divisible by 4. If n is not divisble by 4 this function will take the next larger Placket-Burman Design and truncate the last rows and columns.
   #' @seealso
   #' \itemize{
-  #' \item{\code{\link{facDesig}}: for 2^k factorial designs.}
+  #' \item{\code{\link{facDesign}}: for 2^k factorial designs.}
   #' \item{\code{\link{rsmDesign}}: for response surface designs.}
-  #' \item{\code{\link{fracDesig}}: for fractional factorial design.}
-  #' \item{\code{\link{gageRRDesig}}: for gage designs.}
+  #' \item{\code{\link{fracDesign}}: for fractional factorial design.}
+  #' \item{\code{\link{gageRRDesign}}: for gage designs.}
   #' }
   #' @examples
   #' pbdo<- pbDesign(n=5)

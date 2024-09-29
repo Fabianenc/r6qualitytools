@@ -4,12 +4,12 @@
 
 # gageRR.c ----
 
-#' @title gageRR-class: Class "gageRR"
+#' @title gageRR-class: Class `gageRR`
 #' @description R6 Class for Gage R&R (Repeatability and Reproducibility) Analysis
 #' @field X Data frame containing the measurement data.
 #' @field ANOVA List containing the results of the Analysis of Variance (ANOVA) for the gage study.
 #' @field RedANOVA List containing the results of the reduced ANOVA.
-#' @field method Character string specifying the method used for the analysis (e.g., \code{"crossed"}, \code{"nested"}).
+#' @field method Character string specifying the method used for the analysis (e.g., \code{`crossed`}, \code{`nested`}).
 #' @field Estimates List of estimates including variance components, repeatability, and reproducibility.
 #' @field Varcomp List of variance components.
 #' @field Sigma Numeric value representing the standard deviation of the measurement system.
@@ -21,7 +21,7 @@
 #' @field b Factor levels for operator.
 #' @field a Factor levels for part.
 #' @field y Numeric vector or matrix containing the measurement responses.
-#' @field facNames Character vector specifying the names of the factors (e.g., \code{"Operator"}, \code{"Part"}).
+#' @field facNames Character vector specifying the names of the factors (e.g., \code{`Operator`}, \code{`Part`}).
 #' @field numO Integer representing the number of operators.
 #' @field numP Integer representing the number of parts.
 #' @field numM Integer representing the number of measurements per part-operator combination.
@@ -45,7 +45,7 @@
 #' # Using the plots
 #' gdo$plot()
 #' gdo$errorPlot()
-gageRR.c <- R6Class("gageRR",
+gageRR.c <- R6Class("gageRR.c",
                     public = list(
                       X = NULL,
                       ANOVA = NULL,
@@ -570,14 +570,14 @@ gageRR.c <- R6Class("gageRR",
                       },
 
 
-                      #' @description The data from an object of class \code{gageRR} can be analyzed by running “Error Charts” of the individual deviations from the accepted rference values. These “Error Charts” are provided by the function \code{errorPlot}.
+                      #' @description The data from an object of class \code{gageRR} can be analyzed by running `Error Charts` of the individual deviations from the accepted rference values. These `Error Charts` are provided by the function \code{errorPlot}.
                       #' @param main a main title for the plot.
                       #' @param xlab A character string for the x-axis label.
                       #' @param ylab A character string for the y-axis label.
                       #' @param col Plotting color.
                       #' @param pch An integer specifying a symbol or a single character to be used as the default in plotting points.
                       #' @param ylim The y limits of the plot.
-                      #' @param legend A logical value specifying whether a legend is plotted automatically. By default legend is set to ‘TRUE’.
+                      #' @param legend A logical value specifying whether a legend is plotted automatically. By default legend is set to `TRUE`.
                       #' @examples
                       #' # Create gageRR-object
                       #' gdo = gageRRDesign(Operators = 3, Parts = 10, Measurements = 3, randomize = FALSE)
@@ -688,7 +688,7 @@ gageRR.c <- R6Class("gageRR",
                       #' @param ylab A character string for the y-axis label.
                       #' @param col Plotting color.
                       #' @param ylim The y limits of the plot.
-                      #' @param legend A logical value specifying whether a legend is plotted automatically. By default legend is set to ‘TRUE’.
+                      #' @param legend A logical value specifying whether a legend is plotted automatically. By default legend is set to `TRUE`.
                       #' @examples
                       #' # Create gageRR-object
                       #' gdo = gageRRDesign(Operators = 3, Parts = 10, Measurements = 3, randomize = FALSE)
@@ -794,7 +794,7 @@ gageRR.c <- R6Class("gageRR",
                       #' @param xlab A character string for the x-axis label.
                       #' @param ylab A character string for the y-axis label.
                       #' @param col Plotting color.
-                      #' @param single A logical value.If ‘TRUE’ a new graphic device will be opened for each plot. By default \code{single} is set to ‘FALSE’.
+                      #' @param single A logical value.If `TRUE` a new graphic device will be opened for each plot. By default \code{single} is set to `FALSE`.
                       #' @examples
                       #' # Create gageRR-object
                       #' gdo = gageRRDesign(Operators = 3, Parts = 10, Measurements = 3, randomize = FALSE)
@@ -891,7 +891,7 @@ gageRR.c <- R6Class("gageRR",
                       #' @param ylab A character string for the y-axis label.
                       #' @param col Plotting color.
                       #' @param cex.lab The magnification to be used for x and y labels relative to the current setting of cex.
-                      #' @param fun Optional function that will be applied to the multiple readings of each part. fun should be an object of class \code{function} like \code{mean},\code{median}, \code{sum}, etc. By default, \code{fun} is set to ‘NULL’ and all readings will be plotted.
+                      #' @param fun Optional function that will be applied to the multiple readings of each part. fun should be an object of class \code{function} like \code{mean},\code{median}, \code{sum}, etc. By default, \code{fun} is set to `NULL` and all readings will be plotted.
                       #' @examples
                       #' # Create gageRR-object
                       #' gdo = gageRRDesign(Operators = 3, Parts = 10, Measurements = 3, randomize = FALSE)
