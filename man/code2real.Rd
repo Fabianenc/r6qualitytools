@@ -13,6 +13,9 @@ code2real(low, high, codedValue)
 
 \item{codedValue}{Numeric value giving the coded value that will be calculated.}
 }
+\value{
+The function return a real value of a coded value
+}
 \description{
 Function to calculate the real value of a coded value.
 }

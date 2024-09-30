@@ -36,6 +36,10 @@ By default, \code{distribution} is set to \code{`weibull`}.}
 \description{
 Calculates the most likely parameters for a given distribution.
 }
+\examples{
+data1 <- rnorm(100, mean = 5, sd = 2)
+distribution(data1, distrib = "normal")
+}
 \seealso{
 \code{\link{Distr}}, \code{\link{DistrCollection}}
 }

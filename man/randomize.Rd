@@ -19,3 +19,7 @@ An object of class \code{\link{facDesign.c}} with the run order randomized.
 \description{
 Function to do randomize the run order of factorial designs.
 }
+\examples{
+dfrac <- fracDesign(k = 3)
+randomize(dfrac)
+}

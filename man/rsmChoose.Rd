@@ -12,6 +12,9 @@ Returns an object of class \code{\link{facDesign.c}}.
 \description{
 Designs displayed are central composite designs with orthogonal blocking and near rotatability. The function allows users to choose a design by clicking with the mouse into the appropriate field.
 }
+\examples{
+rsmChoose()
+}
 \seealso{
 \code{\link{fracChoose}}, \code{\link{rsmDesign}}
 }

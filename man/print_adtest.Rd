@@ -18,6 +18,14 @@ By default \code{quote} is set to \code{TRUE}.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
+\value{
+The function returns a summary of Anderson Darling Test
+}
 \description{
 Function to show \code{adtest}.
+}
+\examples{
+data <- rnorm(20, mean = 20)
+pcr1<-pcr(data, "normal", lsl = 17, usl = 23, plot = F)
+print_adtest(pcr1$adTest)
 }

@@ -18,6 +18,9 @@ interactionPlot(dfac, response = NULL, fun = mean, main, col = 1:2)
 
 \item{col}{Vector of colors for the plot. Single colors can be given as character strings or numeric values. Default is \code{1:2}.}
 }
+\value{
+Return an interaction plot for the factors in a factorial design.
+}
 \description{
 Creates an interaction plot for the factors in a factorial design to visualize the interaction effects between them.
 }

@@ -64,7 +64,33 @@
 <dd><p>numeric value - up to depth-way confounded interactions are printed</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
 
+<p>The function returns a summary of the factors confounded.</p>
+    </div>
+
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">vp.frac</span> <span class="op">=</span> <span class="fu"><a href="fracDesign.html">fracDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">4</span>, gen <span class="op">=</span> <span class="st">"D=ABC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">confounds</span><span class="op">(</span><span class="va">vp.frac</span>,depth<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Defining relations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> I =  ABCD 		Columns: 1 2 3 4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Resolution:  IV </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alias Structure:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 	is confounded with	 BCD </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 	is confounded with	 ACD </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 	is confounded with	 ABD </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 	is confounded with	 ABC </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AB 	is confounded with	 CD </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AC 	is confounded with	 BD </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AD 	is confounded with	 BC </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ABCD 	is confounded with	  </span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

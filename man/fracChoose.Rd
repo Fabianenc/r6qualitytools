@@ -12,6 +12,9 @@ fracChoose()
 \description{
 Designs displayed are the classic minimum abberation designs. Choosing a design is done by clicking with the mouse into the appropriate field.
 }
+\examples{
+fracChoose()
+}
 \seealso{
 \code{\link{fracDesign}}, \code{\link{facDesign}}, \code{\link{rsmChoose}}, \code{\link{rsmDesign}}
 }

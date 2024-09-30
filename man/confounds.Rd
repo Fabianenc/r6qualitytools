@@ -11,6 +11,13 @@ confounds(x, depth = 2)
 
 \item{depth}{numeric value - up to depth-way confounded interactions are printed}
 }
+\value{
+The function returns a summary of the factors confounded.
+}
 \description{
 Function to display confounded effects of a fractional factorial design in a human readable way.
+}
+\examples{
+vp.frac = fracDesign(k = 4, gen = "D=ABC")
+confounds(vp.frac,depth=5)
 }

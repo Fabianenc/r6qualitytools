@@ -27,6 +27,9 @@ Shows a matrix of possible taguchi designs.
 \code{oaChoose} returns possible taguchi designs. Specifying the number of factor1 factors with level1 levels (factors1 = 2, level1 = 3 means 2 factors with 3 factor levels) and factor2 factors with level2 levels and desired interactions one or more taguchi designs are suggested.
 If all parameters are set to `0`, a matrix of possible taguchi designs is shown.
 }
+\examples{
+oaChoose()
+}
 \seealso{
 \itemize{
 \item{\code{\link{facDesign}}: for 2^k factorial designs.}

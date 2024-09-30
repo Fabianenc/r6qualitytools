@@ -15,3 +15,7 @@ The function \code{as.data.frame_facDesign} returns a data frame.
 \description{
 Converts an object of class \code{\link{facDesign.c}} into a data frame.
 }
+\examples{
+fdo <- fracDesign(k = 2, replicates = 3, centerCube = 4)
+as.data.frame_facDesign(fdo)
+}
