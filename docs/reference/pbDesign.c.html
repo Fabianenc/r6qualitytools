@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>pbDesign</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/6.2_Plackett_Burman_designs_Classes.R" class="external-link"><code>R/6.2_Plackett_Burman_designs_Classes.R</code></a></small>
       <div class="d-none name"><code>pbDesign.c.Rd</code></div>
     </div>
 
@@ -109,17 +112,17 @@
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-pbDesign-values"><code>pbDesign.c$values()</code></a></p></li>
-<li><p><a href="#method-pbDesign-units"><code>pbDesign.c$units()</code></a></p></li>
-<li><p><a href="#method-pbDesign-.factors"><code>pbDesign.c$.factors()</code></a></p></li>
-<li><p><a href="#method-pbDesign-names"><code>pbDesign.c$names()</code></a></p></li>
-<li><p><a href="#method-pbDesign-as.data.frame"><code>pbDesign.c$as.data.frame()</code></a></p></li>
-<li><p><a href="#method-pbDesign-print"><code>pbDesign.c$print()</code></a></p></li>
-<li><p><a href="#method-pbDesign-.response"><code>pbDesign.c$.response()</code></a></p></li>
-<li><p><a href="#method-pbDesign-.nfp"><code>pbDesign.c$.nfp()</code></a></p></li>
-<li><p><a href="#method-pbDesign-summary"><code>pbDesign.c$summary()</code></a></p></li>
-<li><p><a href="#method-pbDesign-clone"><code>pbDesign.c$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-pbDesign-values"></a><div class="section">
+<ul><li><p><a href="#method-pbDesign.c-values"><code>pbDesign.c$values()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-units"><code>pbDesign.c$units()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-.factors"><code>pbDesign.c$.factors()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-names"><code>pbDesign.c$names()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-as.data.frame"><code>pbDesign.c$as.data.frame()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-print"><code>pbDesign.c$print()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-.response"><code>pbDesign.c$.response()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-.nfp"><code>pbDesign.c$.nfp()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-summary"><code>pbDesign.c$summary()</code></a></p></li>
+<li><p><a href="#method-pbDesign.c-clone"><code>pbDesign.c$clone()</code></a></p></li>
+</ul></div><p></p><hr><a id="method-pbDesign.c-values"></a><div class="section">
 <h3 id="method-values-">Method <code>values()</code><a class="anchor" aria-label="anchor" href="#method-values-"></a></h3>
 <p>Get and set the <code>values</code> for an object of class <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
@@ -135,7 +138,7 @@
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-pbDesign-units"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-units"></a><div class="section">
 <h3 id="method-units-">Method <code><a href="https://rdrr.io/r/base/units.html" class="external-link">units()</a></code><a class="anchor" aria-label="anchor" href="#method-units-"></a></h3>
 <p>Get and set the <code>units</code> for an object of class <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
@@ -151,7 +154,7 @@
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-pbDesign-.factors"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-.factors"></a><div class="section">
 <h3 id="method-factors-">Method <code>.factors()</code><a class="anchor" aria-label="anchor" href="#method-factors-"></a></h3>
 <p>Get and set the <code>factors</code> in an object of class <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
@@ -167,7 +170,7 @@
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-pbDesign-names"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-names"></a><div class="section">
 <h3 id="method-names-">Method <code><a href="https://rdrr.io/r/base/names.html" class="external-link">names()</a></code><a class="anchor" aria-label="anchor" href="#method-names-"></a></h3>
 <p>Get and set the <code>names</code> in an object of class <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
@@ -183,7 +186,7 @@
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-pbDesign-as.data.frame"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-as.data.frame"></a><div class="section">
 <h3 id="method-as-data-frame-">Method <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code><a class="anchor" aria-label="anchor" href="#method-as-data-frame-"></a></h3>
 <p>Return a data frame with the information of the object <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
@@ -191,7 +194,7 @@
 </div>
 
 
-</div><p></p><hr><a id="method-pbDesign-print"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-print"></a><div class="section">
 <h3 id="method-print-">Method <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code><a class="anchor" aria-label="anchor" href="#method-print-"></a></h3>
 <p>Methods for function <code>print</code> in Package <code>base</code>.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
@@ -199,7 +202,7 @@
 </div>
 
 
-</div><p></p><hr><a id="method-pbDesign-.response"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-.response"></a><div class="section">
 <h3 id="method-response-">Method <code>.response()</code><a class="anchor" aria-label="anchor" href="#method-response-"></a></h3>
 <p>Get and set the the <code>response</code> in an object of class <code>pbDesign</code>.</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
@@ -215,7 +218,7 @@
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-pbDesign-.nfp"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-.nfp"></a><div class="section">
 <h3 id="method-nfp-">Method <code>.nfp()</code><a class="anchor" aria-label="anchor" href="#method-nfp-"></a></h3>
 <p>Prints a summary of the factors attributes including their low, high, name, unit, and type.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
@@ -223,7 +226,7 @@
 </div>
 
 
-</div><p></p><hr><a id="method-pbDesign-summary"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-summary"></a><div class="section">
 <h3 id="method-summary-">Method <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code><a class="anchor" aria-label="anchor" href="#method-summary-"></a></h3>
 <p>Methods for function <code>summary</code> in Package <code>base</code>.</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
@@ -231,7 +234,7 @@
 </div>
 
 
-</div><p></p><hr><a id="method-pbDesign-clone"></a><div class="section">
+</div><p></p><hr><a id="method-pbDesign.c-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>

@@ -153,6 +153,9 @@ distribution <- function(x = NULL, distrib = "weibull", ...) {
   #' By default, \code{distribution} is set to \code{`weibull`}.
   #' @param ... Additional arguments to be passed to the fitting function.
   #' @return \code{distribution()} returns an object of class \code{DistrCollection}.
+  #' @examples
+  #' data1 <- rnorm(100, mean = 5, sd = 2)
+  #' distribution(data1, distrib = "normal")
   #' @seealso \code{\link{Distr}}, \code{\link{DistrCollection}}
 
   distr_coll <- DistrCollection$new()
@@ -1754,6 +1757,11 @@ print_adtest <- function(x, digits = 4, quote = TRUE, prefix = "", ...) {
   #' By default \code{quote} is set to \code{TRUE}.
   #' @param prefix Single character or character string that will be printed in front of \code{x}.
   #' @param ... Further arguments passed to or from other methods.
+  #' @return The function returns a summary of Anderson Darling Test
+  #' @examples
+  #' data <- rnorm(20, mean = 20)
+  #' pcr1<-pcr(data, "normal", lsl = 17, usl = 23, plot = F)
+  #' print_adtest(pcr1$adTest)
 
 
   cat("\n")
@@ -1867,7 +1875,6 @@ pcr <- function (x, distribution = "normal", lsl, usl, target, boxcox = FALSE,
   #' @return The function returns a list with the following components:
   #'
   #' The function \code{pcr} returns a list with \code{lambda}, \code{cp}, \code{cpl}, \code{cpu}, \code{ppt}, \code{ppl}, \code{ppu}, \code{A}, \code{usl}, \code{lsl}, \code{target}, \code{asTest}, \code{plot}.
-
   #' @examples
   #' set.seed(1234)
   #' data <- rnorm(20, mean = 20)

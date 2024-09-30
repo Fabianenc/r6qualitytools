@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>wirePlot3: function to create a ternary plot (3D wire plot)</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/4.3_Mix_designs_Functions.R" class="external-link"><code>R/4.3_Mix_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>wirePlot3.Rd</code></div>
     </div>
 
@@ -104,15 +107,15 @@
 
 
 <dt>form</dt>
-<dd><p>A character string or a formula with the syntax “y ~ A + B + C”.
-If form is a character string, it has to be one of the following:</p><ul><li><p>“linear”</p></li>
-<li><p>“quadratic”</p></li>
+<dd><p>A character string or a formula with the syntax `y ~ A + B + C`.
+If form is a character string, it has to be one of the following:</p><ul><li><p>`linear`</p></li>
+<li><p>`quadratic`</p></li>
 </ul><p>How the form influences the output is described in the reference listed below.
-By default, <code>form</code> is set to “linear”.</p></dd>
+By default, <code>form</code> is set to `linear`.</p></dd>
 
 
 <dt>col</dt>
-<dd><p>Character string specifying the color palette to use for the plot (e.g., <code>"Rainbow"</code>, <code>"Jet"</code>, <code>"Earth"</code>, <code>"Electric"</code>). Default is <code>"Rainbow"</code>.</p></dd>
+<dd><p>Character string specifying the color palette to use for the plot (e.g., <code>`Rainbow`</code>, <code>`Jet`</code>, <code>`Earth`</code>, <code>`Electric`</code>). Default is <code>`Rainbow`</code>.</p></dd>
 
 
 <dt>steps</dt>
@@ -139,7 +142,9 @@ By default, <code>steps</code> is set to 25.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#Example 1</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span> <span class="op">&lt;-</span> <span class="fu"><a href="mixDesign.html">mixDesign</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, center <span class="op">=</span> <span class="cn">FALSE</span>, axial <span class="op">=</span> <span class="cn">FALSE</span>, randomize <span class="op">=</span> <span class="cn">FALSE</span>, replicates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>, <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>, <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">.response</span><span class="op">(</span><span class="va">elongation</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -147,12 +152,18 @@ By default, <code>steps</code> is set to 25.</p></dd>
 <span class="r-in"><span><span class="va">mdo</span> <span class="op">&lt;-</span> <span class="fu"><a href="mixDesign.html">mixDesign</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>, center <span class="op">=</span> <span class="cn">FALSE</span>, axial <span class="op">=</span> <span class="cn">FALSE</span>, randomize <span class="op">=</span> <span class="cn">FALSE</span>, replicates  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">names</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"polyethylene"</span>, <span class="st">"polystyrene"</span>, <span class="st">"polypropylene"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">units</span><span class="op">(</span><span class="st">"percent"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>, <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>, <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">.response</span><span class="op">(</span><span class="va">elongation</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>, col <span class="op">=</span> <span class="st">"Jet"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"elongation ~ I(A^2) - B:A + I(C^2)"</span>, col <span class="op">=</span> <span class="st">"Electric"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>, col <span class="op">=</span> <span class="st">"Earth"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>,</span></span>
+<span class="r-in"><span>           col <span class="op">=</span> <span class="st">"Jet"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>,</span></span>
+<span class="r-in"><span>           form <span class="op">=</span> <span class="st">"elongation ~ I(A^2) - B:A + I(C^2)"</span>,</span></span>
+<span class="r-in"><span>           col <span class="op">=</span> <span class="st">"Electric"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">wirePlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>,</span></span>
+<span class="r-in"><span>           col <span class="op">=</span> <span class="st">"Earth"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

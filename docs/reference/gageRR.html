@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>gageRR: Gage R&amp;R - Gage Repeatability and Reproducibility</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/2.3_gageRR_Functions.R" class="external-link"><code>R/2.3_gageRR_Functions.R</code></a></small>
       <div class="d-none name"><code>gageRR.Rd</code></div>
     </div>
 
@@ -65,8 +68,8 @@
 
 
 <dt>method</dt>
-<dd><p>Character string specifying the Gage R&amp;R method. <code>“crossed”</code> which is the typical design for performing a Measurement Systems Analysis using Gage Repeatability and Reproducibility or <code>“nested”</code> which is used for destructive testing (i.e. the same part cannot be measured twice). Operators measure each a different sample of parts under the premise that the parts of each batch are alike.
-By default <code>method</code> is set to <code>“crossed”</code>.</p></dd>
+<dd><p>Character string specifying the Gage R&amp;R method. <code>`crossed`</code> which is the typical design for performing a Measurement Systems Analysis using Gage Repeatability and Reproducibility or <code>`nested`</code> which is used for destructive testing (i.e. the same part cannot be measured twice). Operators measure each a different sample of parts under the premise that the parts of each batch are alike.
+By default <code>method</code> is set to <code>`crossed`</code>.</p></dd>
 
 
 <dt>sigma</dt>
@@ -103,7 +106,8 @@ By default <code>dig</code> is set to `3`.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create de gageRR Design</span></span></span>
-<span class="r-in"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="gageRRDesign.html">gageRRDesign</a></span><span class="op">(</span>Operators <span class="op">=</span> <span class="fl">3</span>, Parts <span class="op">=</span> <span class="fl">10</span>, Measurements <span class="op">=</span> <span class="fl">3</span>, method <span class="op">=</span> <span class="st">"crossed"</span>, sigma <span class="op">=</span> <span class="fl">6</span>, randomize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="gageRRDesign.html">gageRRDesign</a></span><span class="op">(</span>Operators <span class="op">=</span> <span class="fl">3</span>, Parts <span class="op">=</span> <span class="fl">10</span>, Measurements <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>                       method <span class="op">=</span> <span class="st">"crossed"</span>, sigma <span class="op">=</span> <span class="fl">6</span>, randomize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">design</span><span class="op">$</span><span class="fu">response</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">design</span><span class="op">$</span><span class="va">X</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Results of de Design</span></span></span>
@@ -140,7 +144,7 @@ By default <code>dig</code> is set to `3`.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  **Number of Distinct Categories (truncated signal-to-noise-ratio) = 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gageRR" "R6"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gageRR.c" "R6"      </span>
 <span class="r-in"><span><span class="va">result</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gageRR-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>

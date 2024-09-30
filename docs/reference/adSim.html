@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>adSim: Bootstrap-based Anderson-Darling Test for Univariate</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/8_dpq_distributions_adSim.R" class="external-link"><code>R/8_dpq_distributions_adSim.R</code></a></small>
       <div class="d-none name"><code>adSim.Rd</code></div>
     </div>
 
@@ -58,7 +61,7 @@
 
 
 <dt>distribution</dt>
-<dd><p>A character string specifying the distribution to test. Recognized distributions include <code>"cauchy"</code>, <code>"exponential"</code>, <code>"gumbel"</code>, <code>"gamma"</code>, <code>"log-normal"</code>, <code>"lognormal"</code>, <code>"logistic"</code>, <code>"normal"</code>, and <code>"weibull"</code>.</p></dd>
+<dd><p>A character string specifying the distribution to test. Recognized distributions include <code>`cauchy`</code>, <code>`exponential`</code>, <code>`gumbel`</code>, <code>`gamma`</code>, <code>`log-normal`</code>, <code>`lognormal`</code>, <code>`logistic`</code>, <code>`normal`</code>, and <code>`weibull`</code>.</p></dd>
 
 
 <dt>b</dt>
@@ -107,13 +110,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      mean        sd </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31.290841  1.654959 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32.518599  2.093687 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1630756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3806083</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3763</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"logistic"</span>, <span class="fl">2000</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -124,30 +127,30 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$estimate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   location      scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31.2417425  0.9266437 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  location     scale </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32.570313  1.242767 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$sd</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  location     scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3242373 0.1532954 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4443204 0.2007438 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1582392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4358355</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.236</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"cauchy"</span>, <span class="cn">NA</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $distribution</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cauchy"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> location    scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32.50170  1.16384 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  location     scale </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34.028148  1.831827 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.542656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.917324</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;= 0.05"</span>
@@ -162,15 +165,15 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$estimate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       rate </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03195823 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03075163 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$sd</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        rate </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.006391647 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.006150327 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10.35008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10.07883</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
@@ -183,90 +186,20 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gumbel"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  location     scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30.508783  1.427039 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> location    scale </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31.48400  1.92032 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2602579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.587212</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.729</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1315</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">rgamma</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">25</span>, shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"gamma"</span>, <span class="fl">2000</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ... simulating the Anderson-Darling distribution by 2000 bootstraps for gamma distribution... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gamma"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$estimate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    shape     rate </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.064286 1.120371 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation$sd</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     shape      rate </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2665041 0.3548007 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.7124818</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0695</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"log-normal"</span>, <span class="fl">2000</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ... simulating the Anderson-Darling distribution by 2000 bootstraps for log-normal distribution... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "log-normal"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog     sdlog </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.589827  1.074007 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3326065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4985</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"lognormal"</span>, <span class="fl">2000</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ... simulating the Anderson-Darling distribution by 2000 bootstraps for lognormal distribution... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "lognormal"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog     sdlog </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.589827  1.074007 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3326065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4945</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">adSim</span><span class="op">(</span><span class="va">x</span>, <span class="st">"weibull"</span>, <span class="fl">2000</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ... simulating the Anderson-Darling distribution by 2000 bootstraps for weibull distribution... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "weibull"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $parameter_estimation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     shape     scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.9800946 0.9405223 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Anderson_Darling</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6412637</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.082</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="co">#x &lt;- rgamma(n = 25, shape = 1)</span></span></span>
+<span class="r-in"><span><span class="co">#adSim(x, "gamma", 2000)</span></span></span>
+<span class="r-in"><span><span class="co">#adSim(x, "log-normal", 2000)</span></span></span>
+<span class="r-in"><span><span class="co">#adSim(x, "lognormal", 2000)</span></span></span>
+<span class="r-in"><span><span class="co">#adSim(x, "weibull", 2000)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

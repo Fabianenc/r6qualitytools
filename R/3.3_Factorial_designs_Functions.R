@@ -9,6 +9,9 @@ as.data.frame_facDesign <- function(dfac) {
   #' @usage as.data.frame_facDesign(dfac)
   #' @param dfac An object of class \code{\link{facDesign.c}} that you want to convert to a data frame.
   #' @return The function \code{as.data.frame_facDesign} returns a data frame.
+  #' @examples
+  #' fdo <- fracDesign(k = 2, replicates = 3, centerCube = 4)
+  #' as.data.frame_facDesign(fdo)
 
   if (nrow(dfac$cube)>0) {
     frameOut = dfac$cube
@@ -111,6 +114,9 @@ randomize <- function (fdo, random.seed, so = FALSE)
   #' @param random.seed Seed for randomness.
   #' @param so Logical value specifying whether the standard order should be used or not. By default \code{so} is set to \code{FALSE}.
   #' @return An object of class \code{\link{facDesign.c}} with the run order randomized.
+  #' @examples
+  #' dfrac <- fracDesign(k = 3)
+  #' randomize(dfrac)
 
   if (missing(random.seed))
     set.seed(93275938)
@@ -508,6 +514,7 @@ interactionPlot <- function(dfac, response = NULL, fun = mean, main, col = 1:2) 
   #' @param col Vector of colors for the plot. Single colors can be given as character strings or numeric values. Default is \code{1:2}.
   #' @details \code{interactionPlot()} displays interactions for an object of class \code{facDesign} (i.e. 2^k full or 2^k-p fractional factorial design).
   #' Parts of the original interactionPlot were integrated.
+  #' @return Return an interaction plot for the factors in a factorial design.
   #' @seealso \code{\link{fracDesign}}, \code{\link{facDesign}}
   #' @examples
   #' # Example 1
@@ -1664,6 +1671,10 @@ confounds <- function(x, depth = 2) {
   #' @description Function to display confounded effects of a fractional factorial design in a human readable way.
   #' @param x An object of class \code{\link{facDesign.c}}.
   #' @param depth numeric value - up to depth-way confounded interactions are printed
+  #' @return The function returns a summary of the factors confounded.
+  #' @examples
+  #' vp.frac = fracDesign(k = 4, gen = "D=ABC")
+  #' confounds(vp.frac,depth=5)
 
   varName = deparse(substitute(x))
   identityList = x$identity()
@@ -1735,6 +1746,8 @@ fracChoose <- function() {
   #' @title fracChoose: Choosing a fractional or full factorial design from a table.
   #' @description Designs displayed are the classic minimum abberation designs. Choosing a design is done by clicking with the mouse into the appropriate field.
   #' @return \code{fracChoose} returns an object of class \code{\link{facDesign.c}}.
+  #' @examples
+  #' fracChoose()
   #' @seealso \code{\link{fracDesign}}, \code{\link{facDesign}}, \code{\link{rsmChoose}}, \code{\link{rsmDesign}}
 
   genList = list(6 * 9)
@@ -1838,6 +1851,7 @@ code2real = function(low, high, codedValue) {
   #' @param low Numeric value giving the lower boundary.
   #' @param high Numeric value giving the higher boundary.
   #' @param codedValue Numeric value giving the coded value that will be calculated.
+  #' @return The function return a real value of a coded value
   #' @examples
   #' code2real(160, 200, 0)
   return((diff(c(low, high))/2) * codedValue + mean(c(low, high)))
@@ -2132,6 +2146,8 @@ rsmChoose <- function() {
   #' @title rsmChoose: Choosing a response surface design from a table
   #' @description Designs displayed are central composite designs with orthogonal blocking and near rotatability. The function allows users to choose a design by clicking with the mouse into the appropriate field.
   #' @return Returns an object of class \code{\link{facDesign.c}}.
+  #' @examples
+  #' rsmChoose()
   #' @seealso \code{\link{fracChoose}}, \code{\link{rsmDesign}}
 
   old.par <- par(no.readonly = TRUE)
@@ -2538,7 +2554,6 @@ summaryFits = function(fdo, lmFit = TRUE, curvTest = TRUE) {
   #' @param lmFit A logical value deciding whether the fits from the object \code{fdo} should be included or not. By default, \code{lmFit} is set to \code{TRUE}.
   #' @param curvTest A logical value deciding whether curvature tests should be performed or not. By default, \code{curvTest} is set to \code{TRUE}.
   #' @return A summary output of the fitted linear models, which may include the linear fits, curvature tests, and original fit values, depending on the input parameters.
-  #'
   #' @examples
   #' dfac <- facDesign(k = 3)
   #' dfac$.response(data.frame(y = rnorm(8), y2 = rnorm(8)))

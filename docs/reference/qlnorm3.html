@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>qlnorm3: The Lognormal Distribution (3 Parameter)</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/8_dpq_distributions_adSim.R" class="external-link"><code>R/8_dpq_distributions_adSim.R</code></a></small>
       <div class="d-none name"><code>qlnorm3.Rd</code></div>
     </div>
 
@@ -48,9 +51,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="dlnorm3.html">dlnorm3</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">threshold</span><span class="op">)</span></span>
-<span><span class="fu"><a href="plnorm3.html">plnorm3</a></span><span class="op">(</span><span class="va">q</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">threshold</span><span class="op">)</span></span>
-<span><span class="fu">qlnorm3</span><span class="op">(</span><span class="va">p</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">threshold</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">qlnorm3</span><span class="op">(</span><span class="va">p</span>, <span class="va">meanlog</span>, <span class="va">sdlog</span>, <span class="va">threshold</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -69,10 +70,6 @@
 
 <dt>...</dt>
 <dd><p>Additional arguments that can be passed to <code>uniroot</code>.</p></dd>
-
-
-<dt>x, q</dt>
-<dd><p>A numeric vector of quantiles.</p></dd>
 
 </dl></div>
     <div class="section level2">

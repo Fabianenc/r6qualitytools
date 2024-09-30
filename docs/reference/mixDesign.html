@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>mixDesign: Mixture Designs</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/4.3_Mix_designs_Functions.R" class="external-link"><code>R/4.3_Mix_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>mixDesign.Rd</code></div>
     </div>
 
@@ -70,12 +73,12 @@
 
 
 <dt>n</dt>
-<dd><p>Numerical value specifying the degree (ignored if type = “centroid”).</p></dd>
+<dd><p>Numerical value specifying the degree (ignored if type = `centroid`).</p></dd>
 
 
 <dt>type</dt>
-<dd><p>Character string giving the type of design. <code>type</code> can be “lattice” or “centroid” (referencing to the first source under the section references].
-By default <code>type</code> is set to “lattice”.</p></dd>
+<dd><p>Character string giving the type of design. <code>type</code> can be `lattice` or `centroid` (referencing to the first source under the section references].
+By default <code>type</code> is set to `lattice`.</p></dd>
 
 
 <dt>center</dt>
@@ -102,7 +105,7 @@ By default `replicates` is set to `1`.</p></dd>
 
 
 <dt>total</dt>
-<dd><p>Numeric vector with</p><ul><li><p>[1] the percentage of the mixture made up by the q - components (e.g. q = 3 and x1 + x2 + x3 = 0.8 –&gt; total = 0.8 with 0.2 for the other factors being held constant)</p></li>
+<dd><p>Numeric vector with</p><ul><li><p>[1] the percentage of the mixture made up by the q - components (e.g. q = 3 and x1 + x2 + x3 = 0.8, total = 0.8 with 0.2 for the other factors being held constant)</p></li>
 <li><p>[2] overall total in corresponding units (e.g. 200ml for the overall mixture)</p></li>
 </ul></dd>
 
@@ -137,7 +140,9 @@ By default `replicates` is set to `1`.</p></dd>
 <span class="r-in"><span><span class="va">mdo</span> <span class="op">&lt;-</span> <span class="fu">mixDesign</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, center <span class="op">=</span> <span class="cn">FALSE</span>, axial <span class="op">=</span> <span class="cn">FALSE</span>, randomize <span class="op">=</span> <span class="cn">FALSE</span>, replicates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">names</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"polyethylene"</span>, <span class="st">"polystyrene"</span>, <span class="st">"polypropylene"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>, <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>, <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">elongation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">11.0</span>, <span class="fl">12.4</span>, <span class="fl">15.0</span>, <span class="fl">14.8</span>, <span class="fl">16.1</span>, <span class="fl">17.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">16.4</span>, <span class="fl">16.6</span>, <span class="fl">8.8</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">9.7</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">11.8</span>, <span class="fl">16.8</span>, <span class="fl">16.0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">.response</span><span class="op">(</span><span class="va">elongation</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">units</span><span class="op">(</span><span class="op">)</span></span></span>

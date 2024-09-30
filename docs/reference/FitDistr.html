@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>FitDistr: Maximum-likelihood Fitting of Univariate Distributions</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/1.3_Distr_DistrCollection_Functions.R" class="external-link"><code>R/1.3_Distr_DistrCollection_Functions.R</code></a></small>
       <div class="d-none name"><code>FitDistr.Rd</code></div>
     </div>
 
@@ -157,17 +160,78 @@ Either a character string or a function returning a density evaluated at its fir
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html" class="external-link">rt</a></span><span class="op">(</span><span class="fl">250</span>, df <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">FitFistr</span><span class="op">(</span><span class="va">x2</span>, <span class="st">"t"</span>, df <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in FitFistr(x2, "t", df = 9):</span> could not find function "FitFistr"</span>
+<span class="r-in"><span><span class="fu">FitDistr</span><span class="op">(</span><span class="va">x2</span>, <span class="st">"t"</span>, df <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $estimate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           m           s </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.01069496  1.04410551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          m          s </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.07222623 0.05434369 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $vcov</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               m             s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m  5.216629e-03 -2.155702e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> s -2.155702e-05  2.953237e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $loglik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -395.4873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FitDistr"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Allow df to vary: not a very good idea!</span></span></span>
-<span class="r-in"><span><span class="fu">fitdistr</span><span class="op">(</span><span class="va">x2</span>, <span class="st">"t"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in fitdistr(x2, "t"):</span> could not find function "fitdistr"</span>
+<span class="r-in"><span><span class="fu">FitDistr</span><span class="op">(</span><span class="va">x2</span>, <span class="st">"t"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $estimate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            m            s           df </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.009653468  1.006167671  6.627292033 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          m          s         df </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.07147271 0.07707296 2.71033093 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $vcov</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                m             s           df</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m   5.108348e-03 -5.932323e-05 -0.002431416</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> s  -5.932323e-05  5.940241e-03  0.148215838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> df -2.431416e-03  1.482158e-01  7.345893758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $loglik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -395.26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FitDistr"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Now do fixed-df fit directly with more control.</span></span></span>
 <span class="r-in"><span><span class="va">mydt</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">m</span>, <span class="va">s</span>, <span class="va">df</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html" class="external-link">dt</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span><span class="op">-</span><span class="va">m</span><span class="op">)</span><span class="op">/</span><span class="va">s</span>, <span class="va">df</span><span class="op">)</span><span class="op">/</span><span class="va">s</span></span></span>
-<span class="r-in"><span><span class="fu">FitFistr</span><span class="op">(</span><span class="va">x2</span>, <span class="va">mydt</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, df <span class="op">=</span> <span class="fl">9</span>, lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in FitFistr(x2, mydt, list(m = 0, s = 1), df = 9, lower = c(-Inf,     0)):</span> could not find function "FitFistr"</span>
+<span class="r-in"><span><span class="fu">FitDistr</span><span class="op">(</span><span class="va">x2</span>, <span class="va">mydt</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, df <span class="op">=</span> <span class="fl">9</span>, lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $estimate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           m           s </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.01069635  1.04409435 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          m          s </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.07222562 0.05434249 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $vcov</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               m             s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m  5.216541e-03 -2.156228e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> s -2.156228e-05  2.953107e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $loglik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -395.4873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FitDistr"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x3</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Weibull.html" class="external-link">rweibull</a></span><span class="op">(</span><span class="fl">100</span>, shape <span class="op">=</span> <span class="fl">4</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>

@@ -461,11 +461,7 @@ adSim <- function(x, distribution = "normal", b = 10000){
   #' adSim(x, "cauchy", NA)
   #' adSim(x, "exponential", 2000)
   #' adSim(x, "gumbel", 2000)
-  #' #x <- rgamma(n = 25, shape = 1)
-  #' #adSim(x, "gamma", 2000)
-  #' #adSim(x, "log-normal", 2000)
-  #' #adSim(x, "lognormal", 2000)
-  #' #adSim(x, "weibull", 2000)
+
 
 
   if(mode(x) != "numeric")

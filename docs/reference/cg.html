@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>cg: Function to calculate and visualize the gage capability.</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/1.3_Distr_DistrCollection_Functions.R" class="external-link"><code>R/1.3_Distr_DistrCollection_Functions.R</code></a></small>
       <div class="d-none name"><code>cg.Rd</code></div>
     </div>
 
@@ -97,7 +100,7 @@ To give an example: If the sigma-level is given by 5.15 the <code>ref.interval</
 
 
 <dt>col</dt>
-<dd><p>Character or numeric value specifying the color of the curve in the run chart. Default is <code>"black"</code>.</p></dd>
+<dd><p>Character or numeric value specifying the color of the curve in the run chart. Default is <code>`black`</code>.</p></dd>
 
 
 <dt>pch</dt>
@@ -114,14 +117,6 @@ To give an example: If the sigma-level is given by 5.15 the <code>ref.interval</
 
 <dt>conf.level</dt>
 <dd><p>Confidence level for internal <code>t.test</code> checking the significance of the bias between <code>target</code> and mean of <code>x</code>. The default value is <code>0.95</code>. The result of the <code>t.test</code> is shown in the histogram on the left side.</p></dd>
-
-
-<dt>main</dt>
-<dd><p>Character string specifying the title of the plot.</p></dd>
-
-
-<dt>cgOut</dt>
-<dd><p>Logical value deciding whether the <code>Cg</code> and <code>Cgk</code> values should be plotted in a legend. Default is <code>TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

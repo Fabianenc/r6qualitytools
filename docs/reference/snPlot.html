@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>snPlot: Signal-to-Noise-Ratio Plots</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/5.3_Taguchi_designs_Functions.R" class="external-link"><code>R/5.3_Taguchi_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>snPlot.Rd</code></div>
     </div>
 
@@ -60,10 +63,10 @@
 
 
 <dt>type</dt>
-<dd><p>A character string specifying the type of the Signal-to-Noise Ratio plot. Possible values are:</p><ul><li><p><code>"nominal"</code>: Nominal-the-best plot to equalize observed values to a nominal value.</p></li>
-<li><p><code>"smaller"</code>: Smaller-the-better plot to minimize observed values.</p></li>
-<li><p><code>"larger"</code>: Larger-the-better plot to maximize observed values.</p></li>
-</ul><p>Default is <code>"nominal"</code>.</p></dd>
+<dd><p>A character string specifying the type of the Signal-to-Noise Ratio plot. Possible values are:</p><ul><li><p><code>`nominal`</code>: Nominal-the-best plot to equalize observed values to a nominal value.</p></li>
+<li><p><code>`smaller`</code>: Smaller-the-better plot to minimize observed values.</p></li>
+<li><p><code>`larger`</code>: Larger-the-better plot to maximize observed values.</p></li>
+</ul><p>Default is <code>`nominal`</code>.</p></dd>
 
 
 <dt>factors</dt>
@@ -125,10 +128,6 @@
 <dt>pch</dt>
 <dd><p>The symbol for plotting points.</p></dd>
 
-
-<dt>...</dt>
-<dd><p>Additional graphical parameters to be passed to methods (see <code>par</code>).</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -138,9 +137,9 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The Signal-to-Noise Ratio (SNR) is calculated based on the type specified:</p><ul><li><p><code>"nominal"</code>: $$SN = 10 \cdot log(mean(y) / var(y))$$</p></li>
-<li><p><code>"smaller"</code>: $$SN = -10 \cdot log((1 / n) \cdot  sum(y^2))$$</p></li>
-<li><p><code>"larger"</code>: $$SN = -10 \cdot log((1 / n) \cdot sum(1 / y^2))$$</p></li>
+    <p>The Signal-to-Noise Ratio (SNR) is calculated based on the type specified:</p><ul><li><p><code>`nominal`</code>: $$SN = 10 \cdot log(mean(y) / var(y))$$</p></li>
+<li><p><code>`smaller`</code>: $$SN = -10 \cdot log((1 / n) \cdot  sum(y^2))$$</p></li>
+<li><p><code>`larger`</code>: $$SN = -10 \cdot log((1 / n) \cdot sum(1 / y^2))$$</p></li>
 </ul><p>Signal-to-Noise Ratio plots are used to estimate the effects of individual factors and to judge the variance and validity of results from an effect plot.</p>
     </div>
 
@@ -149,7 +148,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tdo</span> <span class="op">&lt;-</span> <span class="fu"><a href="taguchiDesign.html">taguchiDesign</a></span><span class="op">(</span><span class="st">"L9_3"</span>, replicates <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">tdo</span><span class="op">$</span><span class="fu">.response</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">27</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">snPlot</span><span class="op">(</span><span class="va">tdo</span>, points <span class="op">=</span> <span class="cn">TRUE</span>, l.col <span class="op">=</span> <span class="fl">2</span>, p.col <span class="op">=</span> <span class="fl">2</span>, ld.col <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">16</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tdo$effectPlot(factors = factors, fun = mean, response = response,     single = single, points = points, classic = classic, lty = lty,     xlab = xlab, ylab = ylab[k], main = main[k], ylim = ylim,     l.col = l.col, p.col = p.col, ld.col = ld.col, pch = pch):</span> unused arguments (single = single, classic = classic)</span>
+<span class="r-plt img"><img src="snPlot-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

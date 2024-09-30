@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>taguchiDesign: Taguchi Designs</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/5.3_Taguchi_designs_Functions.R" class="external-link"><code>R/5.3_Taguchi_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>taguchiDesign.Rd</code></div>
     </div>
 
@@ -54,26 +57,26 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>design</dt>
-<dd><p>A character string specifying the orthogonal array of the Taguchi design. The available options are:</p><ul><li><p>"L4_2" for three two-level factors.</p></li>
-<li><p>"L8_2" for seven two-level factors.</p></li>
-<li><p>"L9_3" for four three-level factors.</p></li>
-<li><p>"L12_2" for 11 two-level factors.</p></li>
-<li><p>"L16_2" for 16 two-level factors</p></li>
-<li><p>"L16_4" for 16 four-level factors.</p></li>
-<li><p>"L18_2_3" for one two-level and seven three-level factors.</p></li>
-<li><p>"L25_5" for six five-level factors.</p></li>
-<li><p>"L27_3" for 13 three-level factors.</p></li>
-<li><p>"L32_2" for 32 two-level factors.</p></li>
-<li><p>"L32_2_4" for one two-level factor and nine four-level factors.</p></li>
-<li><p>"L36_2_3_a" for 11 two-level factors and 12 three-level factors.</p></li>
-<li><p>"L36_2_3_b" for three two-level factors and 13 three-level factors.</p></li>
-<li><p>"L50_2_5" for one two-level factor and eleven five-level factors.</p></li>
-<li><p>"L8_4_2" for one four-level factor and four two-level factors.</p></li>
-<li><p>"L16_4_2_a" for one four-level factor and 12 two-level factors.</p></li>
-<li><p>"L16_4_2_b" for two four-level factors and nine two-level factors.</p></li>
-<li><p>"L16_4_2_c" for three four-level factors and six two-level factors.</p></li>
-<li><p>"L16_4_2_d" for five four-level factors and two two-level factors.</p></li>
-<li><p>"L18_6_3" for one six-level factor and six three-level factors.</p></li>
+<dd><p>A character string specifying the orthogonal array of the Taguchi design. The available options are:</p><ul><li><p>`L4_2" for three two-level factors.</p></li>
+<li><p>`L8_2" for seven two-level factors.</p></li>
+<li><p>`L9_3" for four three-level factors.</p></li>
+<li><p>`L12_2" for 11 two-level factors.</p></li>
+<li><p>`L16_2" for 16 two-level factors</p></li>
+<li><p>`L16_4" for 16 four-level factors.</p></li>
+<li><p>`L18_2_3" for one two-level and seven three-level factors.</p></li>
+<li><p>`L25_5" for six five-level factors.</p></li>
+<li><p>`L27_3" for 13 three-level factors.</p></li>
+<li><p>`L32_2" for 32 two-level factors.</p></li>
+<li><p>`L32_2_4" for one two-level factor and nine four-level factors.</p></li>
+<li><p>`L36_2_3_a" for 11 two-level factors and 12 three-level factors.</p></li>
+<li><p>`L36_2_3_b" for three two-level factors and 13 three-level factors.</p></li>
+<li><p>`L50_2_5" for one two-level factor and eleven five-level factors.</p></li>
+<li><p>`L8_4_2" for one four-level factor and four two-level factors.</p></li>
+<li><p>`L16_4_2_a" for one four-level factor and 12 two-level factors.</p></li>
+<li><p>`L16_4_2_b" for two four-level factors and nine two-level factors.</p></li>
+<li><p>`L16_4_2_c" for three four-level factors and six two-level factors.</p></li>
+<li><p>`L16_4_2_d" for five four-level factors and two two-level factors.</p></li>
+<li><p>`L18_6_3" for one six-level factor and six three-level factors.</p></li>
 </ul></dd>
 
 
@@ -99,11 +102,11 @@ By default, <code>randomize</code> is set to <code>TRUE</code>.</p></dd>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
-<ul><li><p><code>facDesig</code>: for 2^k factorial designs.</p></li>
+<ul><li><p><code><a href="facDesign.html">facDesign</a></code>: for 2^k factorial designs.</p></li>
 <li><p><code><a href="rsmDesign.html">rsmDesign</a></code>: for response surface designs.</p></li>
-<li><p><code>fracDesig</code>: for fractional factorial design.</p></li>
-<li><p><code>pbDesig</code>: for response surface designs.</p></li>
-<li><p><code>gageRRDesig</code>: for gage designs.</p></li>
+<li><p><code><a href="fracDesign.html">fracDesign</a></code>: for fractional factorial design.</p></li>
+<li><p><code><a href="pbDesign.html">pbDesign</a></code>: for response surface designs.</p></li>
+<li><p><code><a href="gageRRDesign.html">gageRRDesign</a></code>: for gage designs.</p></li>
 </ul></div>
     </div>
 

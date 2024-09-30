@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>contourPlot3: Ternary plot</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/4.3_Mix_designs_Functions.R" class="external-link"><code>R/4.3_Mix_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>contourPlot3.Rd</code></div>
     </div>
 
@@ -107,11 +110,11 @@
 
 
 <dt>form</dt>
-<dd><p>A character string or a formula with the syntax “y ~ A + B + C”.
-If form is a character string, it has to be one of the following:</p><ul><li><p>“linear”</p></li>
-<li><p>“quadratic”</p></li>
+<dd><p>A character string or a formula with the syntax `y ~ A + B + C`.
+If form is a character string, it has to be one of the following:</p><ul><li><p>`linear`</p></li>
+<li><p>`quadratic`</p></li>
 </ul><p>How the form influences the output is described in the reference listed below.
-By default, <code>form</code> is set to “linear”.</p></dd>
+By default, <code>form</code> is set to `linear`.</p></dd>
 
 
 <dt>col</dt>
@@ -140,16 +143,6 @@ By default, <code>steps</code> is set to 25.</p></dd>
 <dt>show.scale</dt>
 <dd><p>Logical value indicating whether to display the color scale on the plot. Default is <code>TRUE</code>.</p></dd>
 
-
-<dt>border</dt>
-<dd><p>Numeric or character (for example “red”) value specifying the color of the surroundimg the ternary plot.
-By default `border` is set to “white”</p></dd>
-
-
-<dt>cex.axis</dt>
-<dd><p>A numeric value specifying the size of the axis labels.
-The default value <code>cex.axis</code> is '1'.</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -174,8 +167,13 @@ The default value <code>cex.axis</code> is '1'.</p></dd>
 <span class="r-in"><span><span class="va">mdo</span><span class="op">$</span><span class="fu">.response</span><span class="op">(</span><span class="va">elongation</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"elongation ~ I(A^2) - B:A + I(C^2)"</span>, col <span class="op">=</span> <span class="fl">3</span>, axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yellow"</span>, <span class="st">"white"</span>, <span class="st">"red"</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>,</span></span>
+<span class="r-in"><span>             form <span class="op">=</span> <span class="st">"elongation ~ I(A^2) - B:A + I(C^2)"</span>,</span></span>
+<span class="r-in"><span>             col <span class="op">=</span> <span class="fl">3</span>, axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">contourPlot3</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>,</span></span>
+<span class="r-in"><span>             form <span class="op">=</span> <span class="st">"quadratic"</span>,</span></span>
+<span class="r-in"><span>             col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yellow"</span>, <span class="st">"white"</span>, <span class="st">"red"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

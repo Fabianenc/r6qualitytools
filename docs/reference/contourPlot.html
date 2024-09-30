@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -38,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>contourPlot: Contour Plot</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fabianenc/r6qualitytools/blob/HEAD/R/3.3_Factorial_designs_Functions.R" class="external-link"><code>R/3.3_Factorial_designs_Functions.R</code></a></small>
       <div class="d-none name"><code>contourPlot.Rd</code></div>
     </div>
 
@@ -106,17 +109,17 @@
 
 
 <dt>form</dt>
-<dd><p>A character string or a formula with the syntax “y~ x+y + x*y”. If form is a character it has to be one out of the following:</p><ul><li><p><code>"quadratic"</code></p></li>
-<li><p><code>"full"</code></p></li>
-<li><p><code>"interaction"</code></p></li>
-<li><p><code>"linear"</code></p></li>
-<li><p><code>"fit"</code></p></li>
-</ul><p><code>“fit”</code> takes the formula from the fit in the <code>facDesign.c</code> object <code>fdo</code>. Quadratic or higher orders should be given as I(Variable^2).
-By default <code>form</code> is set as <code>“fit”</code>.</p></dd>
+<dd><p>A character string or a formula with the syntax `y~ x+y + x*y`. If form is a character it has to be one out of the following:</p><ul><li><p><code>`quadratic`</code></p></li>
+<li><p><code>`full`</code></p></li>
+<li><p><code>`interaction`</code></p></li>
+<li><p><code>`linear`</code></p></li>
+<li><p><code>`fit`</code></p></li>
+</ul><p><code>`fit`</code> takes the formula from the fit in the <code>facDesign.c</code> object <code>fdo</code>. Quadratic or higher orders should be given as I(Variable^2).
+By default <code>form</code> is set as <code>`fit`</code>.</p></dd>
 
 
 <dt>col</dt>
-<dd><p>A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. <code>“red”</code>).</p></dd>
+<dd><p>A predefined (1, 2, 3 or 4) or self defined colorRampPalette or color to be used (i.e. <code>`red`</code>).</p></dd>
 
 
 <dt>steps</dt>
@@ -146,7 +149,7 @@ By default <code>form</code> is set as <code>“fit”</code>.</p></dd>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="wirePlot.html">wirePlot</a></code>, <code>ParetoChart</code></p></div>
+    <div class="dont-index"><p><code><a href="wirePlot.html">wirePlot</a></code>, <code><a href="paretoChart.html">paretoChart</a></code></p></div>
     </div>
 
     <div class="section level2">
