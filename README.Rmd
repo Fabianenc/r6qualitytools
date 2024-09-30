@@ -127,8 +127,10 @@ vp.full$effectPlot()
 # Plots
 paretoPlot(vp.full, p.col = "Pastel1")
 normalPlot(vp.full)
-wirePlot(A,B,y, data = vp.full)
-contourPlot(A,B,y, data = vp.full)
+wire1 <- wirePlot(A,B,y, data = vp.full)
+wire1$plot
+contour1 <- contourPlot(A,B,y, data = vp.full)
+contour1$plot
 ```
 
 ```{r}
@@ -140,8 +142,10 @@ elongation <- c(11.0, 12.4, 15.0, 14.8, 16.1, 17.7, 16.4, 16.6, 8.8, 10.0, 10.0,
 mdo$.response(elongation)
 mdo$summary()
 
-contourPlot3(A, B, C, elongation, data = mdo, form = "quadratic")
-wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic")
+contour3 <- contourPlot3(A, B, C, elongation, data = mdo, form = "quadratic")
+contour3$plot
+wire3 <- wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic")
+wire3$plot
 ```
 
 ```{r}

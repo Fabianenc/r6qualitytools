@@ -593,5 +593,5 @@ wirePlot3 = function(x, y, z, response, data = NULL, main, xlab, ylab, zlab, for
   if(plot){
     show(p)
   }
-  invisible(mat)
+  invisible(list(mat=mat,plot=p))
 }
