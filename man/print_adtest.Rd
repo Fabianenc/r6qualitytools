@@ -26,6 +26,6 @@ Function to show \code{adtest}.
 }
 \examples{
 data <- rnorm(20, mean = 20)
-pcr1<-pcr(data, "normal", lsl = 17, usl = 23, plot = F)
+pcr1<-pcr(data, "normal", lsl = 17, usl = 23, plot = FALSE)
 print_adtest(pcr1$adTest)
 }

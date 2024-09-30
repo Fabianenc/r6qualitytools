@@ -33,7 +33,7 @@ mvPlot(
 
 \item{col}{Graphical parameter. Vector containing numerical values or character strings giving the colors for the different factors. By default \code{col} starts with the value `3` and is continued as needed.}
 
-\item{pch}{Graphical parameter. Vector containing numerical values or single characters giving plotting points for the different factors. See \code{points} for possible values and their interpretation. Note that only integers and single-character strings can be set as a graphics parameter (and not \code{NA} nor code{NULL}). By default \code{pch} starts with the value `1` and is continued as needed.}
+\item{pch}{Graphical parameter. Vector containing numerical values or single characters giving plotting points for the different factors. See \code{points} for possible values and their interpretation. Note that only integers and single-character strings can be set as a graphics parameter (and not \code{NA} nor \code{NULL}). By default \code{pch} starts with the value `1` and is continued as needed.}
 
 \item{labels}{Logical value indicating whether the single points should be labels with the row-number of the \code{data.frame} invisibly returned by the function \code{mvPlot}. By default \code{labels} is set to `FALSE`.}
 
