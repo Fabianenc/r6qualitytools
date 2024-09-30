@@ -1,7 +1,7 @@
 Type: Package
 Package: r6qualitytools
 Title: R6-Based Statistical Methods for Quality Science
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: c(
     person("Andrea", "Barahona", role = "aut"),
     person("Fabian", "Encarnacion", , "fab.encarnacion@outlook.com", role = c("aut", "cre", "cph")),
