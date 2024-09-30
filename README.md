@@ -2,9 +2,8 @@
 # r6qualitytools
 
 <!-- badges: start -->
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/r6qualitytools)](https://CRAN.R-project.org/package=r6qualitytools) -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/r6qualitytools)](https://CRAN.R-project.org/package=r6qualitytools)
 [![Codecov test
 coverage](https://codecov.io/gh/Fabianenc/r6qualitytools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Fabianenc/r6qualitytools?branch=main)
 [![R-CMD-check](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml)
