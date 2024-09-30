@@ -44,7 +44,6 @@
 #'
 #' # Using the plots
 #' gdo$plot()
-#' gdo$errorPlot()
 gageRR.c <- R6Class("gageRR.c",
                     public = list(
                       X = NULL,

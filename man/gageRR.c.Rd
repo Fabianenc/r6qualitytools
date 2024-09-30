@@ -25,7 +25,6 @@ gdo <- gageRR(gdo)
 
 # Using the plots
 gdo$plot()
-gdo$errorPlot()
 
 ## ------------------------------------------------
 ## Method `gageRR.c$plot`
