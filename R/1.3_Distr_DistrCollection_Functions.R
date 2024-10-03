@@ -539,7 +539,7 @@ qqPlot <- function(x, y, confbounds = TRUE, alpha, main, xlab, ylab, xlim, ylim,
       ylab = paste("Quantiles from", deparse(substitute(y)), "distribution")
     }
     if (is.numeric(y)) {
-      cat("\ncalling (original) qqplot from namespace stats!\n")
+      message("\ncalling (original) qqplot from namespace stats!\n")
       return(stats::qqplot(x, y))
     }
     qFun = NULL
@@ -827,7 +827,6 @@ ppPlot <- function (x, distribution, confbounds = TRUE, alpha, probs, main, xlab
     }
     else{
       parameter = do.call(paste(".",distribution, "3", sep = ""), list(x1) )
-      print(parameter[3])
       threshold = parameter$threshold
     }
     parameter = .lfkp(as.list(parameter), formals(qFun))
@@ -1764,7 +1763,6 @@ print_adtest <- function(x, digits = 4, quote = TRUE, prefix = "", ...) {
   #' print_adtest(pcr1$adTest)
 
 
-  cat("\n")
   cat(strwrap(x$method, prefix = "\t"), sep = "\n")
   cat("\n")
   cat("data: ", x$data.name, "\n")
@@ -1791,8 +1789,8 @@ print_adtest <- function(x, digits = 4, quote = TRUE, prefix = "", ...) {
       cat("true", names(x$null.value), "is not equal to", x$null.value, "\n")
     }
     else {
-      cat(x$alternative, "\nnull values:\n")
-      print(x$null.value, ...)
+      message(x$alternative, "\nnull values:\n")
+      message(x$null.value, ...)
     }
   }
   if (!is.null(x$conf.int)) {
@@ -1802,7 +1800,6 @@ print_adtest <- function(x, digits = 4, quote = TRUE, prefix = "", ...) {
     cat("sample estimates:\n")
     print(x$estimate, ...)
   }
-  cat("\n")
   invisible(x)
 }
 

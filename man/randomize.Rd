@@ -4,7 +4,7 @@
 \alias{randomize}
 \title{randomize: Randomization}
 \usage{
-randomize(fdo, random.seed, so = FALSE)
+randomize(fdo, random.seed = 93275938, so = FALSE)
 }
 \arguments{
 \item{fdo}{An object of class \code{\link{facDesign.c}}.}

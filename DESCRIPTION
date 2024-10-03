@@ -9,16 +9,7 @@ Authors@R: c(
     person("Javier", "Tarrio-Saavedra", role = "ctb"),
     person("Salvador", "Naya", role = "ctb")
   )
-Description: A comprehensive suite of statistical tools for Quality
-    Management, designed around the Define, Measure, Analyze, Improve, and
-    Control (DMAIC) cycle used in Six Sigma methodology. Based on the 
-    discontinued CRAN package 'qualitytools', this package refactors 
-    its original design by incorporating 'R6' object-oriented programming 
-    for increased flexibility and performance. It replaces traditional 
-    graphics with modern, interactive visualizations using 'ggplot2' 
-    and 'plotly'. Built on tidyverse principles, it simplifies data 
-    manipulation and visualization, offering an intuitive approach 
-    to quality science.
+Description: A comprehensive suite of statistical tools for Quality Management, designed around the Define, Measure, Analyze, Improve, and Control (DMAIC) cycle used in Six Sigma methodology. Based on the discontinued CRAN package 'qualitytools', this package refactors its original design by incorporating 'R6' object-oriented programming for increased flexibility and performance. It replaces traditional graphics with modern, interactive visualizations using 'ggplot2' and 'plotly'. Built on 'tidyverse' principles, it simplifies data manipulation and visualization, offering an intuitive approach to quality science.
 License: GPL (>= 3)
 URL: https://github.com/Fabianenc/r6qualitytools
 BugReports: https://github.com/Fabianenc/r6qualitytools/issues

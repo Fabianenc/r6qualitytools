@@ -10,7 +10,8 @@ gageRR(
   sigma = 6,
   alpha = 0.25,
   tolerance = NULL,
-  dig = 3
+  dig = 3,
+  print = TRUE
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ By default \code{tolerance} is set to \code{NULL}.}
 
 \item{dig}{numeric value giving the number of significant digits for \code{format}.
 By default \code{dig} is set to `3`.}
+
+\item{print}{Print the summary of the perform of the Gage.}
 }
 \value{
 The function \code{gageRR} returns an object of class \code{gageRR.c} and shows typical Gage Repeatability and Reproducibility Output including Process to Tolerance Ratios and the number of distinctive categories (i.e. ndc) the measurement system is able to discriminate with the tested setting.

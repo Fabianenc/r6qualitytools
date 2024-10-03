@@ -12,10 +12,7 @@
   xvals <- 1L:nr
   xvals = as.numeric(rownames(cells))
   if (is.ordered(x.factor)) {
-    wn <- getOption("warn")
-    options(warn = -1)
-    xnm <- as.numeric(levels(x.factor))
-    options(warn = wn)
+    xnm <- suppressWarnings(as.numeric(levels(x.factor)))
     if (!any(is.na(xnm)))
       xvals <- xnm
   }

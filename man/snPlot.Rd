@@ -5,7 +5,7 @@
 \title{snPlot: Signal-to-Noise-Ratio Plots}
 \usage{
 snPlot(object, type = "nominal", factors, fun = mean, response = NULL,
-       single = FALSE, points = FALSE, classic = FALSE, lty, xlab, ylab,
+       points = FALSE, classic = FALSE, lty, xlab, ylab,
        main, ylim, l.col, p.col, ld.col, pch)
 }
 \arguments{
@@ -24,8 +24,6 @@ Default is \code{`nominal`}.}
 \item{fun}{A function for constructing the effect plot such as \code{mean}, \code{median}, etc. Default is \code{mean}.}
 
 \item{response}{A character string specifying the response variable. If \code{object} contains multiple responses, this parameter selects one column to plot. Default is \code{NULL}.}
-
-\item{single}{A logical value. If \code{TRUE}, the device region can be set up using, for example, \code{par(mfrow = c(2,2))}. Default is \code{FALSE}.}
 
 \item{points}{A logical value. If \code{TRUE}, points are shown in addition to values derived from \code{fun}. Default is \code{FALSE}.}
 

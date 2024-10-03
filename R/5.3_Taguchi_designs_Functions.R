@@ -161,6 +161,9 @@ taguchiChoose <- function(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia
   #' \item{\code{\link{fracDesign}}: for fractional factorial design.}
   #' \item{\code{\link{gageRRDesign}}: for gage designs.}
   #' }
+
+  old.par <- par(no.readonly = TRUE)
+  on.exit(par(old.par))
   if(col == 1){
     col<-c("#0091EA", "#00A3E0", "#00B0FF", "#26C6DA", "#4DD0E1", "#80DEEA", "#B2EBF2", "#E0F7FA", "#F2F2F2")
   } else if(col == 2){
@@ -273,8 +276,7 @@ taguchiChoose <- function(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia
 
     }
     else {
-      cat("No Design Found\n")
-      cat("\n")
+      message("No Design Found\n")
       out = NA
       invisible(out)
     }
@@ -283,14 +285,14 @@ taguchiChoose <- function(factors1 = 0, factors2 = 0, level1 = 0, level2 = 0, ia
 
 # snPlot ----
 snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
-                single = FALSE, points = FALSE, classic = FALSE,
+                points = FALSE, classic = FALSE,
                 lty, xlab, ylab, main, ylim, l.col, p.col, ld.col, pch)
 {
   #' @title snPlot: Signal-to-Noise-Ratio Plots
   #' @description Creates a Signal-to-Noise Ratio plot for designs of type \code{taguchiDesign.c} with at least two replicates.
   #' @usage
   #' snPlot(object, type = "nominal", factors, fun = mean, response = NULL,
-  #'        single = FALSE, points = FALSE, classic = FALSE, lty, xlab, ylab,
+  #'        points = FALSE, classic = FALSE, lty, xlab, ylab,
   #'        main, ylim, l.col, p.col, ld.col, pch)
   #' @param object An object of class \code{\link{taguchiDesign.c}}.
   #' @param type A character string specifying the type of the Signal-to-Noise Ratio plot. Possible values are:
@@ -303,7 +305,6 @@ snPlot<-function(object, type="nominal" , factors, fun = mean, response = NULL,
   #' @param factors The factors for which the effect plot is to be created.
   #' @param fun A function for constructing the effect plot such as \code{mean}, \code{median}, etc. Default is \code{mean}.
   #' @param response A character string specifying the response variable. If \code{object} contains multiple responses, this parameter selects one column to plot. Default is \code{NULL}.
-  #' @param single A logical value. If \code{TRUE}, the device region can be set up using, for example, \code{par(mfrow = c(2,2))}. Default is \code{FALSE}.
   #' @param points A logical value. If \code{TRUE}, points are shown in addition to values derived from \code{fun}. Default is \code{FALSE}.
   #' @param classic A logical value. If \code{TRUE}, creates an effect plot as depicted in most textbooks. Default is \code{FALSE}.
   #' @param lty A numeric value specifying the line type to be used.

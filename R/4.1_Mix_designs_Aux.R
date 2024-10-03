@@ -3,7 +3,7 @@
 #########################################################################
 
 # .npp ----
-.npp = function(mdo) {
+.npp = function(mdo, print = TRUE) {
   pseudo = mdo$pseudo
   Type = mdo$Type
   temp = as.character(mdo$as.data.frame()$Type)
@@ -32,10 +32,13 @@
       }
     }
   }
-  cat("Information about the Design Points:")
-  cat("\n")
-  cat("\n")
-  print(nums)
+  if(print){
+    cat("Information about the Design Points:")
+    cat("\n")
+    cat("\n")
+    print(nums)
+  }
+
 }
 # .permut ----
 .permut <- function(x) {

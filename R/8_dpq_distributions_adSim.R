@@ -637,7 +637,7 @@ adSim <- function(x, distribution = "normal", b = 10000){
       stop("b is chosen too big for generate an p-value within a reasonable time.")
 
 
-    cat("\n","   ... simulating the Anderson-Darling distribution by",b,"bootstraps for",distribution,"distribution...","\n","\n")
+    message("\n","   ... simulating the Anderson-Darling distribution by",b,"bootstraps for",distribution,"distribution...","\n","\n")
 
 
     if(testDistr == "normal"){
@@ -729,7 +729,7 @@ adSim <- function(x, distribution = "normal", b = 10000){
     simAD[1:b] = -n-(1/n)*d[1:b]
 
     if(any(is.na(simAD))){
-      cat("    The simulated Anderson-Darling distribution contains NAs or NaNs!","\n","\n")}
+      message("    The simulated Anderson-Darling distribution contains NAs or NaNs!","\n","\n")}
 
 
     critValues = round (matrix(	c(  0.75, 0.90, 0.95, 0.975, 0.990,
@@ -973,7 +973,7 @@ adSim <- function(x, distribution = "normal", b = 10000){
         pValue <- NA
 
         critValues[2,1:ncol(critValues)] <- NA
-        cat("\n","Critical values / p-Values for the Cauchy Distribution are only tabled for sample sizes: n = 5, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 100","\n")}
+        message("\n","Critical values / p-Values for the Cauchy Distribution are only tabled for sample sizes: n = 5, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 100","\n")}
 
     }
   }

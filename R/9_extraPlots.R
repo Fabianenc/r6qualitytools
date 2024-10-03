@@ -34,7 +34,8 @@ dotPlot <- function(x, group, xlim, ylim, col, xlab, ylab, pch, cex, breaks, sta
   #' # Dot plot with groups and stacking
   #' dotPlot(x, group = g, stacked = TRUE, pch = c(19, 20), main = "Stacked dot plot")
 
-
+  old.par <- par(no.readonly = TRUE)
+  on.exit(par(old.par))
   pch.size = "O"
   grouped = TRUE
   if(missing(main))

@@ -111,7 +111,7 @@ gageRRDesign = function(Operators = 3, Parts = 10, Measurements = 3,
 
 # gageRR ----
 gageRR <- function(gdo, method = "crossed", sigma = 6, alpha = 0.25,
-                  tolerance = NULL, dig = 3) {
+                  tolerance = NULL, dig = 3, print = TRUE) {
   #' @title gageRR: Gage R&R - Gage Repeatability and Reproducibility
   #' @description Performs a Gage R&R analysis for an object of class \code{\link{gageRR.c}}.
   #' @param gdo Needs to be an object of class \code{gageRR.c}.
@@ -125,6 +125,7 @@ gageRR <- function(gdo, method = "crossed", sigma = 6, alpha = 0.25,
   #' By default \code{tolerance} is set to \code{NULL}.
   #' @param dig numeric value giving the number of significant digits for \code{format}.
   #' By default \code{dig} is set to `3`.
+  #' @param print Print the summary of the perform of the Gage.
   #' @return The function \code{gageRR} returns an object of class \code{gageRR.c} and shows typical Gage Repeatability and Reproducibility Output including Process to Tolerance Ratios and the number of distinctive categories (i.e. ndc) the measurement system is able to discriminate with the tested setting.
   #' @seealso \code{\link{gageRR.c}}, \code{\link{gageRRDesign}}, \code{\link{gageLin}}, \code{\link{cg}}.
   #' @examples
@@ -278,18 +279,21 @@ gageRR <- function(gdo, method = "crossed", sigma = 6, alpha = 0.25,
     gdo$Estimates <- estimates
     gdo$Varcomp <- varcomp
   }
-
-  cat("\n")
-  cat(paste("AnOVa Table - ", gdo$method, "Design\n"))
-  print(summary(gdo$ANOVA))
-  cat("\n")
-  cat("----------\n")
+  if(print){
+    cat("\n")
+    cat(paste("AnOVa Table - ", gdo$method, "Design\n"))
+    print(summary(gdo$ANOVA))
+    cat("\n")
+    cat("----------\n")
+  }
 
   if (!identical(gdo$RedANOVA, gdo$ANOVA) && gdo$method == "crossed") {
+    if(print){
     cat(paste("AnOVa Table Without Interaction - ", gdo$method, "Design\n"))
     print(summary(gdo$RedANOVA))
     cat("\n")
     cat("----------\n")
+    }
   }
 
   Source <- names(gdo$Varcomp)
@@ -319,19 +323,22 @@ gageRR <- function(gdo, method = "crossed", sigma = 6, alpha = 0.25,
     temp <- data.frame(VarComp, VarCompContrib, Stdev, StudyVar, StudyVarContrib)
     row.names(temp) <- c(Source)
   }
-
-  cat("\n")
-  cat("Gage R&R\n")
+  if(print){
+    cat("\n")
+    cat("Gage R&R\n")
+  }
   tempout <- temp
-  print(format(tempout, digits = dig))
-  cat("\n")
-  cat("---\n")
-  cat(" * Contrib equals Contribution in %\n")
-
+  if(print){
+    print(format(tempout, digits = dig))
+    cat("\n")
+    cat("---\n")
+    cat(" * Contrib equals Contribution in %\n")
+  }
   SNRTemp <- sqrt(2) * (temp[bTobName, "Stdev"] / temp["totalRR", "Stdev"])
   if (SNRTemp > 1) SNR <- SNRTemp
-
-  cat(paste(" **Number of Distinct Categories (truncated signal-to-noise-ratio) =", floor(SNR), "\n"))
-  cat("\n")
+  if(print){
+    cat(paste(" **Number of Distinct Categories (truncated signal-to-noise-ratio) =", floor(SNR), "\n"))
+    cat("\n")
+  }
   invisible(gdo)
 }

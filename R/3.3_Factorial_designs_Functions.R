@@ -106,7 +106,7 @@ aliasTable <- function (fdo, degree, print = TRUE)
   invisible(alias.matrix)
 }
 # randomize ----
-randomize <- function (fdo, random.seed, so = FALSE)
+randomize <- function (fdo, random.seed=93275938, so = FALSE)
 {
   #' @title randomize: Randomization
   #' @description Function to do randomize the run order of factorial designs.
@@ -118,9 +118,8 @@ randomize <- function (fdo, random.seed, so = FALSE)
   #' dfrac <- fracDesign(k = 3)
   #' randomize(dfrac)
 
-  if (missing(random.seed))
-    set.seed(93275938)
-  else set.seed(random.seed)
+
+  set.seed(random.seed)
   j = 1
   temp = fdo$runOrder
   for (i in sort(unique(fdo$block[, 1]))) {
@@ -202,9 +201,7 @@ blocking <- function (fdo, blocks, random.seed, useTable = "rsm", gen){
   if (is.null(gen))
     gen = .blockInteractions(fdo, blocks, useTable)
   if (is.null(gen) & !override) {
-    cat("\n")
-    cat(paste("Blocking in", blocks, "blocks not possible!"))
-    cat("\n")
+    message(paste("Blocking in", blocks, "blocks not possible!"))
     return(fdo)
   }
   if (!override) {
@@ -1535,7 +1532,7 @@ contourPlot <- function(x, y, z, data = NULL, xlim, ylim, main, xlab, ylab, form
 
     }
     else{
-      cat("\n defaulting to filled.contour function\n")
+      message("\n defaulting to filled.contour function\n")
       return("persp")
     }
   }
@@ -1680,7 +1677,7 @@ confounds <- function(x, depth = 2) {
   identityList = x$identity()
   x = x$cube
   if (length(identityList) < 1) {
-    print(paste(varName, " contains no defining relations!"))
+    message(paste(varName, " contains no defining relations!"))
     invisible()
   }
   effect1 = numeric(0)
@@ -1749,7 +1746,8 @@ fracChoose <- function() {
   #' @examples
   #' fracChoose()
   #' @seealso \code{\link{fracDesign}}, \code{\link{facDesign}}, \code{\link{rsmChoose}}, \code{\link{rsmDesign}}
-
+  old.par <- par(no.readonly = TRUE)
+  on.exit(par(old.par))
   genList = list(6 * 9)
   genList = list(c("C = AB"), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c("D = ABC"), c("D = AB", "E = AC"), c("D = AB",
                                                                                                                                                       "E = AC", "F = BC"), c("D = AB", "E = AC", "F = BC", "G = ABC"), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c(NULL), c("E = ABCD"), c("E = ABC", "F = BCD"),
@@ -2223,7 +2221,7 @@ rsmChoose <- function() {
                            alpha = "both", cc = rsmList[[i]]$cc,                 ###
                            cs = rsmList[[i]]$cs))                                ###
   }
-  return(cat("\nno selection recognized\n"))
+  message("\nNo selection recognized\n")
 }
 
 

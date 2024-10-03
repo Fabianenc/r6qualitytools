@@ -320,7 +320,6 @@ contourPlot3 <- function(x, y, z, response, data = NULL, main, xlab, ylab, zlab,
     zlab = z.c
   if (missing(steps))
     steps = 100
-  col.axis = par("col.axis")
   if (is.numeric(col)) {
     if (identical(col, 1)) {
       col_palette = list(c(0, "#00007F"),c(0.125, "blue"),c(0.25, "#007FFF"),c(0.375, "cyan"),c(0.5, "#7FFF7F"),c(0.625, "yellow"),c(0.75, "#FF7F00"),c(0.875, "red"),c(1, "#7F0000"))
