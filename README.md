@@ -7,7 +7,8 @@
 [![Codecov test
 coverage](https://codecov.io/gh/Fabianenc/r6qualitytools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Fabianenc/r6qualitytools?branch=main)
 [![R-CMD-check](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml)
-
+[![CRAN
+status](https://www.r-pkg.org/badges/version/r6qualitytools)](https://CRAN.R-project.org/package=r6qualitytools)
 <!-- badges: end -->
 
 The goal of **r6qualitytools** is to provide a comprehensive suite of
@@ -133,7 +134,6 @@ data <- rnorm(20, mean = 20)
 pcr(data, "normal", lsl = 17, usl = 23)
 #> Scale for x is already present.
 #> Adding another scale for x, which will replace the existing scale.
-#> 
 #>  Anderson Darling Test for normal distribution
 #> 
 #> data:  data 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- [![CRAN status](https://www.r-pkg.org/badges/version/r6qualitytools)](https://CRAN.R-project.org/package=r6qualitytools) -->
 [![Codecov test coverage](https://codecov.io/gh/Fabianenc/r6qualitytools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Fabianenc/r6qualitytools?branch=main) [![R-CMD-check](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Fabianenc/r6qualitytools/actions/workflows/R-CMD-check.yaml)
-
+[![CRAN status](https://www.r-pkg.org/badges/version/r6qualitytools)](https://CRAN.R-project.org/package=r6qualitytools)
 <!-- badges: end -->
 
 The goal of **r6qualitytools** is to provide a comprehensive suite of statistical tools for Quality Management, designed around the Define, Measure, Analyze, Improve, and Control (DMAIC) cycle used in Six Sigma methodology. It builds on the original discontinued CRAN package **qualitytools**, enhancing it with R6 object-oriented programming, modernizing the graphics with **ggplot2** and **plotly**, and adopting **tidyverse** principles for data manipulation and visualization.
