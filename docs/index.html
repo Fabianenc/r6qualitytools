@@ -256,14 +256,10 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/normalPlot.html">normalPlot</a></span><span class="op">(</span><span class="va">vp.full</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-9-3.png" width="100%"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">wire1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wirePlot.html">wirePlot</a></span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,<span class="va">y</span>, data <span class="op">=</span> <span class="va">vp.full</span><span class="op">)</span></span>
-<span><span class="va">wire1</span><span class="op">$</span><span class="va">plot</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-9-4.png" width="100%"></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">contour1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contourPlot.html">contourPlot</a></span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,<span class="va">y</span>, data <span class="op">=</span> <span class="va">vp.full</span><span class="op">)</span></span>
 <span><span class="va">contour1</span><span class="op">$</span><span class="va">plot</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-9-5.png" width="100%"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-9-4.png" width="100%"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mix Design</span></span>
 <span><span class="va">mdo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mixDesign.html">mixDesign</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, center <span class="op">=</span> <span class="cn">FALSE</span>, axial <span class="op">=</span> <span class="cn">FALSE</span>, randomize <span class="op">=</span> <span class="cn">FALSE</span>, replicates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -341,11 +337,7 @@
 <span><span class="va">contour3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contourPlot3.html">contourPlot3</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span><span class="op">)</span></span>
 <span><span class="va">contour3</span><span class="op">$</span><span class="va">plot</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-10-1.png" width="100%"></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">wire3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wirePlot3.html">wirePlot3</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span>, <span class="va">C</span>, <span class="va">elongation</span>, data <span class="op">=</span> <span class="va">mdo</span>, form <span class="op">=</span> <span class="st">"quadratic"</span><span class="op">)</span></span>
-<span><span class="va">wire3</span><span class="op">$</span><span class="va">plot</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-10-2.png" width="100%"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Taguchi Design</span></span>
 <span><span class="va">tdo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taguchiDesign.html">taguchiDesign</a></span><span class="op">(</span><span class="st">"L9_3"</span>,randomize<span class="op">=</span><span class="cn">F</span><span class="op">)</span></span>
 <span><span class="va">tdo</span><span class="op">$</span><span class="fu">values</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"material 1"</span>, <span class="st">"material 2"</span>, <span class="st">"material 3"</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">29</span>, <span class="fl">30</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -380,7 +372,7 @@
 <span><span class="co">#&gt; -----------</span></span>
 <span><span class="va">tdo</span><span class="op">$</span><span class="fu">effectPlot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plackett-Burman Design</span></span>
 <span><span class="va">pbdo</span><span class="op">&lt;-</span> <span class="fu"><a href="reference/pbDesign.html">pbDesign</a></span><span class="op">(</span><span class="fl">26</span><span class="op">)</span></span>
 <span><span class="va">pbdo</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span>
@@ -464,7 +456,7 @@
 <span><span class="co">#&gt; 26  1 -1  1 -1  1  1  1 -1  1  1 NA</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; -----------</span></span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># gageLin Design</span></span>
 <span><span class="va">A</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.7</span>,<span class="fl">2.5</span>,<span class="fl">2.4</span>,<span class="fl">2.5</span>,<span class="fl">2.7</span>,<span class="fl">2.3</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>,<span class="fl">2.4</span>,<span class="fl">2.4</span>,<span class="fl">2.6</span>,<span class="fl">2.4</span><span class="op">)</span></span>
 <span><span class="va">B</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.1</span>,<span class="fl">3.9</span>,<span class="fl">4.2</span>,<span class="fl">5</span>,<span class="fl">3.8</span>,<span class="fl">3.9</span>,<span class="fl">3.9</span>,<span class="fl">3.9</span>,<span class="fl">3.9</span>,<span class="fl">4</span>,<span class="fl">4.1</span>,<span class="fl">3.8</span><span class="op">)</span></span>

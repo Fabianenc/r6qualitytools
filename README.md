@@ -250,18 +250,11 @@ normalPlot(vp.full)
 <img src="man/figures/README-unnamed-chunk-9-3.png" width="100%" />
 
 ``` r
-wire1 <- wirePlot(A,B,y, data = vp.full)
-wire1$plot
-```
-
-<img src="man/figures/README-unnamed-chunk-9-4.png" width="100%" />
-
-``` r
 contour1 <- contourPlot(A,B,y, data = vp.full)
 contour1$plot
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-5.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-4.png" width="100%" />
 
 ``` r
 # Mix Design
@@ -343,13 +336,6 @@ contour3$plot
 ```
 
 <img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
-
-``` r
-wire3 <- wirePlot3(A, B, C, elongation, data = mdo, form = "quadratic")
-wire3$plot
-```
-
-<img src="man/figures/README-unnamed-chunk-10-2.png" width="100%" />
 
 ``` r
 # Taguchi Design
